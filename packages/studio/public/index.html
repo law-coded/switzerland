@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>law-coded Studio · Open European Executable Law (LCF 0.1)</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --swiss-red: #d52b1e;
+      --swiss-red-soft: #fef2f2;
+      --blue: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --green: #15803d;
+      --green-soft: #f0fdf4;
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
+      --mono: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.5;
+    }
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--swiss-red);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cross {
+      width: 24px;
+      height: 24px;
+      background: var(--swiss-red);
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+    .brand span {
+      font-size: 12px;
+      color: #94a3b8;
+      font-family: var(--mono);
+    }
+    .header-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .shell {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 18px;
+      max-width: 1520px;
+      margin: 0 auto;
+      padding: 18px 24px 40px;
+    }
+    @media (max-width: 1024px) {
+      .shell { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    h3 { margin: 0 0 8px; font-size: 15px; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    select, input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 13px;
+      background: #fff;
+      color: var(--ink);
+    }
+    .ctx-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .input-row {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .input-row:last-child { border-bottom: none; }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .checkbox-row label { margin: 0; font-weight: 500; }
+    .bop-tag {
+      font-size: 10px;
+      font-family: var(--mono);
+      color: var(--blue);
+      background: var(--blue-soft);
+      padding: 1px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 3px;
+    }
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .preset-btn {
+      font-size: 11px;
+      padding: 5px 9px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: var(--ink);
+      cursor: pointer;
+      transition: 0.12s;
+    }
+    .preset-btn:hover {
+      border-color: var(--swiss-red);
+      color: var(--swiss-red);
+      background: var(--swiss-red-soft);
+    }
+    .tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      border: none;
+      background: transparent;
+      padding: 8px 13px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+    .tab.active {
+      color: var(--swiss-red);
+      border-bottom-color: var(--swiss-red);
+    }
+    .outputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .out-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fcfcfd;
+    }
+    .out-box.primary { border-left: 4px solid var(--swiss-red); }
+    .out-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .out-val {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 4px;
+      word-break: break-word;
+    }
+    .alert {
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 13px;
+      margin-bottom: 12px;
+      border: 1px solid;
+    }
+    .alert-amber { background: var(--amber-soft); border-color: #fcd34d; color: #78350f; }
+    .alert-red { background: var(--swiss-red-soft); border-color: #fca5a5; color: #7f1d1d; }
+    .alert-green { background: var(--green-soft); border-color: #86efac; color: #14532d; }
+    .trace-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+    .trace-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .b-applied { background: var(--green-soft); color: var(--green); }
+    .b-defeated { background: #f1f5f9; color: #64748b; text-decoration: line-through; }
+    .b-escalate_human { background: var(--amber-soft); color: var(--amber); }
+    .b-resolved_by_burden_of_proof { background: var(--blue-soft); color: var(--blue); }
+    .b-inactive_temporal, .b-inactive_jurisdiction, .b-inactive_lens, .b-condition_false { background: #f8fafc; color: #94a3b8; }
+    .trace-meta { font-size: 12px; color: var(--muted); margin-top: 5px; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 14px;
+      border-radius: 8px;
+      overflow: auto;
+      font-family: var(--mono);
+      font-size: 12px;
+      max-height: 520px;
+      white-space: pre-wrap;
+    }
+    .auth-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .lang-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .lang-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px;
+      font-size: 12px;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .loss-item {
+      border-left: 3px solid var(--swiss-red);
+      padding: 6px 10px;
+      background: var(--swiss-red-soft);
+      margin-bottom: 6px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="cross">+</div>
+      <div>
+        <h1>law-coded Studio</h1>
+        <span>LCF 0.1 · Switzerland First · Europe / EEA / UK Ready</span>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="pill">OpenCaseLaw Grounded</span>
+      <span class="pill">swisslaw-git Drift CI</span>
+      <span class="pill">RUML 1.0.0 Bridge</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="stack">
+      <section class="card">
+        <h2>1. Executable Statute Module</h2>
+        <select id="moduleSelect"></select>
+        <p id="moduleDesc" style="font-size:12px;color:var(--muted);margin:8px 0 10px;"></p>
+        <div class="presets" id="presetBar"></div>
+      </section>
+
+      <section class="card">
+        <h2>2. Tri-Temporal, Jurisdiction & Lens</h2>
+        <div class="ctx-grid">
+          <div>
+            <label for="langSelect">Language</label>
+            <select id="langSelect">
+              <option value="de">Deutsch (DE)</option>
+              <option value="fr">Français (FR)</option>
+              <option value="it">Italiano (IT)</option>
+              <option value="en">English (EN)</option>
+            </select>
+          </div>
+          <div>
+            <label for="jurSelect">Jurisdiction</label>
+            <select id="jurSelect"></select>
+          </div>
+          <div>
+            <label for="factDateInput">Fact Date</label>
+            <input id="factDateInput" type="date" value="2026-07-10" />
+          </div>
+          <div>
+            <label for="modeSelect">Mode (Art. 8 ZGB)</label>
+            <select id="modeSelect">
+              <option value="adjudicate">Adjudicate (Burden of Proof)</option>
+              <option value="triage">Triage (Next Questions)</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:10px;">
+          <label for="lensSelect">Interpretive Lens (Streitstand)</label>
+          <select id="lensSelect"></select>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3. Case Facts (Inputs)</h2>
+        <div id="inputsContainer"></div>
+      </section>
+    </aside>
+
+    <section class="card">
+      <div class="tabs" id="tabBar">
+        <button class="tab active" data-tab="eval">Result & Defeasible Trace</button>
+        <button class="tab" data-tab="memo">Multilingual Begründung</button>
+        <button class="tab" data-tab="bi">Counterfactuals & Triage</button>
+        <button class="tab" data-tab="auth">Trilingual Statutes & BGEs</button>
+        <button class="tab" data-tab="verify">Digitalcheck & Drift CI</button>
+        <button class="tab" data-tab="ruml">RUML 1.0.0 Export & Diff</button>
+      </div>
+      <div id="panelContent">Loading law-coded corpus...</div>
+    </section>
+  </main>
+
+  <script>
+    let corpusData = null;
+    let currentSlug = null;
+    let currentInputs = {};
+    let activeTab = "eval";
+    let lastResult = null;
+
+    const PRESETS = {
+      "ch-zpo-deadlines": [
+        {
+          label: "BGE 139 III 78 (Missing Warning Streitstand)",
+          ctx: { jurisdiction: "CH-ZH", factDate: "2026-07-10", lens: "bger_settled" },
+          inputs: { triggerDate: "2026-07-10", deliveryMethod: "registered_mail", durationDays: 10, procedureType: "appeal_from_summary", noticeOfNoSuspensionGiven: false }
+        },
+        {
+          label: "2024 vs 2025 ZPO Revision (Sat. Mail)",
+          ctx: { jurisdiction: "CH-ZH", factDate: "2024-06-15", lens: "bger_settled" },
+          inputs: { triggerDate: "2024-06-15", deliveryMethod: "ordinary_mail", durationDays: 10, procedureType: "ordinary", noticeOfNoSuspensionGiven: true }
+        },
+        {
+          label: "Canton TI San Giuseppe Holiday (Mar 19)",
+          ctx: { jurisdiction: "CH-TI", factDate: "2026-03-09", lens: "bger_settled" },
+          inputs: { triggerDate: "2026-03-09", deliveryMethod: "registered_mail", durationDays: 10, procedureType: "summary", noticeOfNoSuspensionGiven: true }
+        }
+      ],
+      "ch-or-termination": [
+        {
+          label: "Workplace-Specific Incapacity Streitstand",
+          ctx: { jurisdiction: "CH", factDate: "2026-03-15", lens: "bger_settled" },
+          inputs: { terminationType: "ordinary_employer", noticeReceivedDate: "2026-03-15", serviceYear: 4, inProbation: false, monthlyGrossSalary: { amount: "8500.00", currency: "CHF" }, incapacitatedAtNotice: true, workplaceSpecificIncapacityOnly: true, pregnantOrPostpartum16w: false, incapacityDuringNoticeDays: 12 }
+        },
+        {
+          label: "Art. 337 Borderline -> Human Escalation",
+          ctx: { jurisdiction: "CH", factDate: "2026-05-10", lens: "bger_settled" },
+          inputs: { terminationType: "summary_employer", noticeReceivedDate: "2026-05-10", serviceYear: 3, inProbation: false, monthlyGrossSalary: { amount: "7000.00", currency: "CHF" }, daysBetweenKnowledgeAndSummaryDismissal: 2, priorWrittenWarningIgnored: true, severeLoyaltyBreachOrCrime: false, reasonIsNoFaultIncapacity: false }
+        },
+        {
+          label: "Art. 337 Abs. 3 Illness Disqualifier -> CHF Cap",
+          ctx: { jurisdiction: "CH", factDate: "2026-05-10", lens: "bger_settled" },
+          inputs: { terminationType: "summary_employer", noticeReceivedDate: "2026-05-10", serviceYear: 6, inProbation: false, monthlyGrossSalary: { amount: "8333.35", currency: "CHF" }, daysBetweenKnowledgeAndSummaryDismissal: 1, reasonIsNoFaultIncapacity: true }
+        }
+      ],
+      "europe-data-lawful-basis": [
+        {
+          label: "CH Private Controller (Art. 31 DSG)",
+          ctx: { jurisdiction: "CH", factDate: "2026-06-01" },
+          inputs: { controllerSector: "private", hasConsent: false, necessaryForContract: false, infringesPersonalityWithoutObjection: false, ukRecognisedLegitimateInterest: true }
+        },
+        {
+          label: "DE / EU GDPR (Prohibition Model)",
+          ctx: { jurisdiction: "DE", factDate: "2026-06-01" },
+          inputs: { controllerSector: "private", hasConsent: false, necessaryForContract: false, infringesPersonalityWithoutObjection: false, ukRecognisedLegitimateInterest: true }
+        },
+        {
+          label: "UK Divergence (Recognised Interest)",
+          ctx: { jurisdiction: "UK", factDate: "2026-06-01" },
+          inputs: { controllerSector: "private", hasConsent: false, necessaryForContract: false, infringesPersonalityWithoutObjection: false, ukRecognisedLegitimateInterest: true }
+        }
+      ]
+    };
+
+    function pick(obj, lang) {
+      if (!obj) return "";
+      return obj[lang] || obj.en || obj.de || Object.values(obj)[0] || "";
+    }
+
+    function esc(str) {
+      return String(str).replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+    }
+
+    function getCurrentModule() {
+      return corpusData.modules.find((m) => m.slug === currentSlug);
+    }
+
+    function buildDefaultInputs(doc) {
+      const defaults = {};
+      for (const [k, spec] of Object.entries(doc.inputs)) {
+        if (spec.defaultValue !== undefined) defaults[k] = spec.defaultValue;
+        else if (spec.type === "boolean") defaults[k] = false;
+        else if (spec.type === "integer") defaults[k] = 10;
+        else if (spec.type === "date") defaults[k] = "2026-07-10";
+        else if (spec.type === "enum") defaults[k] = spec.enumValues?.[0] ?? "";
+        else if (spec.type === "money") defaults[k] = { amount: "8500.00", currency: "CHF" };
+      }
+      return defaults;
+    }
+
+    function renderModuleControls() {
+      const mod = getCurrentModule();
+      const doc = mod.document;
+      const lang = document.getElementById("langSelect").value;
+      document.getElementById("moduleDesc").textContent = pick(doc.metadata.description, lang);
+
+      const jurSel = document.getElementById("jurSelect");
+      const prevJur = jurSel.value;
+      jurSel.innerHTML = doc.metadata.jurisdictions.map((j) => `<option value="${esc(j)}">${esc(j)}</option>`).join("");
+      if (doc.metadata.jurisdictions.includes(prevJur)) jurSel.value = prevJur;
+
+      const lensSel = document.getElementById("lensSelect");
+      const lenses = doc.lenses || [{ id: "default", label: { en: "Default", de: "Standard" } }];
+      const prevLens = lensSel.value;
+      lensSel.innerHTML = lenses.map((l) => `<option value="${esc(l.id)}">${esc(pick(l.label, lang))}</option>`).join("");
+      if (lenses.some((l) => l.id === prevLens)) lensSel.value = prevLens;
+
+      const presetBar = document.getElementById("presetBar");
+      const presets = PRESETS[currentSlug] || [];
+      presetBar.innerHTML = presets.map((p, idx) => `<button class="preset-btn" data-pidx="${idx}">${esc(p.label)}</button>`).join("");
+      presetBar.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const p = presets[Number(btn.dataset.pidx)];
+          currentInputs = { ...buildDefaultInputs(doc), ...p.inputs };
+          if (p.ctx.jurisdiction) jurSel.value = p.ctx.jurisdiction;
+          if (p.ctx.factDate) document.getElementById("factDateInput").value = p.ctx.factDate;
+          if (p.ctx.lens) lensSel.value = p.ctx.lens;
+          renderInputs();
+          runEval();
+        });
+      });
+
+      renderInputs();
+    }
+
+    function renderInputs() {
+      const doc = getCurrentModule().document;
+      const lang = document.getElementById("langSelect").value;
+      const container = document.getElementById("inputsContainer");
+      container.innerHTML = "";
+
+      for (const [key, spec] of Object.entries(doc.inputs)) {
+        const row = document.createElement("div");
+        row.className = "input-row";
+        const val = currentInputs[key];
+        const bop = spec.burdenOfProof
+          ? `<div class="bop-tag">Burden: ${esc(spec.burdenOfProof.party)} (${esc(spec.burdenOfProof.legalBasis || spec.burdenOfProof.factRole)})</div>`
+          : "";
+
+        if (spec.type === "boolean") {
+          row.innerHTML = `
+            <div class="checkbox-row">
+              <label for="inp_${esc(key)}">${esc(pick(spec.label, lang))}</label>
+              <input id="inp_${esc(key)}" type="checkbox" ${val ? "checked" : ""} />
+            </div>${bop}`;
+          row.querySelector("input").addEventListener("change", (e) => {
+            currentInputs[key] = e.target.checked;
+            runEval();
+          });
+        } else if (spec.type === "enum") {
+          const opts = (spec.enumValues || []).map((v) => `<option value="${esc(v)}" ${v === val ? "selected" : ""}>${esc(v)}</option>`).join("");
+          row.innerHTML = `<label for="inp_${esc(key)}">${esc(pick(spec.label, lang))}</label><select id="inp_${esc(key)}">${opts}</select>${bop}`;
+          row.querySelector("select").addEventListener("change", (e) => {
+            currentInputs[key] = e.target.value;
+            runEval();
+          });
+        } else if (spec.type === "money") {
+          const amount = val?.amount ?? "0.00";
+          const currency = val?.currency ?? "CHF";
+          row.innerHTML = `<label for="inp_${esc(key)}">${esc(pick(spec.label, lang))} (${esc(currency)})</label><input id="inp_${esc(key)}" type="text" value="${esc(amount)}" />${bop}`;
+          row.querySelector("input").addEventListener("change", (e) => {
+            currentInputs[key] = { amount: e.target.value, currency };
+            runEval();
+          });
+        } else if (spec.type === "date") {
+          row.innerHTML = `<label for="inp_${esc(key)}">${esc(pick(spec.label, lang))}</label><input id="inp_${esc(key)}" type="date" value="${esc(val || "")}" />${bop}`;
+          row.querySelector("input").addEventListener("change", (e) => {
+            currentInputs[key] = e.target.value;
+            runEval();
+          });
+        } else if (spec.type === "integer" || spec.type === "decimal") {
+          row.innerHTML = `<label for="inp_${esc(key)}">${esc(pick(spec.label, lang))}</label><input id="inp_${esc(key)}" type="number" value="${val ?? ""}" />${bop}`;
+          row.querySelector("input").addEventListener("change", (e) => {
+            currentInputs[key] = e.target.value === "" ? undefined : Number(e.target.value);
+            runEval();
+          });
+        }
+        container.appendChild(row);
+      }
+    }
+
+    async function runEval() {
+      const ctx = {
+        jurisdiction: document.getElementById("jurSelect").value,
+        language: document.getElementById("langSelect").value,
+        factDate: document.getElementById("factDateInput").value,
+        decisionDate: document.getElementById("factDateInput").value,
+        lens: document.getElementById("lensSelect").value,
+        mode: document.getElementById("modeSelect").value,
+      };
+      const resp = await fetch("/api/evaluate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: currentSlug, inputs: currentInputs, context: ctx }),
+      });
+      lastResult = await resp.json();
+      renderActiveTab();
+    }
+
+    function fmtVal(v) {
+      if (v && typeof v === "object" && "amount" in v && "currency" in v) return `${v.currency} ${v.amount}`;
+      if (v && typeof v === "object" && v.$state === "unknown") return "unknown";
+      if (v && typeof v === "object") return JSON.stringify(v, null, 2);
+      return String(v);
+    }
+
+    function renderActiveTab() {
+      const panel = document.getElementById("panelContent");
+      const mod = getCurrentModule();
+      const doc = mod.document;
+      const lang = document.getElementById("langSelect").value;
+      if (!lastResult) return;
+
+      if (activeTab === "eval") {
+        const ev = lastResult.evaluation;
+        const ld = lastResult.lensDiff;
+        let html = "";
+
+        if (ld.hasDivergence) {
+          const rows = ld.divergingOutputs.map((d) =>
+            `<div><strong>${esc(d.label)}:</strong> ${Object.entries(d.valuesByLens).map(([k, v]) => `<code>${esc(k)}</code> = <strong>${esc(fmtVal(v))}</strong>`).join(" vs. ")}</div>`
+          ).join("");
+          html += `<div class="alert alert-amber"><strong>Streitstand Divergence Detected Across Interpretive Lenses!</strong>${rows}</div>`;
+        }
+        if (ev.escalations.length > 0) {
+          html += `<div class="alert alert-red"><strong>Mandatory Human Jurist Escalation:</strong> ${ev.escalations.map((e) => esc(e.reason)).join("; ")}</div>`;
+        }
+
+        html += `<div class="outputs-grid">` + doc.outputs.map((o) => `
+          <div class="out-box ${o.primary ? "primary" : ""}">
+            <div class="out-label">${esc(pick(o.label, lang))} · ${esc(o.modality || o.valueType)}</div>
+            <div class="out-val">${esc(fmtVal(ev.outputs[o.id]))}</div>
+          </div>`).join("") + `</div>`;
+
+        html += `<h3>Defeasible Normative Execution Trace (${ev.trace.length} rules evaluated)</h3>`;
+        for (const t of ev.trace) {
+          const authHtml = (t.authorities || []).map((id) => {
+            const a = doc.authorities[id];
+            if (!a) return esc(id);
+            const url = a.urls?.[lang] || a.url || a.eli;
+            const c = pick(a.citation, lang);
+            return url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(c)}</a>` : esc(c);
+          }).join(" · ");
+          const defeated = t.defeatedBy ? ` · <strong>Defeated by:</strong> <code>${esc(t.defeatedBy)}</code>` : "";
+          const sub = t.subsumtionDetail
+            ? `<div class="trace-meta">Subsumtion score: <strong>${t.subsumtionDetail.score}</strong> (escalation band [${t.subsumtionDetail.escalationBand.low}, ${t.subsumtionDetail.escalationBand.high}]) · verdict: <code>${esc(t.subsumtionDetail.verdict)}</code></div>`
+            : "";
+          html += `
+            <div class="trace-item">
+              <div class="trace-head">
+                <div><strong>${esc(t.label)}</strong> <span style="font-family:var(--mono);font-size:11px;color:var(--muted);">(${esc(t.ruleId)} -> ${esc(t.target)})</span></div>
+                <span class="badge b-${esc(t.status)}">${esc(t.status)}</span>
+              </div>
+              <div class="trace-meta">Kind: <code>${esc(t.kind)}</code> · Value: <code>${esc(fmtVal(t.value))}</code>${defeated}</div>
+              ${t.explanation ? `<div class="trace-meta">${esc(t.explanation)}</div>` : ""}
+              ${sub}
+              <div class="trace-meta">Authorities: ${authHtml}</div>
+            </div>`;
+        }
+        panel.innerHTML = html;
+      } else if (activeTab === "memo") {
+        panel.innerHTML = `<h3>Audit-Grade Multilingual Begründung (${lang.toUpperCase()})</h3><pre>${esc(lastResult.begruendung)}</pre>`;
+      } else if (activeTab === "bi") {
+        const cfs = lastResult.counterfactuals || [];
+        const nqs = lastResult.nextQuestions || [];
+        let html = `<h3>Counterfactual Tipping Points (Minimal Factual Flips)</h3>`;
+        if (cfs.length === 0) html += `<p style="color:var(--muted);">No single-variable flip detected within local perturbation bounds.</p>`;
+        for (const c of cfs) {
+          html += `<div class="trace-item"><strong>${esc(c.label)}</strong> (<code>${esc(c.inputName)}</code>): <code>${esc(c.deltaDescription)}</code><div class="trace-meta">${c.changedOutputs.map((o) => `<code>${esc(o.outputId)}</code>: ${esc(fmtVal(o.from))} -> <strong>${esc(fmtVal(o.to))}</strong>`).join("<br/>")}</div></div>`;
+        }
+        html += `<h3 style="margin-top:16px;">Minimal Next-Question Triage (Relevant Unknown Inputs)</h3>`;
+        if (nqs.length === 0) html += `<p style="color:var(--muted);">All decisive inputs are supplied (clear any input or switch to Triage mode to see active ranking).</p>`;
+        for (const q of nqs) {
+          html += `<div class="trace-item"><strong>${esc(q.label)}</strong> (impact score: ${q.impactScore}) -> decides: ${q.outputsAffected.map((x) => `<code>${esc(x)}</code>`).join(", ")}</div>`;
+        }
+        panel.innerHTML = html;
+      } else if (activeTab === "auth") {
+        let html = `<h3>Verified Trilingual Statutes, OpenCaseLaw BGEs & swisslaw-git Anchors</h3>`;
+        for (const [id, a] of Object.entries(doc.authorities)) {
+          const gitLinks = a.swisslawGitPath
+            ? `<div class="trace-meta">swisslaw-git: ${Object.entries(a.swisslawGitPath).map(([l, p]) => `<a target="_blank" href="https://github.com/jonashertner/swisslaw-git/blob/main/${esc(p)}">${esc(l.toUpperCase())}: ${esc(p)}</a>`).join(" · ")}</div>`
+            : "";
+          const verbatim = a.verbatimText
+            ? `<div class="lang-cols">${Object.entries(a.verbatimText).map(([l, txt]) => `<div class="lang-box"><strong>${esc(l.toUpperCase())}</strong><br/>${esc(txt)}</div>`).join("")}</div>`
+            : "";
+          const url = a.urls?.[lang] || a.url || a.eli;
+          html += `<div class="auth-card">
+            <div><strong>${esc(pick(a.citation, lang))}</strong> <span class="badge b-applied">${esc(a.kind)}</span> <span class="badge b-resolved_by_burden_of_proof">${esc(a.jurisdiction)}</span></div>
+            ${url ? `<div class="trace-meta"><a target="_blank" href="${esc(url)}">${esc(url)}</a></div>` : ""}
+            ${gitLinks}${verbatim}
+          </div>`;
+        }
+        panel.innerHTML = html;
+      } else if (activeTab === "verify") {
+        const v = mod.verification;
+        const drift = mod.drift || [];
+        let html = `<div class="alert alert-green"><strong>Digitalcheck Formal Readiness: ${v.readinessScore}/100</strong> · i18n coverage: ${v.checks.multilingualCoveragePercent}% · Authority grounding: ${v.checks.authorityGroundingPercent}% · Golden court tests: ${v.checks.goldenTestsPassed}/${v.checks.goldenTestsTotal}</div>`;
+        html += `<div class="trace-meta" style="margin-bottom:12px;">RFC 8785 Canonical Hash: <code>${esc(mod.canonicalHash)}</code></div>`;
+        html += `<h3>Golden Court Regression Suite</h3>`;
+        for (const t of v.goldenTestResults) {
+          html += `<div class="trace-item"><div class="trace-head"><strong>${esc(t.name)}</strong><span class="badge ${t.passed ? "b-applied" : "b-escalate_human"}">${t.passed ? "PASS" : "FAIL"}</span></div></div>`;
+        }
+        if (drift.length > 0) {
+          html += `<h3 style="margin-top:14px;">Law-CI Pending Amendments & Drift Alerts</h3>`;
+          for (const d of drift) {
+            html += `<div class="alert alert-amber"><strong>[${esc(d.severity)}]</strong> ${esc(d.message)}</div>`;
+          }
+        }
+        html += `<h3 style="margin-top:14px;">Pan-European Grounding Matrix (CH -> EU / EEA / UK)</h3>`;
+        for (const s of corpusData.europeanSources) {
+          html += `<div class="trace-item"><strong>${esc(s.jurisdiction)}</strong> · ${esc(s.portalName)}<div class="trace-meta">${esc(s.legislationStandard)} · ${esc(s.caseLawSource)}</div></div>`;
+        }
+        panel.innerHTML = html;
+      } else if (activeTab === "ruml") {
+        const exp = lastResult.rumlExport;
+        let html = `<h3>RUML 1.0.0 Projection Fidelity Report (${exp.fidelityReport.losses.length} structural capabilities lost in RUML 1.0.0)</h3>`;
+        for (const l of exp.fidelityReport.losses) {
+          html += `<div class="loss-item"><strong>${esc(l.dimension)}</strong> (${esc(l.severity)}): ${esc(l.detail)}</div>`;
+        }
+        html += `<h3 style="margin-top:14px;">Generated Valid RUML 1.0.0 JSON</h3><pre>${esc(JSON.stringify(exp.ruml, null, 2))}</pre>`;
+        panel.innerHTML = html;
+      }
+    }
+
+    async function init() {
+      const resp = await fetch("/api/corpus");
+      corpusData = await resp.json();
+      const sel = document.getElementById("moduleSelect");
+      sel.innerHTML = corpusData.modules.map((m) =>
+        `<option value="${esc(m.slug)}">${esc(m.slug)} (${esc(pick(m.document.metadata.title, "en"))})</option>`
+      ).join("");
+      currentSlug = corpusData.modules[0].slug;
+      const firstPreset = PRESETS[currentSlug]?.[0];
+      currentInputs = firstPreset ? { ...buildDefaultInputs(getCurrentModule().document), ...firstPreset.inputs } : buildDefaultInputs(getCurrentModule().document);
+
+      sel.addEventListener("change", () => {
+        currentSlug = sel.value;
+        const p = PRESETS[currentSlug]?.[0];
+        currentInputs = p ? { ...buildDefaultInputs(getCurrentModule().document), ...p.inputs } : buildDefaultInputs(getCurrentModule().document);
+        renderModuleControls();
+        if (p?.ctx?.jurisdiction) document.getElementById("jurSelect").value = p.ctx.jurisdiction;
+        if (p?.ctx?.factDate) document.getElementById("factDateInput").value = p.ctx.factDate;
+        if (p?.ctx?.lens) document.getElementById("lensSelect").value = p.ctx.lens;
+        runEval();
+      });
+
+      ["langSelect", "jurSelect", "factDateInput", "lensSelect", "modeSelect"].forEach((id) => {
+        document.getElementById(id).addEventListener("change", () => {
+          if (id === "langSelect") renderModuleControls();
+          runEval();
+        });
+      });
+
+      document.getElementById("tabBar").querySelectorAll(".tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeTab = btn.dataset.tab;
+          renderActiveTab();
+        });
+      });
+
+      renderModuleControls();
+      if (firstPreset?.ctx?.jurisdiction) document.getElementById("jurSelect").value = firstPreset.ctx.jurisdiction;
+      if (firstPreset?.ctx?.factDate) document.getElementById("factDateInput").value = firstPreset.ctx.factDate;
+      if (firstPreset?.ctx?.lens) document.getElementById("lensSelect").value = firstPreset.ctx.lens;
+      runEval();
+    }
+
+    init();
+  </script>
+</body>
+</html>

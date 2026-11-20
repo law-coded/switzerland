@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://law-coded.org/schemas/0.1/lcf-result.schema.json",
+  "title": "Law-Coded Format (LCF) Evaluation Result 0.1",
+  "type": "object",
+  "required": [
+    "$format",
+    "$specVersion",
+    "documentRef",
+    "context",
+    "outputs",
+    "trace",
+    "escalations",
+    "conflicts",
+    "citationsUsed"
+  ],
+  "properties": {
+    "$format": { "const": "LCF-Result" },
+    "$specVersion": { "type": "string" },
+    "documentRef": {
+      "type": "object",
+      "required": ["id", "slug", "version", "canonicalHash"],
+      "properties": {
+        "id": { "type": "string" },
+        "slug": { "type": "string" },
+        "version": { "type": "string" },
+        "canonicalHash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": ["jurisdiction", "language", "factDate", "decisionDate", "lawVersion", "lens", "mode"],
+      "properties": {
+        "jurisdiction": { "type": "string" },
+        "language": { "type": "string" },
+        "factDate": { "type": "string" },
+        "decisionDate": { "type": "string" },
+        "lawVersion": { "type": "string" },
+        "lens": { "type": "string" },
+        "mode": { "type": "string", "enum": ["triage", "adjudicate"] }
+      }
+    },
+    "outputs": { "type": "object" },
+    "trace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ruleId", "target", "status"],
+        "properties": {
+          "ruleId": { "type": "string" },
+          "target": { "type": "string" },
+          "kind": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": [
+              "applied",
+              "defeated",
+              "condition_false",
+              "condition_unknown",
+              "resolved_by_burden_of_proof",
+              "inactive_temporal",
+              "inactive_jurisdiction",
+              "inactive_lens",
+              "escalate_human",
+              "conflict"
+            ]
+          },
+          "value": {},
+          "defeatedBy": { "type": "string" },
+          "explanation": { "type": "string" },
+          "authorities": { "type": "array", "items": { "type": "string" } },
+          "missingInputs": { "type": "array", "items": { "type": "string" } },
+          "subsumtionDetail": { "type": "object" }
+        }
+      }
+    },
+    "escalations": { "type": "array" },
+    "conflicts": { "type": "array" },
+    "citationsUsed": { "type": "array", "items": { "type": "string" } }
+  }
+}

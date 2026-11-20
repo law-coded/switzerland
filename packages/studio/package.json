@@ -1,0 +1,14 @@
+{
+  "name": "@law-coded/studio",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "node ./server.ts"
+  },
+  "dependencies": {
+    "@law-coded/core": "workspace:*",
+    "@law-coded/engine": "workspace:*",
+    "@law-coded/ruml-bridge": "workspace:*",
+    "@law-coded/grounding": "workspace:*"
+  }
+}

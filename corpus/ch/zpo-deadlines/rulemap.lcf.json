@@ -1,0 +1,662 @@
+{
+  "$format": "LCF",
+  "$specVersion": "0.1",
+  "metadata": {
+    "id": "urn:law-coded:ch:zpo-deadlines:2026-07-01",
+    "slug": "ch-zpo-deadlines",
+    "version": "2026.07.01",
+    "status": "active",
+    "title": {
+      "de": "Schweizerische ZPO Fristenberechnung und Gerichtsferien (Art. 142–145 ZPO)",
+      "fr": "Calcul des délais et suspension des délais selon le CPC suisse (art. 142–145 CPC)",
+      "it": "Computo e sospensione dei termini secondo il CPC svizzero (art. 142–145 CPC)",
+      "en": "Swiss Civil Procedure Deadlines & Court Recesses (Art. 142–145 ZPO)"
+    },
+    "description": {
+      "de": "Trilinguale, tri-temporale (ZPO-Revision 2025) und föderalistische (kantonale Feiertage ZH/GE/TI/BE/VD/BS) Fristenberechnung mit BGE-Anbindung und Streitstand-Linsen.",
+      "fr": "Calcul trilingue, tri-temporel (révision CPC 2025) et fédéraliste (jours fériés cantonaux) avec ancrage ATF et lentilles jurisprudentielles.",
+      "it": "Calcolo trilingue, tri-temporale (revisione CPC 2025) e federalista (giorni festivi cantonali) con ancoraggio DTF.",
+      "en": "Trilingual, tri-temporal (2025 ZPO revision), federalist (cantonal holidays) Swiss procedural deadline module anchored in Fedlex and OpenCaseLaw BGEs."
+    },
+    "jurisdictions": ["CH", "CH-ZH", "CH-GE", "CH-TI", "CH-BE", "CH-VD", "CH-BS"],
+    "languages": ["de", "fr", "it", "en"],
+    "legalDomains": ["civil-procedure", "deadlines", "litigation"],
+    "created": "2026-11-21T00:00:00Z",
+    "modified": "2026-11-21T00:00:00Z",
+    "license": "Apache-2.0",
+    "maintainers": [
+      {
+        "name": "law-coded Swiss Core Team",
+        "organization": "law-coded / OpenCaseLaw Ecosystem",
+        "url": "https://github.com/law-coded"
+      }
+    ]
+  },
+  "authorities": {
+    "ch_zpo_142": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 142 ZPO (SR 272)",
+        "fr": "Art. 142 CPC (RS 272)",
+        "it": "Art. 142 CPC (RS 272)",
+        "en": "Art. 142 Swiss CPC (SR 272)"
+      },
+      "title": {
+        "de": "Beginn und Berechnung",
+        "fr": "Computation",
+        "it": "Decorrenza e computo",
+        "en": "Commencement and Computation of Deadlines"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/2010/262/de#art_142",
+      "swisslawGitPath": {
+        "de": "ch/2/272/de.md#art-142",
+        "fr": "ch/2/272/fr.md#art-142",
+        "it": "ch/2/272/it.md#art-142"
+      },
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/2010/262/de#art_142",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/2010/262/fr#art_142",
+        "it": "https://www.fedlex.admin.ch/eli/cc/2010/262/it#art_142",
+        "en": "https://www.fedlex.admin.ch/eli/cc/2010/262/de#art_142"
+      },
+      "consolidationDate": "2026-07-01",
+      "verbatimText": {
+        "de": "1 Fristen, die durch eine Mitteilung oder den Eintritt eines Ereignisses ausgelöst werden, beginnen am folgenden Tag zu laufen. 1bis Erfolgt die Zustellung einer Sendung an einem Samstag, einem Sonntag oder einem am Gerichtsort vom Bundesrecht oder vom kantonalen Recht anerkannten Feiertag durch gewöhnliche Post (Art. 138 Abs. 4), so gilt die Mitteilung nach Absatz 1 am nächsten Werktag als erfolgt. 2 Berechnet sich eine Frist nach Monaten, so endet sie im letzten Monat an dem Tag, der dieselbe Zahl trägt wie der Tag, an dem die Frist zu laufen begann. Fehlt der entsprechende Tag, so endet die Frist am letzten Tag des Monats. 3 Fällt der letzte Tag einer Frist auf einen Samstag, einen Sonntag oder einen am Gerichtsort vom Bundesrecht oder vom kantonalen Recht anerkannten Feiertag, so endet sie am nächsten Werktag.",
+        "fr": "1 Les délais déclenchés par la communication ou la survenance d’un événement courent dès le lendemain de celles-ci. 1bis Lorsqu’un acte notifié par envoi postal normal au sens de l’art. 138, al. 4, est reçu un samedi, un dimanche ou un jour férié prévu par le droit fédéral ou le droit cantonal du siège du tribunal, la communication au sens de l’al. 1 est réputée avoir lieu le premier jour ouvrable qui suit. 2 Lorsqu’un délai est fixé en mois, il expire le jour du dernier mois correspondant au jour où il a commencé à courir. En l’absence d’une telle date, il expire le dernier jour du mois. 3 Si le dernier jour est un samedi, un dimanche ou un jour férié reconnu par le droit fédéral ou le droit cantonal du siège du tribunal, le délai expire le premier jour ouvrable qui suit.",
+        "it": "1 I termini la cui decorrenza dipende da una comunicazione o dal verificarsi di un evento decorrono a partire dal giorno successivo. 1bis Se una notificazione avviene per invio postale ordinario ai sensi dell’articolo 138 capoverso 4 un sabato, una domenica o un giorno che nel luogo del tribunale è riconosciuto festivo dal diritto federale o cantonale, la comunicazione secondo il capoverso 1 è considerata avvenuta il primo giorno feriale seguente. 2 Il termine fissato in mesi scade, nell’ultimo mese, il giorno corrispondente per numero a quello della decorrenza. Mancando tale giorno nell’ultimo mese, il termine scade l’ultimo giorno di detto mese. 3 Se l’ultimo giorno del termine è un sabato, una domenica o un giorno che nel luogo del tribunale è riconosciuto festivo dal diritto federale o cantonale, il termine scade il primo giorno feriale seguente."
+      }
+    },
+    "ch_zpo_145": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 145 ZPO (SR 272, Fassung ab 1.1.2025)",
+        "fr": "Art. 145 CPC (RS 272, version dès 1.1.2025)",
+        "it": "Art. 145 CPC (RS 272, versione dal 1.1.2025)",
+        "en": "Art. 145 Swiss CPC (SR 272, post-2025 revision)"
+      },
+      "title": {
+        "de": "Stillstand der Fristen",
+        "fr": "Suspension des délais",
+        "it": "Sospensione dei termini",
+        "en": "Suspension of Deadlines (Court Recesses)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/2010/262/de#art_145",
+      "swisslawGitPath": {
+        "de": "ch/2/272/de.md#art-145",
+        "fr": "ch/2/272/fr.md#art-145",
+        "it": "ch/2/272/it.md#art-145"
+      },
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/2010/262/de#art_145",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/2010/262/fr#art_145",
+        "it": "https://www.fedlex.admin.ch/eli/cc/2010/262/it#art_145",
+        "en": "https://www.fedlex.admin.ch/eli/cc/2010/262/de#art_145"
+      },
+      "consolidationDate": "2026-07-01",
+      "verbatimText": {
+        "de": "1 Gesetzliche und gerichtliche Fristen stehen still: a. vom siebten Tag vor Ostern bis und mit dem siebten Tag nach Ostern; b. vom 15. Juli bis und mit dem 15. August; c. vom 18. Dezember bis und mit dem 2. Januar. 2 Dieser Fristenstillstand gilt nicht für: a. das Schlichtungsverfahren; b. das summarische Verfahren. 3 Die Parteien sind auf die Ausnahmen nach Absatz 2 hinzuweisen. 4 Die Bestimmungen dieses Gesetzes über den Stillstand der Fristen sind für alle Klagen nach dem SchKG, die vor einem Gericht einzureichen sind, anwendbar. Sie sind für die Beschwerde vor der Aufsichtsbehörde nicht anwendbar.",
+        "fr": "1 Les délais légaux et les délais fixés judiciairement ne courent pas: a. du septième jour avant Pâques au septième jour qui suit Pâques inclus; b. du 15 juillet au 15 août inclus; c. du 18 décembre au 2 janvier inclus. 2 La suspension des délais ne s’applique pas: a. à la procédure de conciliation; b. à la procédure sommaire. 3 Les parties sont rendues attentives aux exceptions prévues à l’al. 2. 4 Les dispositions de la présente loi sur la suspension des délais s’appliquent à toutes les actions relevant de la LP à déposer devant un juge. Elles ne s’appliquent pas à la plainte devant l’autorité de surveillance.",
+        "it": "1 I termini stabiliti dalla legge o dal giudice sono sospesi: a. dal settimo giorno precedente la Pasqua al settimo giorno successivo alla Pasqua incluso; b. dal 15 luglio al 15 agosto incluso; c. dal 18 dicembre al 2 gennaio incluso. 2 Questa sospensione dei termini non vale per: a. la procedura di conciliazione; b. la procedura sommaria. 3 Le parti sono rese attente alle eccezioni di cui al capoverso 2. 4 Le disposizioni del presente Codice sulla sospensione dei termini si applicano alle azioni fondate sulla LEF che devono essere proposte al giudice. Non si applicano al ricorso all’autorità di vigilanza."
+      }
+    },
+    "ch_zpo_145_hist_2023": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "aArt. 145 Abs. 4 ZPO (Fassung vom 2023-09-01, vor 1.1.2025)",
+        "fr": "aArt. 145 al. 4 CPC (version du 2023-09-01, avant 1.1.2025)",
+        "it": "aArt. 145 cpv. 4 CPC (versione del 2023-09-01, prima del 1.1.2025)",
+        "en": "Former Art. 145 para. 4 Swiss CPC (Fedlex edition 2023-09-01, pre-2025)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/2010/262/20230901/de",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2010/262/20230901/de",
+      "consolidationDate": "2023-09-01",
+      "verbatimText": {
+        "de": "4 Vorbehalten bleiben die Bestimmungen des SchKG über die Betreibungsferien und den Rechtsstillstand."
+      }
+    },
+    "ch_botschaft_zpo_2020": {
+      "kind": "materialien",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BBl 2020 2697 (Botschaft zur Änderung der ZPO)",
+        "fr": "FF 2020 2607 (Message relatif à la modification du CPC)",
+        "it": "FF 2020 2407 (Messaggio concernente la modifica del CPC)",
+        "en": "Federal Council Dispatch on the ZPO Revision (BBl 2020 2697; AS 2023 491)"
+      },
+      "url": "https://www.fedlex.admin.ch/eli/fga/2020/2697"
+    },
+    "bge_139_iii_78_e41": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 139 III 78, E. 4.1",
+        "fr": "ATF 139 III 78, consid. 4.1",
+        "it": "DTF 139 III 78, consid. 4.1",
+        "en": "BGE 139 III 78, E. 4.1"
+      },
+      "opencaselawId": "bge_139 III 78",
+      "pinpoint": "4.1",
+      "decisionDate": "2012-12-06",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_139%20III%2078#e-4-1"
+    },
+    "bge_139_iii_78_e51": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 139 III 78, E. 5.1",
+        "fr": "ATF 139 III 78, consid. 5.1",
+        "it": "DTF 139 III 78, consid. 5.1",
+        "en": "BGE 139 III 78, E. 5.1"
+      },
+      "opencaselawId": "bge_139 III 78",
+      "pinpoint": "5.1",
+      "decisionDate": "2012-12-06",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_139%20III%2078#e-5-1"
+    },
+    "bge_143_iii_554_e2": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 143 III 554, E. 2",
+        "fr": "ATF 143 III 554, consid. 2",
+        "it": "DTF 143 III 554, consid. 2",
+        "en": "BGE 143 III 554, E. 2"
+      },
+      "opencaselawId": "bge_143 III 554",
+      "pinpoint": "2",
+      "decisionDate": "2017-08-16",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_143%20III%20554#e-2"
+    },
+    "ok_zpo_145": {
+      "kind": "commentary",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Linda Novina, OnlineKommentar zu Art. 145 ZPO",
+        "fr": "Linda Novina, OnlineKommentar art. 145 CPC",
+        "it": "Linda Novina, OnlineKommentar art. 145 CPC",
+        "en": "Linda Novina, OnlineKommentar on Art. 145 ZPO"
+      },
+      "url": "https://onlinekommentar.ch/de/kommentare/zpo145",
+      "license": "CC-BY-4.0"
+    }
+  },
+  "inputs": {
+    "triggerDate": {
+      "type": "date",
+      "label": {
+        "de": "Zustellungs- oder Auslösedatum",
+        "fr": "Date de notification ou événement déclencheur",
+        "it": "Data di notificazione o evento determinante",
+        "en": "Service / Trigger Date"
+      },
+      "required": true
+    },
+    "deliveryMethod": {
+      "type": "enum",
+      "label": {
+        "de": "Zustellungsart",
+        "fr": "Mode de notification",
+        "it": "Modalità di notificazione",
+        "en": "Delivery Method"
+      },
+      "enumValues": ["registered_mail", "ordinary_mail", "electronic", "court_pronouncement"],
+      "defaultValue": "registered_mail"
+    },
+    "durationDays": {
+      "type": "integer",
+      "label": {
+        "de": "Fristdauer in Tagen (z.B. 10, 20, 30)",
+        "fr": "Durée du délai en jours (ex. 10, 20, 30)",
+        "it": "Durata del termine in giorni (es. 10, 20, 30)",
+        "en": "Deadline Length (Days)"
+      },
+      "required": true,
+      "counterfactualStep": [-1, 1, -10, 10]
+    },
+    "procedureType": {
+      "type": "enum",
+      "label": {
+        "de": "Verfahrensart",
+        "fr": "Type de procédure",
+        "it": "Tipo di procedura",
+        "en": "Procedure Type"
+      },
+      "enumValues": [
+        "ordinary",
+        "simplified",
+        "conciliation",
+        "summary",
+        "appeal_from_summary",
+        "schkg_court_action",
+        "schkg_supervisory_complaint",
+        "bauhandwerkerpfandrecht_definitive"
+      ],
+      "required": true
+    },
+    "noticeOfNoSuspensionGiven": {
+      "type": "boolean",
+      "label": {
+        "de": "Gerichtlicher Hinweis auf fehlenden Fristenstillstand erfolgt (Art. 145 Abs. 3 ZPO)",
+        "fr": "Parties rendues attentives à l'absence de suspension (art. 145 al. 3 CPC)",
+        "it": "Parti rese attente all'assenza di sospensione (art. 145 cpv. 3 CPC)",
+        "en": "Court gave Art. 145 para. 3 warning that recesses do not apply"
+      },
+      "defaultValue": true,
+      "burdenOfProof": {
+        "party": "court_ex_officio",
+        "factRole": "procedural",
+        "legalBasis": "BGE 139 III 78, E. 5.1",
+        "onUnknown": "resolve_false"
+      }
+    }
+  },
+  "lenses": [
+    {
+      "id": "bger_settled",
+      "label": {
+        "de": "Gefestigte Bundesgerichtspraxis (BGE)",
+        "fr": "Jurisprudence constante du Tribunal fédéral (ATF)",
+        "it": "Giurisprudenza consolidata del Tribunale federale (DTF)",
+        "en": "Settled Federal Supreme Court Practice (BGE)"
+      },
+      "description": {
+        "de": "Berücksichtigt BGE 139 III 78 (Berufung gegen Summarentscheid und Gültigkeitserfordernis Art. 145 Abs. 3) sowie BGE 143 III 554 (Bauhandwerkerpfandrecht).",
+        "fr": "Intègre l'ATF 139 III 78 (appel en procédure sommaire et exigence de validité de l'art. 145 al. 3) et l'ATF 143 III 554.",
+        "it": "Integra DTF 139 III 78 e DTF 143 III 554.",
+        "en": "Applies BGE 139 III 78 (summary appeals & Art. 145 para. 3 validity warning) and BGE 143 III 554."
+      },
+      "default": true,
+      "authorities": ["bge_139_iii_78_e41", "bge_139_iii_78_e51", "bge_143_iii_554_e2"]
+    },
+    {
+      "id": "strict_statutory_text",
+      "label": {
+        "de": "Reiner Gesetzeswortlaut (ohne BGE-Gültigkeitskorrektur)",
+        "fr": "Texte légal strict (sans correctif ATF 139 III 78)",
+        "it": "Testo legale stretto",
+        "en": "Strict Statutory Text Only (without BGE 139 III 78 validity restoration)"
+      },
+      "description": {
+        "de": "Wendet den blossen Wortlaut von Art. 145 Abs. 2 ZPO an, ohne die bundesgerichtliche Qualifikation von Art. 145 Abs. 3 als Gültigkeitsvorschrift.",
+        "fr": "Applique le seul texte de l'art. 145 al. 2 CPC sans l'effet restaurateur de l'art. 145 al. 3.",
+        "it": "Applica il solo tenore letterale dell'art. 145 cpv. 2 CPC.",
+        "en": "Applies Art. 145 para. 2 text literally without restoring suspension when Art. 145 para. 3 warning is omitted."
+      },
+      "authorities": ["ch_zpo_145"]
+    }
+  ],
+  "rules": [
+    {
+      "id": "zpo_142_1bis_post2025",
+      "target": "art142_abs1bis_applies",
+      "kind": "base",
+      "label": {
+        "de": "ZPO-Revision 2025: Zustellungsfiktion bei gewöhnlicher Post am Wochenende/Feiertag (Art. 142 Abs. 1bis ZPO)",
+        "fr": "Révision CPC 2025: fiction de notification postale au prochain jour ouvrable (art. 142 al. 1bis CPC)",
+        "it": "Revisione CPC 2025: notificazione postale differita al primo giorno feriale (art. 142 cpv. 1bis CPC)",
+        "en": "2025 ZPO Revision: Weekend/holiday ordinary-mail shift applies (Art. 142 para. 1bis ZPO)"
+      },
+      "explanation": {
+        "de": "Seit 1. Januar 2025 (AS 2023 491) gilt eine am Wochenende oder kantonalen Feiertag zugestellte Sendung per gewöhnlicher Post (inkl. A-Post Plus) erst am nächsten Werktag als zugestellt.",
+        "fr": "Depuis le 1er janvier 2025 (RO 2023 491), un envoi postal normal reçu un week-end ou jour férié est réputé notifié le premier jour ouvrable suivant.",
+        "it": "Dal 1° gennaio 2025 (RU 2023 491), la notificazione postale ordinaria in giorno festivo si considera avvenuta il primo giorno feriale seguente.",
+        "en": "Effective 1 January 2025 (AS 2023 491), ordinary mail delivered on a weekend or cantonal holiday is deemed served on the next business day."
+      },
+      "authorities": ["ch_zpo_142", "ch_botschaft_zpo_2020"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "temporal": {
+        "basis": "factDate",
+        "validFrom": "2025-01-01",
+        "transitionalNote": {
+          "de": "In Kraft seit 1. Januar 2025 (AS 2023 491).",
+          "en": "In force since 1 January 2025 (AS 2023 491)."
+        }
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "zpo_142_1bis_pre2025",
+      "target": "art142_abs1bis_applies",
+      "kind": "base",
+      "label": {
+        "de": "Altrecht vor 1.1.2025: Keine Verschiebung bei Zustellung per gewöhnlicher Post am Wochenende",
+        "fr": "Ancien droit avant le 1.1.2025: pas de report pour les envois postaux normaux du week-end",
+        "it": "Diritto anteriore al 1.1.2025: nessun differimento per invio postale ordinario",
+        "en": "Pre-2025 ZPO: No weekend shift for ordinary mail (Art. 142 para. 1bis not yet in force)"
+      },
+      "authorities": ["ch_zpo_142"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "temporal": {
+        "basis": "factDate",
+        "validFrom": "2011-01-01",
+        "validUntil": "2025-01-01",
+        "transitionalNote": {
+          "de": "Vor Inkrafttreten von Art. 142 Abs. 1bis ZPO am 1.1.2025 löste eine Samstagszustellung (z.B. A-Post Plus) den Fristenlauf am Sonntag aus.",
+          "en": "Prior to 1 January 2025, Saturday ordinary/A-Post Plus delivery triggered the deadline on Sunday."
+        }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "zpo_145_base_suspension",
+      "target": "suspension_applies",
+      "kind": "base",
+      "label": {
+        "de": "Grundsatz: Gerichtsferien gelten für gesetzliche und gerichtliche Fristen (Art. 145 Abs. 1 ZPO)",
+        "fr": "Principe: suspension des délais légaux et judiciaires (art. 145 al. 1 CPC)",
+        "it": "Principio: sospensione dei termini legali e giudiziari (art. 145 cpv. 1 CPC)",
+        "en": "General Rule: Court recesses suspend statutory and judicial deadlines (Art. 145 para. 1 ZPO)"
+      },
+      "authorities": ["ch_zpo_145", "ok_zpo_145"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "zpo_145_2a_conciliation_exception",
+      "target": "suspension_applies",
+      "kind": "exception",
+      "label": {
+        "de": "Ausnahme: Kein Fristenstillstand im Schlichtungsverfahren (Art. 145 Abs. 2 lit. a ZPO)",
+        "fr": "Exception: pas de suspension en procédure de conciliation (art. 145 al. 2 let. a CPC)",
+        "it": "Eccezione: nessuna sospensione nella procedura di conciliazione (art. 145 cpv. 2 lett. a CPC)",
+        "en": "Exception: No suspension in conciliation proceedings (Art. 145 para. 2 lit. a ZPO)"
+      },
+      "authorities": ["ch_zpo_145"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 20,
+      "overrides": ["zpo_145_base_suspension"],
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "procedureType" },
+        "right": { "op": "lit", "value": "conciliation" }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "zpo_145_2b_summary_exception",
+      "target": "suspension_applies",
+      "kind": "exception",
+      "label": {
+        "de": "Ausnahme: Kein Fristenstillstand im summarischen Verfahren inkl. Berufung (Art. 145 Abs. 2 lit. b ZPO; BGE 139 III 78 E. 4.1)",
+        "fr": "Exception: pas de suspension en procédure sommaire y compris en appel (art. 145 al. 2 let. b CPC; ATF 139 III 78 consid. 4.1)",
+        "it": "Eccezione: nessuna sospensione nella procedura sommaria incluso appello (art. 145 cpv. 2 lett. b CPC; DTF 139 III 78 consid. 4.1)",
+        "en": "Exception: No suspension in summary proceedings including appeals (Art. 145 para. 2 lit. b ZPO; BGE 139 III 78 E. 4.1)"
+      },
+      "authorities": ["ch_zpo_145", "bge_139_iii_78_e41"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 20,
+      "overrides": ["zpo_145_base_suspension"],
+      "when": {
+        "op": "in",
+        "value": { "op": "input", "name": "procedureType" },
+        "list": { "op": "lit", "value": ["summary", "appeal_from_summary"] }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "zpo_145_3_missing_warning_counter_exception",
+      "target": "suspension_applies",
+      "kind": "counter_exception",
+      "label": {
+        "de": "Gegenausnahme (BGE 139 III 78 E. 5.1): Fehlender Hinweis nach Art. 145 Abs. 3 ZPO stellt Fristenstillstand wieder her",
+        "fr": "Contre-exception (ATF 139 III 78 consid. 5.1): l'absence d'avertissement selon l'art. 145 al. 3 rétablit la suspension",
+        "it": "Contro-eccezione (DTF 139 III 78 consid. 5.1): l'omesso avvertimento ex art. 145 cpv. 3 ripristina la sospensione",
+        "en": "Counter-Exception (BGE 139 III 78 E. 5.1): Missing Art. 145 para. 3 warning restores court recess suspension"
+      },
+      "explanation": {
+        "de": "Nach BGE 139 III 78 stellt die Hinweispflicht gemäss Art. 145 Abs. 3 ZPO eine Gültigkeitsvorschrift dar; unterbleibt der Hinweis im summarischen Verfahren oder Schlichtungsverfahren, gelten die Gerichtsferien dennoch.",
+        "fr": "Selon l'ATF 139 III 78, l'obligation d'avertissement de l'art. 145 al. 3 CPC est une condition de validité; à défaut, les féries s'appliquent.",
+        "it": "Secondo DTF 139 III 78, l'obbligo di avvertimento ex art. 145 cpv. 3 CPC è una prescrizione di validità.",
+        "en": "Per BGE 139 III 78, the Art. 145 para. 3 notice requirement is a validity rule; omitting it restores recess suspension."
+      },
+      "authorities": ["ch_zpo_145", "bge_139_iii_78_e51"],
+      "scope": {
+        "jurisdictions": ["CH"],
+        "authorityLevel": "judicial_precedent",
+        "lenses": ["bger_settled"]
+      },
+      "priority": 30,
+      "overrides": ["zpo_145_2a_conciliation_exception", "zpo_145_2b_summary_exception"],
+      "when": {
+        "op": "and",
+        "args": [
+          {
+            "op": "in",
+            "value": { "op": "input", "name": "procedureType" },
+            "list": { "op": "lit", "value": ["conciliation", "summary", "appeal_from_summary"] }
+          },
+          {
+            "op": "eq",
+            "left": { "op": "input", "name": "noticeOfNoSuspensionGiven" },
+            "right": { "op": "lit", "value": false }
+          }
+        ]
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "zpo_145_4_schkg_supervisory_post2025",
+      "target": "suspension_applies",
+      "kind": "exception",
+      "label": {
+        "de": "Ausnahme (ab 1.1.2025): Kein ZPO-Fristenstillstand bei SchKG-Beschwerde vor Aufsichtsbehörde (Art. 145 Abs. 4 Satz 2 ZPO)",
+        "fr": "Exception (dès 1.1.2025): pas de suspension CPC pour la plainte LP devant l'autorité de surveillance (art. 145 al. 4 CPC)",
+        "it": "Eccezione (dal 1.1.2025): nessuna sospensione CPC per il ricorso LEF all'autorità di vigilanza (art. 145 cpv. 4 CPC)",
+        "en": "Exception (post-2025): No ZPO suspension for SchKG supervisory complaints (Art. 145 para. 4 sentence 2 ZPO)"
+      },
+      "authorities": ["ch_zpo_145", "ch_botschaft_zpo_2020"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "temporal": { "basis": "factDate", "validFrom": "2025-01-01" },
+      "priority": 25,
+      "overrides": ["zpo_145_base_suspension"],
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "procedureType" },
+        "right": { "op": "lit", "value": "schkg_supervisory_complaint" }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "zpo_145_4_schkg_court_post2025",
+      "target": "suspension_applies",
+      "kind": "counter_exception",
+      "label": {
+        "de": "ZPO-Revision 2025: ZPO-Fristenstillstand gilt für alle gerichtlichen SchKG-Klagen (Art. 145 Abs. 4 Satz 1 ZPO)",
+        "fr": "Révision CPC 2025: la suspension CPC s'applique à toutes les actions judiciaires LP (art. 145 al. 4 CPC)",
+        "it": "Revisione CPC 2025: la sospensione CPC si applica a tutte le azioni giudiziarie LEF (art. 145 cpv. 4 CPC)",
+        "en": "2025 ZPO Revision: ZPO court recesses apply to all SchKG judicial actions (Art. 145 para. 4 sentence 1 ZPO)"
+      },
+      "authorities": ["ch_zpo_145", "ch_botschaft_zpo_2020"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "temporal": { "basis": "factDate", "validFrom": "2025-01-01" },
+      "priority": 25,
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "procedureType" },
+        "right": { "op": "lit", "value": "schkg_court_action" }
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "zpo_145_4_schkg_pre2025_historic",
+      "target": "suspension_applies",
+      "kind": "exception",
+      "label": {
+        "de": "Altrecht vor 1.1.2025: Vorbehalt SchKG-Betreibungsferien (aArt. 145 Abs. 4 ZPO)",
+        "fr": "Ancien droit avant 1.1.2025: réserve des féries LP (aArt. 145 al. 4 CPC)",
+        "it": "Diritto anteriore al 1.1.2025: riserva delle ferie LEF (aArt. 145 cpv. 4 CPC)",
+        "en": "Pre-2025 ZPO: SchKG rules reserved instead of ZPO recesses (former Art. 145 para. 4 ZPO)"
+      },
+      "authorities": ["ch_zpo_145_hist_2023"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "temporal": { "basis": "factDate", "validFrom": "2011-01-01", "validUntil": "2025-01-01" },
+      "priority": 25,
+      "overrides": ["zpo_145_base_suspension"],
+      "when": {
+        "op": "in",
+        "value": { "op": "input", "name": "procedureType" },
+        "list": { "op": "lit", "value": ["schkg_court_action", "schkg_supervisory_complaint"] }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "bge_143_iii_554_bauhandwerker_exception",
+      "target": "suspension_applies",
+      "kind": "exception",
+      "label": {
+        "de": "BGE-Ausnahme: Kein Fristenstillstand für Klagefrist auf definitive Eintragung des Bauhandwerkerpfandrechts (BGE 143 III 554 E. 2)",
+        "fr": "Exception ATF: pas de suspension pour le délai d'action en inscription définitive de l'hypothèque légale des artisans (ATF 143 III 554 consid. 2)",
+        "it": "Eccezione DTF: nessuna sospensione per il termine d'azione d'iscrizione definitiva dell'ipoteca legale degli artigiani (DTF 143 III 554 consid. 2)",
+        "en": "Precedent Exception: No recess suspension for definitive statutory lien action deadline (BGE 143 III 554 E. 2)"
+      },
+      "authorities": ["bge_143_iii_554_e2", "ch_zpo_145"],
+      "scope": {
+        "jurisdictions": ["CH"],
+        "authorityLevel": "judicial_precedent",
+        "lenses": ["bger_settled"]
+      },
+      "priority": 25,
+      "overrides": ["zpo_145_base_suspension"],
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "procedureType" },
+        "right": { "op": "lit", "value": "bauhandwerkerpfandrecht_definitive" }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "zpo_compute_deadline",
+      "target": "deadline_calculation",
+      "kind": "derivation",
+      "label": {
+        "de": "Exakte Fristberechnung nach Art. 142 & 145 ZPO inkl. kantonaler Feiertage am Gerichtsort",
+        "fr": "Calcul exact du délai selon les art. 142 et 145 CPC avec jours fériés cantonaux",
+        "it": "Calcolo esatto del termine ex art. 142 e 145 CPC con giorni festivi cantonali",
+        "en": "Exact Art. 142 & 145 ZPO deadline computation with court-seat cantonal holidays"
+      },
+      "authorities": ["ch_zpo_142", "ch_zpo_145"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "compute": {
+        "op": "zpo_deadline",
+        "triggerDate": { "op": "input", "name": "triggerDate" },
+        "deliveryMethod": { "op": "input", "name": "deliveryMethod" },
+        "durationDays": { "op": "input", "name": "durationDays" },
+        "suspensionApplies": { "op": "ref", "target": "suspension_applies" },
+        "canton": { "op": "context", "field": "jurisdiction" },
+        "applyArt142Abs1bis": { "op": "ref", "target": "art142_abs1bis_applies" }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "suspension_applies",
+      "target": "suspension_applies",
+      "label": {
+        "de": "Gerichtsferien (Fristenstillstand) anwendbar",
+        "fr": "Suspension des délais applicable",
+        "it": "Sospensione dei termini applicabile",
+        "en": "Court Recess Suspension Applies"
+      },
+      "valueType": "boolean",
+      "modality": "validity",
+      "primary": true
+    },
+    {
+      "id": "art142_abs1bis_applies",
+      "target": "art142_abs1bis_applies",
+      "label": {
+        "de": "Art. 142 Abs. 1bis ZPO (Revision 2025) aktiv",
+        "fr": "Art. 142 al. 1bis CPC (révision 2025) actif",
+        "it": "Art. 142 cpv. 1bis CPC (revisione 2025) attivo",
+        "en": "Art. 142 para. 1bis ZPO (2025 Revision) Active"
+      },
+      "valueType": "boolean",
+      "modality": "fact"
+    },
+    {
+      "id": "deadline_calculation",
+      "target": "deadline_calculation",
+      "label": {
+        "de": "Berechnete Frist und Verfalltag",
+        "fr": "Délai calculé et date d'échéance",
+        "it": "Termine calcolato e scadenza",
+        "en": "Computed Deadline & Expiry Date"
+      },
+      "valueType": "object",
+      "modality": "deadline",
+      "primary": true
+    }
+  ],
+  "tests": [
+    {
+      "id": "test_zpo_summer_recess_ordinary",
+      "name": "Ordinary 30-day appeal triggered 2026-07-10 suspended across summer Gerichtsferien (15 July - 15 Aug)",
+      "authorityRef": "ch_zpo_145",
+      "context": { "jurisdiction": "CH-ZH", "factDate": "2026-07-10", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "triggerDate": "2026-07-10",
+        "deliveryMethod": "registered_mail",
+        "durationDays": 30,
+        "procedureType": "ordinary",
+        "noticeOfNoSuspensionGiven": true
+      },
+      "expected": {
+        "suspension_applies": true,
+        "art142_abs1bis_applies": true
+      }
+    },
+    {
+      "id": "test_zpo_bge_139_iii_78_missing_warning",
+      "name": "BGE 139 III 78 E. 5.1: Appeal against summary decision WITHOUT Art. 145 para. 3 warning restores suspension under bger_settled",
+      "authorityRef": "bge_139_iii_78_e51",
+      "context": { "jurisdiction": "CH-ZH", "factDate": "2026-07-10", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "triggerDate": "2026-07-10",
+        "deliveryMethod": "registered_mail",
+        "durationDays": 10,
+        "procedureType": "appeal_from_summary",
+        "noticeOfNoSuspensionGiven": false
+      },
+      "expected": {
+        "suspension_applies": true
+      }
+    },
+    {
+      "id": "test_zpo_bge_139_iii_78_strict_text_divergence",
+      "name": "Streitstand divergence: same missing-warning summary appeal yields suspension_applies=false under strict_statutory_text",
+      "authorityRef": "ch_zpo_145",
+      "context": { "jurisdiction": "CH-ZH", "factDate": "2026-07-10", "lens": "strict_statutory_text", "language": "de" },
+      "inputs": {
+        "triggerDate": "2026-07-10",
+        "deliveryMethod": "registered_mail",
+        "durationDays": 10,
+        "procedureType": "appeal_from_summary",
+        "noticeOfNoSuspensionGiven": false
+      },
+      "expected": {
+        "suspension_applies": false
+      }
+    },
+    {
+      "id": "test_zpo_pre2025_vs_post2025_art142_1bis",
+      "name": "Tri-temporal 2025 ZPO revision: Saturday ordinary mail in 2024 does NOT trigger Art. 142 Abs. 1bis",
+      "authorityRef": "ch_zpo_142",
+      "context": { "jurisdiction": "CH-ZH", "factDate": "2024-06-15", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "triggerDate": "2024-06-15",
+        "deliveryMethod": "ordinary_mail",
+        "durationDays": 10,
+        "procedureType": "ordinary",
+        "noticeOfNoSuspensionGiven": true
+      },
+      "expected": {
+        "art142_abs1bis_applies": false,
+        "suspension_applies": true
+      }
+    }
+  ]
+}

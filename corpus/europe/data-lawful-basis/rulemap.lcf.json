@@ -1,0 +1,502 @@
+{
+  "$format": "LCF",
+  "$specVersion": "0.1",
+  "metadata": {
+    "id": "urn:law-coded:europe:data-lawful-basis:2026-01-01",
+    "slug": "europe-data-lawful-basis",
+    "version": "2026.01.01",
+    "status": "active",
+    "title": {
+      "de": "Europäischer Vergleich: Rechtmässigkeit der Datenbearbeitung (EU-DSGVO / EWR / CH-DSG Art. 31 / UK GDPR)",
+      "fr": "Comparatif européen: licéité du traitement de données (RGPD UE / EEE / LPD CH art. 31 / UK GDPR)",
+      "it": "Confronto europeo: liceità del trattamento dei dati (RGPD UE / SEE / LPD CH art. 31 / UK GDPR)",
+      "en": "Pan-European Lawful Basis Overlay: EU GDPR / EEA / Swiss FADP (Art. 31 DSG) / UK GDPR"
+    },
+    "description": {
+      "de": "Demonstriert die pan-europäische Jurisdiktionsarchitektur von law-coded: Ein einziges ausführbares Regelmodell bildet das europäische Verbotsprinzip (EU/EWR DSGVO Art. 6), das schweizerische Missbrauchsprinzip mit Rechtfertigungsgründen (Art. 31 DSG) und die UK-Divergenz (Recognised Legitimate Interests) ab.",
+      "fr": "Démontre l'architecture pan-européenne de law-coded couvrant UE/EEE, Suisse (art. 31 LPD) et Royaume-Uni.",
+      "it": "Dimostra l'architettura paneuropea di law-coded per UE/SEE, Svizzera (art. 31 LPD) e Regno Unito.",
+      "en": "Demonstrates law-coded's pan-European jurisdiction engine across EU/EEA (GDPR Art. 6 prohibition-with-permission), Switzerland (Art. 31 DSG private-sector justification model), and the UK (UK GDPR + Recognised Legitimate Interests divergence)."
+    },
+    "jurisdictions": ["EU", "EEA", "CH", "UK", "DE", "FR", "NO"],
+    "languages": ["de", "fr", "it", "en"],
+    "legalDomains": ["data-protection", "privacy", "european-law"],
+    "created": "2026-11-21T00:00:00Z",
+    "modified": "2026-11-21T00:00:00Z",
+    "license": "Apache-2.0"
+  },
+  "authorities": {
+    "eu_gdpr_art6": {
+      "kind": "eu_regulation",
+      "jurisdiction": "EU",
+      "citation": {
+        "de": "Art. 6 Abs. 1 DSGVO (VO (EU) 2016/679)",
+        "fr": "Art. 6 par. 1 RGPD (Règl. (UE) 2016/679)",
+        "it": "Art. 6 par. 1 RGPD (Reg. (UE) 2016/679)",
+        "en": "Art. 6(1) EU GDPR (Regulation (EU) 2016/679)"
+      },
+      "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+    },
+    "ch_dsg_art31": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 31 DSG (SR 235.1)",
+        "fr": "Art. 31 LPD (RS 235.1)",
+        "it": "Art. 31 LPD (RS 235.1)",
+        "en": "Art. 31 Swiss FADP / DSG (SR 235.1)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_31",
+      "swisslawGitPath": {
+        "de": "ch/2/235.1/de.md#art-31",
+        "fr": "ch/2/235.1/fr.md#art-31",
+        "it": "ch/2/235.1/it.md#art-31"
+      },
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_31",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_31",
+        "it": "https://www.fedlex.admin.ch/eli/cc/2022/491/it#art_31",
+        "en": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_31"
+      },
+      "consolidationDate": "2025-07-07",
+      "verbatimText": {
+        "de": "1 Eine Persönlichkeitsverletzung ist widerrechtlich, wenn sie nicht durch Einwilligung der betroffenen Person, durch ein überwiegendes privates oder öffentliches Interesse oder durch Gesetz gerechtfertigt ist. 2 Ein überwiegendes Interesse des Verantwortlichen fällt insbesondere in folgenden Fällen in Betracht: a. Der Verantwortliche bearbeitet die Personendaten über die Vertragspartnerin oder den Vertragspartner in unmittelbarem Zusammenhang mit dem Abschluss oder der Abwicklung eines Vertrags. c. Der Verantwortliche bearbeitet Personendaten zur Prüfung der Kreditwürdigkeit der betroffenen Person, wobei die folgenden Voraussetzungen erfüllt sind: 1. Es handelt sich weder um besonders schützenswerte Personendaten noch um ein Profiling mit hohem Risiko. 2. Die Daten werden Dritten nur bekanntgegeben, wenn diese die Daten für den Abschluss oder die Abwicklung eines Vertrags mit der betroffenen Person benötigen. 3. Die Daten sind nicht älter als zehn Jahre. 4. Die betroffene Person ist volljährig.",
+        "fr": "1 Une atteinte à la personnalité est illicite à moins d’être justifiée par le consentement de la personne concernée, par un intérêt privé ou public prépondérant, ou par la loi. 2 Les intérêts prépondérants du responsable du traitement entrent notamment en considération dans les cas suivants: a. le traitement est en relation directe avec la conclusion ou l’exécution d’un contrat et les données traitées concernent le cocontractant.",
+        "it": "1 Una lesione della personalità è illecita se non è giustificata dal consenso della persona interessata, da un interesse preponderante privato o pubblico oppure dalla legge. 2 Un interesse preponderante del titolare del trattamento può in particolare sussistere se questi: a. tratta dati personali riguardanti l’altra parte contraente in relazione diretta con la conclusione o l’esecuzione di un contratto."
+      }
+    },
+    "uk_gdpr_art6": {
+      "kind": "statute",
+      "jurisdiction": "UK",
+      "citation": {
+        "de": "Art. 6 UK GDPR / Data Protection Act 2018 & DUAA 2025",
+        "fr": "Art. 6 UK GDPR / Data Protection Act 2018 & DUAA 2025",
+        "it": "Art. 6 UK GDPR / Data Protection Act 2018 & DUAA 2025",
+        "en": "Art. 6 UK GDPR (Assimilated Law) & Data (Use and Access) Act 2025"
+      },
+      "url": "https://www.legislation.gov.uk/eur/2016/679/article/6"
+    }
+  },
+  "inputs": {
+    "controllerSector": {
+      "type": "enum",
+      "label": {
+        "de": "Sektor des Verantwortlichen",
+        "fr": "Secteur du responsable du traitement",
+        "it": "Settore del titolare del trattamento",
+        "en": "Controller Sector"
+      },
+      "enumValues": ["private", "public"],
+      "defaultValue": "private"
+    },
+    "hasConsent": {
+      "type": "boolean",
+      "label": {
+        "de": "Gültige Einwilligung der betroffenen Person liegt vor",
+        "fr": "Consentement valable de la personne concernée",
+        "it": "Consenso valido dell'interessato",
+        "en": "Valid Data Subject Consent Obtained"
+      },
+      "defaultValue": false,
+      "burdenOfProof": {
+        "party": "controller",
+        "factRole": "right_creating",
+        "legalBasis": "GDPR Art. 7(1) / Art. 8 ZGB",
+        "onUnknown": "resolve_false"
+      }
+    },
+    "necessaryForContract": {
+      "type": "boolean",
+      "label": {
+        "de": "Erforderlich für Vertragsabschluss oder -abwicklung",
+        "fr": "Nécessaire à la conclusion ou l'exécution d'un contrat",
+        "it": "Necessario per la conclusione o l'esecuzione di un contratto",
+        "en": "Directly Necessary for Contract Performance"
+      },
+      "defaultValue": false
+    },
+    "infringesPersonalityWithoutObjection": {
+      "type": "boolean",
+      "label": {
+        "de": "Persönlichkeitsverletzung nach Art. 30 DSG (z.B. gegen ausdrücklichen Willen / Verletzung von Grundsätzen)",
+        "fr": "Atteinte à la personnalité selon l'art. 30 LPD",
+        "it": "Lesione della personalità ex art. 30 LPD",
+        "en": "Personality Infringement under Swiss Art. 30 DSG (e.g. against express objection or principle breach)"
+      },
+      "defaultValue": false
+    },
+    "creditworthinessPurpose": {
+      "type": "boolean",
+      "label": {
+        "de": "Bearbeitung zur Kreditwürdigkeitsprüfung (Art. 31 Abs. 2 lit. c DSG)",
+        "fr": "Traitement pour évaluer la solvabilité (art. 31 al. 2 let. c LPD)",
+        "it": "Trattamento per valutare la solvibilità (art. 31 cpv. 2 lett. c LPD)",
+        "en": "Creditworthiness Check Purpose (Swiss Art. 31 para. 2 lit. c DSG)"
+      },
+      "defaultValue": false
+    },
+    "creditDataAgeYears": {
+      "type": "integer",
+      "label": {
+        "de": "Alter der Kreditdaten in Jahren (max. 10 Jahre gem. Art. 31 Abs. 2 lit. c Ziff. 3 DSG)",
+        "fr": "Âge des données de solvabilité en années (max. 10 ans)",
+        "it": "Età dei dati di solvibilità in anni (max. 10 anni)",
+        "en": "Age of Creditworthiness Data (Years; max 10 under Art. 31(2)(c)(3) DSG)"
+      },
+      "defaultValue": 2
+    },
+    "dataSubjectIsAdult": {
+      "type": "boolean",
+      "label": {
+        "de": "Betroffene Person ist volljährig",
+        "fr": "Personne concernée majeure",
+        "it": "Interessato maggiorenne",
+        "en": "Data Subject Is Adult (18+)"
+      },
+      "defaultValue": true
+    },
+    "sensitiveOrHighRiskProfiling": {
+      "type": "boolean",
+      "label": {
+        "de": "Besonders schützenswerte Personendaten oder Profiling mit hohem Risiko",
+        "fr": "Données sensibles ou profilage à risque élevé",
+        "it": "Dati degni di particolare protezione o profilazione a rischio elevato",
+        "en": "Sensitive Personal Data or High-Risk Profiling"
+      },
+      "defaultValue": false
+    },
+    "ukRecognisedLegitimateInterest": {
+      "type": "boolean",
+      "label": {
+        "de": "UK Recognised Legitimate Interest (z.B. Betrugsprävention / Safeguarding nach UK DUAA)",
+        "fr": "Intérêt légitime reconnu au Royaume-Uni (UK DUAA)",
+        "it": "Interesse legittimo riconosciuto UK (UK DUAA)",
+        "en": "UK Statutory Recognised Legitimate Interest (no balancing test required under UK regime)"
+      },
+      "defaultValue": false
+    }
+  },
+  "rules": [
+    {
+      "id": "eu_eea_gdpr_prohibition_base",
+      "target": "processing_lawful",
+      "kind": "base",
+      "label": {
+        "de": "EU/EWR Grundsatz (Verbotsprinzip): Datenbearbeitung ohne Rechtsgrundlage nach Art. 6 Abs. 1 DSGVO unzulässig",
+        "fr": "Principe UE/EEE: traitement illicite sans base légale au sens de l'art. 6 par. 1 RGPD",
+        "it": "Principio UE/SEE: trattamento illecito senza base giuridica ex art. 6 par. 1 RGPD",
+        "en": "EU/EEA Base Rule (Prohibition-with-Permission): Unlawful unless an Art. 6(1) GDPR basis applies"
+      },
+      "authorities": ["eu_gdpr_art6"],
+      "scope": { "jurisdictions": ["EU", "EEA"], "authorityLevel": "supranational" },
+      "priority": 10,
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "eu_eea_gdpr_consent_or_contract",
+      "target": "processing_lawful",
+      "kind": "exception",
+      "label": {
+        "de": "EU/EWR Erlaubnis: Einwilligung (Art. 6 Abs. 1 lit. a) oder Vertragserfüllung (lit. b DSGVO)",
+        "fr": "Permission UE/EEE: consentement (art. 6 par. 1 let. a) ou contrat (let. b RGPD)",
+        "it": "Permesso UE/SEE: consenso (art. 6 par. 1 lett. a) o contratto (lett. b RGPD)",
+        "en": "EU/EEA Lawful Basis: Consent (Art. 6(1)(a)) or Contract Performance (Art. 6(1)(b) GDPR)"
+      },
+      "authorities": ["eu_gdpr_art6"],
+      "scope": { "jurisdictions": ["EU", "EEA"], "authorityLevel": "supranational" },
+      "priority": 20,
+      "overrides": ["eu_eea_gdpr_prohibition_base"],
+      "when": {
+        "op": "or",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "hasConsent" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "necessaryForContract" }, "right": { "op": "lit", "value": true } }
+        ]
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "ch_dsg_private_permissive_base",
+      "target": "processing_lawful",
+      "kind": "base",
+      "label": {
+        "de": "Schweiz (Missbrauchsprinzip für Private): Bearbeitung zulässig, solange keine Persönlichkeitsverletzung vorliegt (Art. 30–31 DSG)",
+        "fr": "Suisse (principe de l'abus pour les privés): traitement licite en l'absence d'atteinte à la personnalité (art. 30–31 LPD)",
+        "it": "Svizzera (principio dell'abuso per privati): trattamento lecito in assenza di lesione della personalità (art. 30–31 LPD)",
+        "en": "Switzerland Base Rule (Private-Sector Permissive Model): Lawful unless Art. 30 DSG personality infringement occurs"
+      },
+      "authorities": ["ch_dsg_art31"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "controllerSector" }, "right": { "op": "lit", "value": "private" } },
+          { "op": "eq", "left": { "op": "input", "name": "infringesPersonalityWithoutObjection" }, "right": { "op": "lit", "value": false } }
+        ]
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "ch_dsg_infringement_unlawful",
+      "target": "processing_lawful",
+      "kind": "exception",
+      "label": {
+        "de": "Schweiz: Persönlichkeitsverletzung ist widerrechtlich ohne Rechtfertigungsgrund (Art. 31 Abs. 1 DSG)",
+        "fr": "Suisse: une atteinte à la personnalité est illicite sans motif justificatif (art. 31 al. 1 LPD)",
+        "it": "Svizzera: una lesione della personalità è illecita senza motivo giustificativo (art. 31 cpv. 1 LPD)",
+        "en": "Switzerland: Personality Infringement Is Unlawful Without Art. 31 para. 1 DSG Justification"
+      },
+      "authorities": ["ch_dsg_art31"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 15,
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "infringesPersonalityWithoutObjection" },
+        "right": { "op": "lit", "value": true }
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "ch_dsg_art31_justified_consent_or_contract",
+      "target": "processing_lawful",
+      "kind": "counter_exception",
+      "label": {
+        "de": "Schweiz Rechtfertigung: Einwilligung (Art. 31 Abs. 1) oder unmittelbarer Vertragszusammenhang (Art. 31 Abs. 2 lit. a DSG)",
+        "fr": "Suisse motif justificatif: consentement ou relation directe avec un contrat (art. 31 al. 1 et 2 let. a LPD)",
+        "it": "Svizzera motivo giustificativo: consenso o relazione diretta con un contratto (art. 31 cpv. 1 e 2 lett. a LPD)",
+        "en": "Switzerland Justification: Consent (Art. 31(1)) or Direct Contract Nexus (Art. 31(2)(a) DSG)"
+      },
+      "authorities": ["ch_dsg_art31"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 25,
+      "overrides": ["ch_dsg_infringement_unlawful"],
+      "when": {
+        "op": "or",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "hasConsent" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "necessaryForContract" }, "right": { "op": "lit", "value": true } }
+        ]
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "ch_dsg_art31_2c_creditworthiness",
+      "target": "processing_lawful",
+      "kind": "counter_exception",
+      "label": {
+        "de": "Schweiz Spezialrechtfertigung: Kreditwürdigkeitsprüfung bei Erfüllung aller 4 kumulativen Voraussetzungen (Art. 31 Abs. 2 lit. c Ziff. 1–4 DSG)",
+        "fr": "Suisse motif spécifique: évaluation de la solvabilité remplissant les 4 conditions cumulatives (art. 31 al. 2 let. c ch. 1–4 LPD)",
+        "it": "Svizzera motivo specifico: valutazione della solvibilità con tutte le 4 condizioni cumulative (art. 31 cpv. 2 lett. c n. 1–4 LPD)",
+        "en": "Switzerland Creditworthiness Safe Harbour: All 4 Cumulative Conditions Met (Art. 31(2)(c)(1-4) DSG)"
+      },
+      "authorities": ["ch_dsg_art31"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 25,
+      "overrides": ["ch_dsg_infringement_unlawful"],
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "creditworthinessPurpose" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "sensitiveOrHighRiskProfiling" }, "right": { "op": "lit", "value": false } },
+          { "op": "lte", "left": { "op": "input", "name": "creditDataAgeYears" }, "right": { "op": "lit", "value": 10 } },
+          { "op": "eq", "left": { "op": "input", "name": "dataSubjectIsAdult" }, "right": { "op": "lit", "value": true } }
+        ]
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "uk_gdpr_prohibition_base",
+      "target": "processing_lawful",
+      "kind": "base",
+      "label": {
+        "de": "UK Grundsatz: Rechtsgrundlage nach Art. 6 UK GDPR erforderlich",
+        "fr": "Principe UK: base légale requise selon l'art. 6 UK GDPR",
+        "it": "Principio UK: base giuridica richiesta ex art. 6 UK GDPR",
+        "en": "UK Base Rule: Lawful Basis Required under Art. 6 UK GDPR"
+      },
+      "authorities": ["uk_gdpr_art6"],
+      "scope": { "jurisdictions": ["UK"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "uk_gdpr_divergence_recognised_interest",
+      "target": "processing_lawful",
+      "kind": "overlay",
+      "label": {
+        "de": "UK-Divergenz: Einwilligung, Vertrag oder gesetzlich anerkanntes berechtigtes Interesse (UK Recognised Legitimate Interest)",
+        "fr": "Divergence UK: consentement, contrat ou intérêt légitime reconnu (UK Recognised Legitimate Interest)",
+        "it": "Divergenza UK: consenso, contratto o interesse legittimo riconosciuto UK",
+        "en": "UK Divergence Overlay: Lawful via Consent, Contract, or UK Statutory Recognised Legitimate Interest"
+      },
+      "authorities": ["uk_gdpr_art6"],
+      "scope": { "jurisdictions": ["UK"], "authorityLevel": "federal_statute" },
+      "priority": 25,
+      "overrides": ["uk_gdpr_prohibition_base"],
+      "when": {
+        "op": "or",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "hasConsent" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "necessaryForContract" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "ukRecognisedLegitimateInterest" }, "right": { "op": "lit", "value": true } }
+        ]
+      },
+      "compute": { "op": "lit", "value": true }
+    },
+    {
+      "id": "regime_label_eu",
+      "target": "applicable_regime",
+      "kind": "derivation",
+      "label": {
+        "de": "Anwendbares Regime: EU/EWR-DSGVO (Verbotsprinzip)",
+        "fr": "Régime applicable: RGPD UE/EEE",
+        "it": "Regime applicabile: RGPD UE/SEE",
+        "en": "Applicable Regime: EU/EEA GDPR (Prohibition-with-Permission)"
+      },
+      "authorities": ["eu_gdpr_art6"],
+      "scope": { "jurisdictions": ["EU", "EEA"] },
+      "compute": { "op": "lit", "value": "EU_EEA_GDPR" }
+    },
+    {
+      "id": "regime_label_ch",
+      "target": "applicable_regime",
+      "kind": "derivation",
+      "label": {
+        "de": "Anwendbares Regime: Schweizerisches DSG (Missbrauchsprinzip + Art. 31)",
+        "fr": "Régime applicable: LPD suisse (art. 31)",
+        "it": "Regime applicabile: LPD svizzera (art. 31)",
+        "en": "Applicable Regime: Swiss FADP / DSG (Art. 31)"
+      },
+      "authorities": ["ch_dsg_art31"],
+      "scope": { "jurisdictions": ["CH"] },
+      "compute": { "op": "lit", "value": "CH_DSG" }
+    },
+    {
+      "id": "regime_label_uk",
+      "target": "applicable_regime",
+      "kind": "derivation",
+      "label": {
+        "de": "Anwendbares Regime: UK GDPR + Recognised Legitimate Interests",
+        "fr": "Régime applicable: UK GDPR",
+        "it": "Regime applicabile: UK GDPR",
+        "en": "Applicable Regime: UK GDPR + DUAA Divergence"
+      },
+      "authorities": ["uk_gdpr_art6"],
+      "scope": { "jurisdictions": ["UK"] },
+      "compute": { "op": "lit", "value": "UK_GDPR" }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "applicable_regime",
+      "target": "applicable_regime",
+      "label": {
+        "de": "Anwendbares Datenschutzregime",
+        "fr": "Régime de protection des données applicable",
+        "it": "Regime di protezione dei dati applicabile",
+        "en": "Applicable Data Protection Regime"
+      },
+      "valueType": "enum",
+      "modality": "competence"
+    },
+    {
+      "id": "processing_lawful",
+      "target": "processing_lawful",
+      "label": {
+        "de": "Datenbearbeitung zulässig / gerechtfertigt",
+        "fr": "Traitement des données licite / justifié",
+        "it": "Trattamento dei dati lecito / giustificato",
+        "en": "Data Processing Lawful / Justified"
+      },
+      "valueType": "boolean",
+      "modality": "permission",
+      "primary": true
+    }
+  ],
+  "tests": [
+    {
+      "id": "test_ch_vs_eu_private_no_consent_no_infringement",
+      "name": "Switzerland allows private-sector processing without consent if no Art. 30 personality infringement occurs",
+      "authorityRef": "ch_dsg_art31",
+      "context": { "jurisdiction": "CH", "factDate": "2026-06-01", "language": "de" },
+      "inputs": {
+        "controllerSector": "private",
+        "hasConsent": false,
+        "necessaryForContract": false,
+        "infringesPersonalityWithoutObjection": false
+      },
+      "expected": {
+        "applicable_regime": "CH_DSG",
+        "processing_lawful": true
+      }
+    },
+    {
+      "id": "test_de_eu_same_facts_unlawful",
+      "name": "Germany (EU) prohibits the exact same processing without an Art. 6(1) GDPR basis",
+      "authorityRef": "eu_gdpr_art6",
+      "context": { "jurisdiction": "DE", "factDate": "2026-06-01", "language": "de" },
+      "inputs": {
+        "controllerSector": "private",
+        "hasConsent": false,
+        "necessaryForContract": false,
+        "infringesPersonalityWithoutObjection": false
+      },
+      "expected": {
+        "applicable_regime": "EU_EEA_GDPR",
+        "processing_lawful": false
+      }
+    },
+    {
+      "id": "test_no_eea_inherits_eu_gdpr",
+      "name": "Norway (EEA) inherits EU/EEA GDPR prohibition rule cleanly via hierarchical jurisdiction matching",
+      "authorityRef": "eu_gdpr_art6",
+      "context": { "jurisdiction": "NO", "factDate": "2026-06-01", "language": "en" },
+      "inputs": {
+        "controllerSector": "private",
+        "hasConsent": false,
+        "necessaryForContract": false
+      },
+      "expected": {
+        "applicable_regime": "EU_EEA_GDPR",
+        "processing_lawful": false
+      }
+    },
+    {
+      "id": "test_uk_recognised_legitimate_interest",
+      "name": "UK permits processing under UK Statutory Recognised Legitimate Interest divergence overlay",
+      "authorityRef": "uk_gdpr_art6",
+      "context": { "jurisdiction": "UK", "factDate": "2026-06-01", "language": "en" },
+      "inputs": {
+        "controllerSector": "private",
+        "hasConsent": false,
+        "necessaryForContract": false,
+        "ukRecognisedLegitimateInterest": true
+      },
+      "expected": {
+        "applicable_regime": "UK_GDPR",
+        "processing_lawful": true
+      }
+    },
+    {
+      "id": "test_ch_art31_2c_creditworthiness_age_boundary",
+      "name": "Swiss Art. 31(2)(c)(3) DSG denies creditworthiness justification when data is older than 10 years (11y)",
+      "authorityRef": "ch_dsg_art31",
+      "context": { "jurisdiction": "CH", "factDate": "2026-06-01", "language": "de" },
+      "inputs": {
+        "controllerSector": "private",
+        "hasConsent": false,
+        "necessaryForContract": false,
+        "infringesPersonalityWithoutObjection": true,
+        "creditworthinessPurpose": true,
+        "creditDataAgeYears": 11,
+        "dataSubjectIsAdult": true,
+        "sensitiveOrHighRiskProfiling": false
+      },
+      "expected": {
+        "processing_lawful": false
+      }
+    }
+  ]
+}

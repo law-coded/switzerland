@@ -1,0 +1,23 @@
+name: Law-CI Verification & Conformance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g pnpm
+      - run: pnpm install --frozen-lockfile || pnpm install
+      - name: Strict TypeScript Check
+        run: pnpm typecheck
+      - name: Conformance Suite & Golden Court Tests
+        run: pnpm test
+      - name: Digitalcheck Corpus Verification
+        run: pnpm verify:corpus

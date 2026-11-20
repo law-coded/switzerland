@@ -1,0 +1,29 @@
+{
+  "name": "law-coded",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open European Computational Law Architecture (LCF 0.1): Switzerland first, Europe/EEA/UK ready. Built to connect with OpenCaseLaw and interoperate with RUML 1.0.0.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test conformance/runner.ts",
+    "cli": "node packages/cli/src/index.ts",
+    "mcp": "node packages/mcp/src/index.ts",
+    "studio": "node packages/studio/server.ts",
+    "verify:corpus": "node packages/cli/src/index.ts verify-all",
+    "export:ruml": "node packages/cli/src/index.ts export-ruml corpus/ch/or-termination/rulemap.lcf.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "@types/node": "^22.0.0"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/law-coded/switzerland.git"
+  },
+  "homepage": "https://github.com/law-coded/switzerland"
+}

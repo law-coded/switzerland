@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://law-coded.org/schemas/0.1/lcf-document.schema.json",
+  "title": "Law-Coded Format (LCF) Document 0.1",
+  "type": "object",
+  "required": [
+    "$format",
+    "$specVersion",
+    "metadata",
+    "authorities",
+    "inputs",
+    "rules",
+    "outputs"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$format": {
+      "const": "LCF"
+    },
+    "$specVersion": {
+      "type": "string",
+      "pattern": "^0\\.1(\\.[0-9]+)?$"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "id",
+        "slug",
+        "version",
+        "status",
+        "title",
+        "jurisdictions",
+        "languages",
+        "created",
+        "modified"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+([-/][a-z0-9]+)*$" },
+        "version": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "review", "active", "superseded", "archived"]
+        },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "jurisdictions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/jurisdictionCode" }
+        },
+        "languages": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+        },
+        "legalDomains": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "created": { "type": "string" },
+        "modified": { "type": "string" },
+        "license": { "type": "string" },
+        "maintainers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "organization": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        },
+        "pendingChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["effectiveDate", "summary"],
+            "properties": {
+              "effectiveDate": { "type": "string" },
+              "sourceUri": { "type": "string" },
+              "summary": { "$ref": "#/$defs/localizedText" }
+            }
+          }
+        }
+      }
+    },
+    "authorities": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/authority" }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/inputSpec" }
+    },
+    "lenses": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/lens" }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/rule" }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "target", "label", "valueType"],
+        "properties": {
+          "id": { "type": "string" },
+          "target": { "type": "string" },
+          "label": { "$ref": "#/$defs/localizedText" },
+          "valueType": { "$ref": "#/$defs/valueType" },
+          "modality": {
+            "type": "string",
+            "enum": ["fact", "validity", "obligation", "permission", "prohibition", "claim_right", "power", "competence", "deadline", "amount", "discretion"]
+          },
+          "primary": { "type": "boolean" }
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "inputs", "expected"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "authorityRef": { "type": "string" },
+          "context": { "type": "object" },
+          "inputs": { "type": "object" },
+          "expected": { "type": "object" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localizedText": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    },
+    "jurisdictionCode": {
+      "type": "string",
+      "pattern": "^(EU|EEA|ECHR|[A-Z]{2}(-[A-Z0-9]{1,8})*)$"
+    },
+    "valueType": {
+      "type": "string",
+      "enum": ["boolean", "integer", "decimal", "money", "date", "period", "enum", "string", "list", "object"]
+    },
+    "authority": {
+      "type": "object",
+      "required": ["kind", "citation", "jurisdiction"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["statute", "ordinance", "treaty", "eu_regulation", "eu_directive", "case_law", "materialien", "admin_directive", "commentary", "scholarship"]
+        },
+        "jurisdiction": { "$ref": "#/$defs/jurisdictionCode" },
+        "citation": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "eli": { "type": "string" },
+        "ecli": { "type": "string" },
+        "opencaselawId": { "type": "string" },
+        "swisslawGitPath": { "$ref": "#/$defs/localizedText" },
+        "pinpoint": { "type": "string" },
+        "url": { "type": "string" },
+        "urls": { "$ref": "#/$defs/localizedText" },
+        "consolidationDate": { "type": "string" },
+        "decisionDate": { "type": "string" },
+        "verbatimText": { "$ref": "#/$defs/localizedText" },
+        "license": { "type": "string" },
+        "languageDivergences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["languages", "note"],
+            "properties": {
+              "languages": { "type": "array", "items": { "type": "string" } },
+              "note": { "$ref": "#/$defs/localizedText" }
+            }
+          }
+        }
+      }
+    },
+    "burdenOfProof": {
+      "type": "object",
+      "required": ["party", "factRole", "onUnknown"],
+      "properties": {
+        "party": {
+          "type": "string",
+          "enum": ["claimant", "respondent", "employer", "employee", "controller", "data_subject", "authority", "court_ex_officio"]
+        },
+        "factRole": {
+          "type": "string",
+          "enum": ["right_creating", "right_hindering", "right_extinguishing", "procedural"]
+        },
+        "standard": {
+          "type": "string",
+          "enum": ["full_proof", "preponderance", "prima_facie", "beyond_reasonable_doubt"]
+        },
+        "legalBasis": { "type": "string" },
+        "onUnknown": {
+          "type": "string",
+          "enum": ["resolve_false", "resolve_true", "keep_unknown", "escalate_human"]
+        }
+      }
+    },
+    "inputSpec": {
+      "type": "object",
+      "required": ["type", "label"],
+      "properties": {
+        "type": { "$ref": "#/$defs/valueType" },
+        "label": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "required": { "type": "boolean" },
+        "enumValues": { "type": "array", "items": { "type": "string" } },
+        "enumLabels": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/localizedText" }
+        },
+        "unit": { "type": "string" },
+        "defaultValue": {},
+        "burdenOfProof": { "$ref": "#/$defs/burdenOfProof" },
+        "counterfactualStep": {}
+      }
+    },
+    "lens": {
+      "type": "object",
+      "required": ["id", "label", "description"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "default": { "type": "boolean" },
+        "authorities": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "required": ["id", "target", "kind", "label", "authorities"],
+      "properties": {
+        "id": { "type": "string" },
+        "target": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": ["base", "exception", "counter_exception", "overlay", "derivation", "subsumtion"]
+        },
+        "label": { "$ref": "#/$defs/localizedText" },
+        "explanation": { "$ref": "#/$defs/localizedText" },
+        "authorities": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "jurisdictions": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/jurisdictionCode" }
+            },
+            "authorityLevel": {
+              "type": "string",
+              "enum": ["supranational", "constitutional", "federal_statute", "federal_ordinance", "cantonal_statute", "municipal", "admin_directive", "judicial_precedent", "contractual"]
+            },
+            "lenses": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "temporal": {
+          "type": "object",
+          "properties": {
+            "basis": { "type": "string", "enum": ["factDate", "decisionDate", "lawVersion"] },
+            "validFrom": { "type": "string" },
+            "validUntil": { "type": "string" },
+            "transitionalNote": { "$ref": "#/$defs/localizedText" }
+          }
+        },
+        "priority": { "type": "integer" },
+        "overrides": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "burdenOfProof": { "$ref": "#/$defs/burdenOfProof" },
+        "when": { "type": "object" },
+        "compute": { "type": "object" },
+        "subsumtion": { "type": "object" }
+      }
+    }
+  }
+}

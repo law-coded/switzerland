@@ -1,0 +1,1114 @@
+{
+  "$format": "LCF",
+  "$specVersion": "0.1",
+  "metadata": {
+    "id": "urn:law-coded:ch:or-termination:2026-10-01",
+    "slug": "ch-or-termination",
+    "version": "2026.10.01",
+    "status": "active",
+    "title": {
+      "de": "Schweizerisches Arbeitsrecht: Kündigung, Sperrfristen und fristlose Entlassung (Art. 335b–337c OR)",
+      "fr": "Droit suisse du travail: résiliation, périodes de protection et licenciement immédiat (art. 335b–337c CO)",
+      "it": "Diritto svizzero del lavoro: disdetta, periodi di protezione e risoluzione immediata (art. 335b–337c CO)",
+      "en": "Swiss Employment Termination, Blocking Periods & Summary Dismissal (Art. 335b–337c OR)"
+    },
+    "description": {
+      "de": "Ausführbares Arbeitsrecht mit exakter CHF-Arithmetik, Kündigungs- und Sperrfristberechnung, Beweislast (Art. 8 ZGB), Streitstand-Linsen (arbeitsplatzbezogene Arbeitsunfähigkeit) und strukturierter BGE-Subsumtion für den wichtigen Grund (Art. 337 OR).",
+      "fr": "Droit du travail exécutable avec calcul exact en CHF, délais de congé et périodes de protection, fardeau de la preuve (art. 8 CC), lentilles doctrinales et subsomption structurée des justes motifs (art. 337 CO).",
+      "it": "Diritto del lavoro eseguibile con calcolo esatto in CHF, termini di disdetta e protezione, onere della prova (art. 8 CC) e sussunzione strutturata delle cause gravi (art. 337 CO).",
+      "en": "Executable Swiss employment termination law with exact CHF arithmetic, notice & Sperrfrist calculation, Art. 8 ZGB burden of proof, Streitstand lenses (workplace-specific incapacity), and court-grade BGE Subsumtion for Art. 337 summary dismissal."
+    },
+    "jurisdictions": ["CH"],
+    "languages": ["de", "fr", "it", "en"],
+    "legalDomains": ["employment-law", "contract-law", "civil-law"],
+    "created": "2026-11-21T00:00:00Z",
+    "modified": "2026-11-21T00:00:00Z",
+    "license": "Apache-2.0",
+    "maintainers": [
+      {
+        "name": "law-coded Swiss Core Team",
+        "organization": "law-coded / OpenCaseLaw Ecosystem",
+        "url": "https://github.com/law-coded"
+      }
+    ],
+    "pendingChanges": [
+      {
+        "effectiveDate": "2027-07-01",
+        "sourceUri": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de",
+        "summary": {
+          "de": "Fedlex-Konsolidierung des OR (SR 220) tritt am 2027-07-01 in Kraft; betroffene Artikel im CI-Drift-Check verifizieren.",
+          "en": "A Fedlex consolidation of SR 220 (OR) enters into force on 2027-07-01; verify whether Art. 335b-337c are affected."
+        }
+      }
+    ]
+  },
+  "authorities": {
+    "ch_or_335b": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 335b OR (SR 220)",
+        "fr": "Art. 335b CO (RS 220)",
+        "it": "Art. 335b CO (RS 220)",
+        "en": "Art. 335b Swiss Code of Obligations (SR 220)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_335b",
+      "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_335b",
+      "consolidationDate": "2026-10-01",
+      "verbatimText": {
+        "de": "1 Das Arbeitsverhältnis kann während der Probezeit jederzeit mit einer Kündigungsfrist von sieben Tagen gekündigt werden; als Probezeit gilt der erste Monat eines Arbeitsverhältnisses. 2 Durch schriftliche Abrede, Normalarbeitsvertrag oder Gesamtarbeitsvertrag können abweichende Vereinbarungen getroffen werden; die Probezeit darf jedoch auf höchstens drei Monate verlängert werden."
+      }
+    },
+    "ch_or_335c": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 335c OR (SR 220)",
+        "fr": "Art. 335c CO (RS 220)",
+        "it": "Art. 335c CO (RS 220)",
+        "en": "Art. 335c Swiss Code of Obligations (SR 220)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_335c",
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_335c",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/fr#art_335c",
+        "it": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/it#art_335c",
+        "en": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_335c"
+      },
+      "consolidationDate": "2026-10-01",
+      "verbatimText": {
+        "de": "1 Das Arbeitsverhältnis kann im ersten Dienstjahr mit einer Kündigungsfrist von einem Monat, im zweiten bis und mit dem neunten Dienstjahr mit einer Frist von zwei Monaten und nachher mit einer Frist von drei Monaten je auf das Ende eines Monats gekündigt werden. 2 Diese Fristen dürfen durch schriftliche Abrede, Normalarbeitsvertrag oder Gesamtarbeitsvertrag abgeändert werden; unter einen Monat dürfen sie jedoch nur durch Gesamtarbeitsvertrag und nur für das erste Dienstjahr herabgesetzt werden. 3 Kündigt der Arbeitgeber das Arbeitsverhältnis und hat die Arbeitnehmerin oder der Arbeitnehmer vor Ende des Arbeitsverhältnisses Anspruch auf den Urlaub des andern Elternteils nach Artikel 329g, so wird die Kündigungsfrist um die noch nicht bezogenen Urlaubstage verlängert.",
+        "fr": "1 Le contrat peut être résilié pour la fin d’un mois moyennant un délai de congé d’un mois pendant la première année de service, de deux mois de la deuxième à la neuvième année de service, de trois mois ultérieurement. 2 Ces délais peuvent être modifiés par accord écrit, contrat-type de travail ou convention collective; des délais inférieurs à un mois ne peuvent toutefois être fixés que par convention collective et pour la première année de service. 3 Si l’employeur résilie le contrat de travail et que le travailleur bénéficie du congé de l’autre parent au sens de l’art. 329g avant la fin du contrat de travail, le délai de congé est prolongé du nombre de jours de congé qui n’ont pas été pris.",
+        "it": "1 Il rapporto di lavoro può essere disdetto per la fine di un mese, nel primo anno di servizio con preavviso di un mese, dal secondo al nono anno di servizio incluso con preavviso di due mesi e in seguito con preavviso di tre mesi. 2 Questi termini possono essere modificati per accordo scritto, contratto normale o contratto collettivo; possono essere resi inferiori a un mese soltanto per contratto collettivo e per il primo anno di servizio. 3 Se il datore di lavoro disdice il rapporto di lavoro e il lavoratore o la lavoratrice ha diritto a un congedo per l’altro genitore ai sensi dell’articolo 329g prima della fine del rapporto stesso, il termine di disdetta è prolungato del numero di giorni di congedo non ancora presi."
+      }
+    },
+    "ch_or_336c": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 336c OR (SR 220)",
+        "fr": "Art. 336c CO (RS 220)",
+        "it": "Art. 336c CO (RS 220)",
+        "en": "Art. 336c Swiss Code of Obligations (SR 220)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_336c",
+      "swisslawGitPath": {
+        "de": "ch/2/220/de.md#art-336c",
+        "fr": "ch/2/220/fr.md#art-336c",
+        "it": "ch/2/220/it.md#art-336c"
+      },
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_336c",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/fr#art_336c",
+        "it": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/it#art_336c",
+        "en": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_336c"
+      },
+      "consolidationDate": "2026-10-01",
+      "verbatimText": {
+        "de": "1 Nach Ablauf der Probezeit darf der Arbeitgeber das Arbeitsverhältnis nicht kündigen: b. während der Arbeitnehmer ohne eigenes Verschulden durch Krankheit oder durch Unfall ganz oder teilweise an der Arbeitsleistung verhindert ist, und zwar im ersten Dienstjahr während 30 Tagen, ab zweitem bis und mit fünftem Dienstjahr während 90 Tagen und ab sechstem Dienstjahr während 180 Tagen; c. während der Schwangerschaft und in den 16 Wochen nach der Niederkunft einer Arbeitnehmerin. 2 Die Kündigung, die während einer der in Absatz 1 festgesetzten Sperrfristen erklärt wird, ist nichtig; ist dagegen die Kündigung vor Beginn einer solchen Frist erfolgt, aber die Kündigungsfrist bis dahin noch nicht abgelaufen, so wird deren Ablauf unterbrochen und erst nach Beendigung der Sperrfrist fortgesetzt. 3 Gilt für die Beendigung des Arbeitsverhältnisses ein Endtermin, wie das Ende eines Monats oder einer Arbeitswoche, und fällt dieser nicht mit dem Ende der fortgesetzten Kündigungsfrist zusammen, so verlängert sich diese bis zum nächstfolgenden Endtermin.",
+        "fr": "1 Après le temps d’essai, l’employeur ne peut pas résilier le contrat: b. pendant une incapacité de travail totale ou partielle résultant d’une maladie ou d’un accident non imputables à la faute du travailleur, et cela, durant 30 jours au cours de la première année de service, durant 90 jours de la deuxième à la cinquième année de service et durant 180 jours à partir de la sixième année de service; c. pendant la grossesse et au cours des seize semaines qui suivent l’accouchement. 2 Le congé donné pendant une des périodes prévues à l’alinéa précédent est nul; si le congé a été donné avant l’une de ces périodes et si le délai de congé n’a pas expiré avant cette période, ce délai est suspendu et ne continue à courir qu’après la fin de la période. 3 Lorsque les rapports de travail doivent cesser à un terme, tel que la fin d’un mois ou d’une semaine de travail, et que ce terme ne coïncide pas avec la fin du délai de congé qui a recommencé à courir, ce délai est prolongé jusqu’au prochain terme.",
+        "it": "1 Dopo il tempo di prova, il datore di lavoro non può disdire il rapporto di lavoro: b. allorquando il lavoratore è impedito di lavorare, in tutto o in parte, a causa di malattia o infortunio non imputabili a sua colpa, per 30 giorni nel primo anno di servizio, per 90 giorni dal secondo anno di servizio sino al quinto compreso e per 180 giorni dal sesto anno di servizio; c. durante la gravidanza e nelle 16 settimane dopo il parto della lavoratrice. 2 La disdetta data durante uno dei periodi stabiliti nel capoverso 1 è nulla; se, invece, è data prima, il termine che non sia ancora giunto a scadenza all’inizio del periodo è sospeso e riprende a decorrere soltanto dopo la fine del periodo. 3 Se per la cessazione di un rapporto di lavoro vale un giorno fisso, come la fine di un mese o di una settimana lavorativa, che non coincide con la scadenza del termine prorogato di disdetta, questo è protratto sino al giorno fisso immediatamente successivo."
+      }
+    },
+    "ch_or_337": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 337 OR (SR 220)",
+        "fr": "Art. 337 CO (RS 220)",
+        "it": "Art. 337 CO (RS 220)",
+        "en": "Art. 337 Swiss Code of Obligations (SR 220)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_337",
+      "swisslawGitPath": {
+        "de": "ch/2/220/de.md#art-337",
+        "fr": "ch/2/220/fr.md#art-337",
+        "it": "ch/2/220/it.md#art-337"
+      },
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_337",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/fr#art_337",
+        "it": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/it#art_337",
+        "en": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_337"
+      },
+      "consolidationDate": "2026-10-01",
+      "verbatimText": {
+        "de": "1 Aus wichtigen Gründen kann der Arbeitgeber wie der Arbeitnehmer jederzeit das Arbeitsverhältnis fristlos auflösen; er muss die fristlose Vertragsauflösung schriftlich begründen, wenn die andere Partei dies verlangt. 2 Als wichtiger Grund gilt namentlich jeder Umstand, bei dessen Vorhandensein dem Kündigenden nach Treu und Glauben die Fortsetzung des Arbeitsverhältnisses nicht mehr zugemutet werden darf. 3 Über das Vorhandensein solcher Umstände entscheidet der Richter nach seinem Ermessen, darf aber in keinem Fall die unverschuldete Verhinderung des Arbeitnehmers an der Arbeitsleistung als wichtigen Grund anerkennen.",
+        "fr": "1 L’employeur et le travailleur peuvent résilier immédiatement le contrat en tout temps pour de justes motifs; la partie qui résilie immédiatement le contrat doit motiver sa décision par écrit si l’autre partie le demande. 2 Sont notamment considérées comme de justes motifs toutes les circonstances qui, selon les règles de la bonne foi, ne permettent pas d’exiger de celui qui a donné le congé la continuation des rapports de travail. 3 Le juge apprécie librement s’il existe de justes motifs, mais en aucun cas il ne peut considérer comme tel le fait que le travailleur a été sans sa faute empêché de travailler.",
+        "it": "1 Il datore di lavoro e il lavoratore possono in ogni tempo recedere immediatamente dal rapporto di lavoro per cause gravi; a richiesta dell’altra parte, la risoluzione immediata dev’essere motivata per scritto. 2 È considerata causa grave, in particolare, ogni circostanza che non permetta per ragioni di buona fede di esigere da chi dà la disdetta che abbia a continuare nel contratto. 3 Sull’esistenza di tali cause, il giudice decide secondo il suo libero apprezzamento, ma in nessun caso può riconoscere come causa grave il fatto che il lavoratore sia stato impedito senza sua colpa di lavorare."
+      }
+    },
+    "ch_or_337c": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 337c OR (SR 220)",
+        "fr": "Art. 337c CO (RS 220)",
+        "it": "Art. 337c CO (RS 220)",
+        "en": "Art. 337c Swiss Code of Obligations (SR 220)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_337c",
+      "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_337c",
+      "consolidationDate": "2026-10-01",
+      "verbatimText": {
+        "de": "1 Entlässt der Arbeitgeber den Arbeitnehmer fristlos ohne wichtigen Grund, so hat dieser Anspruch auf Ersatz dessen, was er verdient hätte, wenn das Arbeitsverhältnis unter Einhaltung der Kündigungsfrist oder durch Ablauf der bestimmten Vertragszeit beendigt worden wäre. 3 Der Richter kann den Arbeitgeber verpflichten, dem Arbeitnehmer eine Entschädigung zu bezahlen, die er nach freiem Ermessen unter Würdigung aller Umstände festlegt; diese Entschädigung darf jedoch den Lohn des Arbeitnehmers für sechs Monate nicht übersteigen."
+      }
+    },
+    "bge_119_ii_449_e2": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 119 II 449, E. 2",
+        "fr": "ATF 119 II 449, consid. 2",
+        "it": "DTF 119 II 449, consid. 2",
+        "en": "BGE 119 II 449, E. 2"
+      },
+      "opencaselawId": "bge_119 II 449",
+      "pinpoint": "2",
+      "decisionDate": "1993-11-11",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_119%20II%20449#e-2"
+    },
+    "bge_124_iii_474": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 124 III 474",
+        "fr": "ATF 124 III 474",
+        "it": "DTF 124 III 474",
+        "en": "BGE 124 III 474"
+      },
+      "opencaselawId": "bge_124 III 474",
+      "decisionDate": "1998-11-04",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_124%20III%20474"
+    },
+    "bge_128_iii_212_e2c": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 128 III 212, E. 2c",
+        "fr": "ATF 128 III 212, consid. 2c",
+        "it": "DTF 128 III 212, consid. 2c",
+        "en": "BGE 128 III 212, E. 2c"
+      },
+      "opencaselawId": "bge_128 III 212",
+      "pinpoint": "2c",
+      "decisionDate": "2002-03-25",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_128%20III%20212#e-2c"
+    },
+    "bvger_a5819_2016_e451": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BVGer A-5819/2016 vom 22. November 2017, E. 4.5.1",
+        "fr": "TAF A-5819/2016 du 22 novembre 2017, consid. 4.5.1",
+        "it": "TAF A-5819/2016 del 22 novembre 2017, consid. 4.5.1",
+        "en": "BVGer A-5819/2016 of 22 November 2017, E. 4.5.1"
+      },
+      "opencaselawId": "bvger_A-5819_2016",
+      "pinpoint": "4.5.1",
+      "decisionDate": "2017-11-22",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bvger_A-5819_2016#e-4-5-1"
+    },
+    "bge_130_iii_28_e41": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 130 III 28, E. 4.1",
+        "fr": "ATF 130 III 28, consid. 4.1",
+        "it": "DTF 130 III 28, consid. 4.1",
+        "en": "BGE 130 III 28, E. 4.1"
+      },
+      "opencaselawId": "bge_130 III 28",
+      "pinpoint": "4.1",
+      "decisionDate": "2003-10-21",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_130%20III%2028#e-4-1"
+    },
+    "bge_142_iii_579_e42": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 142 III 579, E. 4.2",
+        "fr": "ATF 142 III 579, consid. 4.2",
+        "it": "DTF 142 III 579, consid. 4.2",
+        "en": "BGE 142 III 579, E. 4.2"
+      },
+      "opencaselawId": "bge_142 III 579",
+      "pinpoint": "4.2",
+      "decisionDate": "2016-08-11",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_142%20III%20579#e-4-2"
+    },
+    "bge_117_ii_560": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 117 II 560",
+        "fr": "ATF 117 II 560",
+        "it": "DTF 117 II 560",
+        "en": "BGE 117 II 560"
+      },
+      "opencaselawId": "bge_117 II 560",
+      "decisionDate": "1991-11-19",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_117%20II%20560"
+    },
+    "bge_138_i_113_e631": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 138 I 113, E. 6.3.1",
+        "fr": "ATF 138 I 113, consid. 6.3.1",
+        "it": "DTF 138 I 113, consid. 6.3.1",
+        "en": "BGE 138 I 113, E. 6.3.1"
+      },
+      "opencaselawId": "bge_138 I 113",
+      "pinpoint": "6.3.1",
+      "decisionDate": "2011-12-29",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_138%20I%20113#e-6-3-1"
+    },
+    "bger_1c_499_2024_e25": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGer 1C_499/2024 vom 3. September 2025, E. 2.5",
+        "fr": "TF 1C_499/2024 du 3 septembre 2025, consid. 2.5",
+        "it": "TF 1C_499/2024 del 3 settembre 2025, consid. 2.5",
+        "en": "BGer 1C_499/2024 of 3 September 2025, E. 2.5"
+      },
+      "opencaselawId": "bger_1C_499_2024",
+      "pinpoint": "2.5",
+      "decisionDate": "2025-09-03",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bger_1C_499_2024#e-2-5"
+    }
+  },
+  "inputs": {
+    "terminationType": {
+      "type": "enum",
+      "label": {
+        "de": "Art der Kündigung",
+        "fr": "Type de résiliation",
+        "it": "Tipo di disdetta",
+        "en": "Termination Type"
+      },
+      "enumValues": ["ordinary_employer", "ordinary_employee", "summary_employer"],
+      "required": true
+    },
+    "noticeReceivedDate": {
+      "type": "date",
+      "label": {
+        "de": "Zugangsdatum der Kündigung",
+        "fr": "Date de réception du congé",
+        "it": "Data di ricezione della disdetta",
+        "en": "Date Notice Received"
+      },
+      "required": true
+    },
+    "serviceYear": {
+      "type": "integer",
+      "label": {
+        "de": "Dienstjahr (1, 2, ..., 10+)",
+        "fr": "Année de service (1, 2, ..., 10+)",
+        "it": "Anno di servizio (1, 2, ..., 10+)",
+        "en": "Year of Service (1, 2, ..., 10+)"
+      },
+      "required": true,
+      "counterfactualStep": [-1, 1, -4, 4]
+    },
+    "inProbation": {
+      "type": "boolean",
+      "label": {
+        "de": "Noch in der Probezeit (Art. 335b OR)",
+        "fr": "Encore en temps d'essai (art. 335b CO)",
+        "it": "Ancora nel tempo di prova (art. 335b CO)",
+        "en": "Currently in Probation Period (Art. 335b OR)"
+      },
+      "defaultValue": false
+    },
+    "contractualNoticeMonths": {
+      "type": "integer",
+      "label": {
+        "de": "Schriftlich vereinbarte Kündigungsfrist in Monaten (optional)",
+        "fr": "Délai de congé convenu par écrit en mois (optionnel)",
+        "it": "Termine di disdetta convenuto per iscritto in mesi (opzionale)",
+        "en": "Written Contractual Notice Period in Months (optional)"
+      }
+    },
+    "monthlyGrossSalary": {
+      "type": "money",
+      "label": {
+        "de": "Monatlicher Bruttolohn (CHF)",
+        "fr": "Salaire mensuel brut (CHF)",
+        "it": "Salario mensile lordo (CHF)",
+        "en": "Monthly Gross Salary (CHF)"
+      },
+      "required": true
+    },
+    "incapacitatedAtNotice": {
+      "type": "boolean",
+      "label": {
+        "de": "Unverschuldete Arbeitsunfähigkeit bei Zugang der Kündigung",
+        "fr": "Incapacité de travail non fautive lors de la réception du congé",
+        "it": "Incapacità lavorativa incolpevole alla ricezione della disdetta",
+        "en": "No-Fault Incapacity at Date Notice Received"
+      },
+      "defaultValue": false,
+      "burdenOfProof": {
+        "party": "employee",
+        "factRole": "right_hindering",
+        "standard": "full_proof",
+        "legalBasis": "Art. 8 ZGB",
+        "onUnknown": "resolve_false"
+      }
+    },
+    "workplaceSpecificIncapacityOnly": {
+      "type": "boolean",
+      "label": {
+        "de": "Rein arbeitsplatzbezogene Arbeitsunfähigkeit",
+        "fr": "Incapacité de travail purement liée au poste de travail",
+        "it": "Incapacità lavorativa puramente legata al posto di lavoro",
+        "en": "Purely Workplace-Specific Incapacity Only"
+      },
+      "defaultValue": false,
+      "burdenOfProof": {
+        "party": "employer",
+        "factRole": "right_extinguishing",
+        "standard": "full_proof",
+        "legalBasis": "Art. 8 ZGB",
+        "onUnknown": "resolve_false"
+      }
+    },
+    "pregnantOrPostpartum16w": {
+      "type": "boolean",
+      "label": {
+        "de": "Schwangerschaft oder innert 16 Wochen nach Niederkunft (Art. 336c Abs. 1 lit. c OR)",
+        "fr": "Grossesse ou dans les 16 semaines après l'accouchement (art. 336c al. 1 let. c CO)",
+        "it": "Gravidanza o entro 16 settimane dal parto (art. 336c cpv. 1 lett. c CO)",
+        "en": "Pregnant or Within 16 Weeks Postpartum (Art. 336c para. 1 lit. c OR)"
+      },
+      "defaultValue": false
+    },
+    "incapacityDuringNoticeDays": {
+      "type": "integer",
+      "label": {
+        "de": "Tage unverschuldeter Arbeitsunfähigkeit während laufender Kündigungsfrist",
+        "fr": "Jours d'incapacité de travail survenus pendant le délai de congé",
+        "it": "Giorni di incapacità lavorativa durante il termine di disdetta",
+        "en": "Incapacity Days Arising During Running Notice Period"
+      },
+      "defaultValue": 0,
+      "counterfactualStep": [-5, 5, 15, 30]
+    },
+    "unusedOtherParentLeaveDays": {
+      "type": "integer",
+      "label": {
+        "de": "Noch nicht bezogene Urlaubstage des andern Elternteils (Art. 335c Abs. 3 OR)",
+        "fr": "Jours de congé de l'autre parent non encore pris (art. 335c al. 3 CO)",
+        "it": "Giorni di congedo per l'altro genitore non ancora fruiti (art. 335c cpv. 3 CO)",
+        "en": "Unused Other-Parent Leave Days (Art. 335c para. 3 OR)"
+      },
+      "defaultValue": 0
+    },
+    "daysBetweenKnowledgeAndSummaryDismissal": {
+      "type": "integer",
+      "label": {
+        "de": "Werktage zwischen Kenntnisnahme und fristloser Kündigung",
+        "fr": "Jours ouvrables entre la connaissance et le licenciement immédiat",
+        "it": "Giorni lavorativi tra conoscenza e disdetta immediata",
+        "en": "Business Days Between Discovery and Summary Dismissal"
+      },
+      "defaultValue": 1,
+      "counterfactualStep": [-1, 1, 2, 3]
+    },
+    "reasonIsNoFaultIncapacity": {
+      "type": "boolean",
+      "label": {
+        "de": "Kündigungsgrund ist unverschuldete Verhinderung an der Arbeitsleistung (Art. 337 Abs. 3 OR)",
+        "fr": "Motif: empêchement de travailler sans faute du travailleur (art. 337 al. 3 CO)",
+        "it": "Motivo: impedimento al lavoro senza colpa del lavoratore (art. 337 cpv. 3 CO)",
+        "en": "Dismissal Based on No-Fault Inability to Work (Art. 337 para. 3 Disqualifier)"
+      },
+      "defaultValue": false
+    },
+    "severeLoyaltyBreachOrCrime": {
+      "type": "boolean",
+      "label": {
+        "de": "Besonders schwere Treuepflichtverletzung oder Straftat im Betrieb (BGE 130 III 28)",
+        "fr": "Manquement particulièrement grave au devoir de fidélité ou infraction (ATF 130 III 28)",
+        "it": "Grave violazione dell'obbligo di fedeltà o reato aziendale (DTF 130 III 28)",
+        "en": "Severe Breach of Loyalty or Workplace Criminal Offence (BGE 130 III 28)"
+      },
+      "defaultValue": false,
+      "burdenOfProof": {
+        "party": "employer",
+        "factRole": "right_creating",
+        "standard": "full_proof",
+        "legalBasis": "Art. 8 ZGB / Art. 337 OR",
+        "onUnknown": "resolve_false"
+      }
+    },
+    "priorWrittenWarningIgnored": {
+      "type": "boolean",
+      "label": {
+        "de": "Erfolglose vorgängige schriftliche Verwarnung (BGE 117 II 560)",
+        "fr": "Avertissement écrit préalable resté sans effet (ATF 117 II 560)",
+        "it": "Diffida scritta precedente rimasta senza effetto (DTF 117 II 560)",
+        "en": "Prior Written Warning Ignored (BGE 117 II 560)"
+      },
+      "defaultValue": false
+    },
+    "executiveTrustPosition": {
+      "type": "boolean",
+      "label": {
+        "de": "Leitende Stellung / erhöhte Vertrauensposition",
+        "fr": "Fonction dirigeante / position de confiance accrue",
+        "it": "Posizione dirigenziale / rapporto di fiducia accresciuto",
+        "en": "Executive / Heightened Position of Trust"
+      },
+      "defaultValue": false
+    },
+    "minorFirstOffenseWithoutWarning": {
+      "type": "boolean",
+      "label": {
+        "de": "Leichtere Erstverfehlung ohne vorgängige Verwarnung",
+        "fr": "Faute légère initiale sans avertissement préalable",
+        "it": "Infrazione lieve iniziale senza diffida preventiva",
+        "en": "Minor First Offence Without Prior Warning"
+      },
+      "defaultValue": false
+    }
+  },
+  "lenses": [
+    {
+      "id": "bger_settled",
+      "label": {
+        "de": "Gefestigte Gerichtspraxis (BGE / BVGer)",
+        "fr": "Jurisprudence consolidée (ATF / TAF)",
+        "it": "Giurisprudenza consolidata (DTF / TAF)",
+        "en": "Settled Swiss Judicial Practice (BGE / BVGer)"
+      },
+      "description": {
+        "de": "Rein arbeitsplatzbezogene Arbeitsunfähigkeit löst keine Sperrfrist nach Art. 336c OR aus (BVGer A-5819/2016 E. 4.5.1 m.w.H. auf BGE 128 III 212 E. 2c). Fristlose Kündigung erfordert Reaktion innert 2-3 Werktagen (BGE 138 I 113 E. 6.3.1).",
+        "fr": "L'incapacité purement liée au poste de travail n'active pas la période de protection de l'art. 336c CO (TAF A-5819/2016 consid. 4.5.1).",
+        "it": "L'incapacità puramente legata al posto di lavoro non fa scattare il periodo di protezione ex art. 336c CO.",
+        "en": "Purely workplace-specific incapacity does not trigger Art. 336c blocking protection (BVGer A-5819/2016 E. 4.5.1 citing BGE 128 III 212 E. 2c); summary dismissal must be declared within 2-3 business days (BGE 138 I 113 E. 6.3.1)."
+      },
+      "default": true,
+      "authorities": ["bvger_a5819_2016_e451", "bge_128_iii_212_e2c", "bge_138_i_113_e631"]
+    },
+    {
+      "id": "strict_statutory_text",
+      "label": {
+        "de": "Wortlaut- / Arbeitnehmerschutz-Ansicht (auch arbeitsplatzbezogene AU geschützt)",
+        "fr": "Lecture littérale / protectrice (incapacité liée au poste également protégée)",
+        "it": "Interpretazione letterale / protettiva",
+        "en": "Strict Wording / Employee-Protective Doctrine (Workplace-Specific Incapacity Protected)"
+      },
+      "description": {
+        "de": "Art. 336c Abs. 1 lit. b OR unterscheidet dem Wortlaut nach nicht nach dem Ursprung der Arbeitsunfähigkeit; auch eine ärztlich attestierte arbeitsplatzbezogene Arbeitsunfähigkeit löst die Sperrfrist aus.",
+        "fr": "L'art. 336c al. 1 let. b CO ne distingue pas selon l'origine de l'incapacité.",
+        "it": "L'art. 336c cpv. 1 lett. b CO non distingue in base all'origine dell'incapacità.",
+        "en": "Reads Art. 336c para. 1 lit. b OR strictly without carving out medically certified workplace-specific incapacity."
+      },
+      "authorities": ["ch_or_336c"]
+    }
+  ],
+  "rules": [
+    {
+      "id": "or_335c_statutory_notice_months",
+      "target": "notice_months",
+      "kind": "base",
+      "label": {
+        "de": "Gesetzliche Kündigungsfrist nach Dienstjahren (Art. 335c Abs. 1 OR: 1 / 2 / 3 Monate)",
+        "fr": "Délai de congé légal selon les années de service (art. 335c al. 1 CO: 1 / 2 / 3 mois)",
+        "it": "Termine di disdetta legale per anni di servizio (art. 335c cpv. 1 CO: 1 / 2 / 3 mesi)",
+        "en": "Statutory Notice Period by Service Year (Art. 335c para. 1 OR: 1 / 2 / 3 months)"
+      },
+      "authorities": ["ch_or_335c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "compute": {
+        "op": "if",
+        "cond": { "op": "lte", "left": { "op": "input", "name": "serviceYear" }, "right": { "op": "lit", "value": 1 } },
+        "then": { "op": "lit", "value": 1 },
+        "else": {
+          "op": "if",
+          "cond": { "op": "lte", "left": { "op": "input", "name": "serviceYear" }, "right": { "op": "lit", "value": 9 } },
+          "then": { "op": "lit", "value": 2 },
+          "else": { "op": "lit", "value": 3 }
+        }
+      }
+    },
+    {
+      "id": "or_335c_2_contractual_notice_override",
+      "target": "notice_months",
+      "kind": "exception",
+      "label": {
+        "de": "Schriftlich vereinbarte Kündigungsfrist (Art. 335c Abs. 2 OR, mindestens 1 Monat)",
+        "fr": "Délai de congé convenu par écrit (art. 335c al. 2 CO, min. 1 mois)",
+        "it": "Termine di disdetta convenuto per iscritto (art. 335c cpv. 2 CO, min. 1 mese)",
+        "en": "Written Contractual Notice Period Override (Art. 335c para. 2 OR, minimum 1 month)"
+      },
+      "authorities": ["ch_or_335c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "contractual" },
+      "priority": 20,
+      "overrides": ["or_335c_statutory_notice_months"],
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "is_known", "arg": { "op": "input", "name": "contractualNoticeMonths" } },
+          { "op": "gte", "left": { "op": "input", "name": "contractualNoticeMonths" }, "right": { "op": "lit", "value": 1 } }
+        ]
+      },
+      "compute": { "op": "input", "name": "contractualNoticeMonths" }
+    },
+    {
+      "id": "or_336c_sperrfrist_cap_days",
+      "target": "sperrfrist_cap_days",
+      "kind": "derivation",
+      "label": {
+        "de": "Maximale Sperrfrist bei Krankheit/Unfall nach Dienstjahren (Art. 336c Abs. 1 lit. b OR: 30 / 90 / 180 Tage)",
+        "fr": "Durée maximale de protection maladie/accident (art. 336c al. 1 let. b CO: 30 / 90 / 180 jours)",
+        "it": "Durata massima del periodo di protezione (art. 336c cpv. 1 lett. b CO: 30 / 90 / 180 giorni)",
+        "en": "Statutory Illness/Accident Blocking Period Cap (Art. 336c para. 1 lit. b OR: 30 / 90 / 180 days)"
+      },
+      "authorities": ["ch_or_336c", "bge_119_ii_449_e2"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "compute": {
+        "op": "if",
+        "cond": { "op": "lte", "left": { "op": "input", "name": "serviceYear" }, "right": { "op": "lit", "value": 1 } },
+        "then": { "op": "lit", "value": 30 },
+        "else": {
+          "op": "if",
+          "cond": { "op": "lte", "left": { "op": "input", "name": "serviceYear" }, "right": { "op": "lit", "value": 5 } },
+          "then": { "op": "lit", "value": 90 },
+          "else": { "op": "lit", "value": 180 }
+        }
+      }
+    },
+    {
+      "id": "or_336c_sperrfrist_active_base",
+      "target": "sperrfrist_blocks_notice",
+      "kind": "base",
+      "label": {
+        "de": "Sperrfrist schützt vor Arbeitgeberkündigung nach Ablauf der Probezeit (Art. 336c Abs. 1 OR)",
+        "fr": "La période de protection interdit le congé par l'employeur après le temps d'essai (art. 336c al. 1 CO)",
+        "it": "Il periodo di protezione vieta la disdetta datoriale dopo il tempo di prova (art. 336c cpv. 1 CO)",
+        "en": "Blocking Period Bars Employer Notice After Probation (Art. 336c para. 1 OR)"
+      },
+      "authorities": ["ch_or_336c", "bge_128_iii_212_e2c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "compute": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "terminationType" }, "right": { "op": "lit", "value": "ordinary_employer" } },
+          { "op": "eq", "left": { "op": "input", "name": "inProbation" }, "right": { "op": "lit", "value": false } },
+          {
+            "op": "or",
+            "args": [
+              { "op": "eq", "left": { "op": "input", "name": "incapacitatedAtNotice" }, "right": { "op": "lit", "value": true } },
+              { "op": "eq", "left": { "op": "input", "name": "pregnantOrPostpartum16w" }, "right": { "op": "lit", "value": true } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "or_336c_workplace_specific_exception_bger",
+      "target": "sperrfrist_blocks_notice",
+      "kind": "exception",
+      "label": {
+        "de": "Praxis-Ausnahme: Rein arbeitsplatzbezogene Arbeitsunfähigkeit löst keine Sperrfrist aus (BVGer A-5819/2016 E. 4.5.1; BGE 128 III 212 E. 2c)",
+        "fr": "Exception jurisprudentielle: l'incapacité purement liée au poste de travail n'active pas l'art. 336c CO (TAF A-5819/2016 consid. 4.5.1)",
+        "it": "Eccezione giurisprudenziale: l'incapacità legata solo al posto di lavoro non attiva l'art. 336c CO",
+        "en": "Judicial Exception: Purely Workplace-Specific Incapacity Does Not Trigger Art. 336c Blocking Period (BVGer A-5819/2016 E. 4.5.1)"
+      },
+      "explanation": {
+        "de": "Bei rein arbeitsplatzbezogener Arbeitsunfähigkeit (volle Arbeitsfähigkeit bei anderem Arbeitgeber) greift der Schutzzweck von Art. 336c OR gemäss gefestigter Gerichtspraxis nicht (sofern kein anderer Sperrfristtatbestand wie Schwangerschaft vorliegt).",
+        "fr": "En cas d'incapacité purement liée au poste de travail, le but protecteur de l'art. 336c CO ne s'applique pas selon la jurisprudence établie.",
+        "it": "In caso di incapacità puramente legata al posto di lavoro non si applica lo scopo protettivo dell'art. 336c CO.",
+        "en": "Under settled Swiss court practice, purely workplace-specific incapacity leaves job-market search unimpaired and therefore does not trigger Art. 336c blocking protection (unless another ground such as pregnancy applies)."
+      },
+      "authorities": ["bvger_a5819_2016_e451", "bge_128_iii_212_e2c"],
+      "scope": {
+        "jurisdictions": ["CH"],
+        "authorityLevel": "judicial_precedent",
+        "lenses": ["bger_settled"]
+      },
+      "priority": 25,
+      "overrides": ["or_336c_sperrfrist_active_base"],
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "incapacitatedAtNotice" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "workplaceSpecificIncapacityOnly" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "input", "name": "pregnantOrPostpartum16w" }, "right": { "op": "lit", "value": false } }
+        ]
+      },
+      "compute": { "op": "lit", "value": false }
+    },
+    {
+      "id": "or_337_timeliness",
+      "target": "summary_dismissal_timely",
+      "kind": "derivation",
+      "label": {
+        "de": "Rechtzeitigkeit der fristlosen Kündigung (2–3 Werktage Reaktionsfrist, BGE 138 I 113 E. 6.3.1)",
+        "fr": "Célérité du licenciement immédiat (délai de réflexion de 2–3 jours ouvrables, ATF 138 I 113 consid. 6.3.1)",
+        "it": "Tempestività della disdetta immediata (2–3 giorni lavorativi, DTF 138 I 113 consid. 6.3.1)",
+        "en": "Timeliness of Summary Dismissal (2–3 Business Days Reaction Window, BGE 138 I 113 E. 6.3.1)"
+      },
+      "authorities": ["ch_or_337", "bge_138_i_113_e631"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "judicial_precedent" },
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "terminationType" },
+        "right": { "op": "lit", "value": "summary_employer" }
+      },
+      "compute": {
+        "op": "lte",
+        "left": { "op": "input", "name": "daysBetweenKnowledgeAndSummaryDismissal" },
+        "right": { "op": "lit", "value": 3 }
+      }
+    },
+    {
+      "id": "or_337_wichtiger_grund_subsumtion",
+      "target": "wichtiger_grund_established",
+      "kind": "subsumtion",
+      "label": {
+        "de": "Strukturierte BGE-Subsumtion: Wichtiger Grund für fristlose Kündigung (Art. 337 Abs. 2–3 OR)",
+        "fr": "Subsomption structurée ATF: justes motifs de résiliation immédiate (art. 337 al. 2–3 CO)",
+        "it": "Sussunzione strutturata DTF: cause gravi per risoluzione immediata (art. 337 cpv. 2–3 CO)",
+        "en": "Court-Grade BGE Subsumtion: Just Cause (wichtiger Grund) for Summary Dismissal (Art. 337 para. 2–3 OR)"
+      },
+      "authorities": ["ch_or_337", "bge_130_iii_28_e41", "bge_142_iii_579_e42", "bge_117_ii_560"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "terminationType" },
+        "right": { "op": "lit", "value": "summary_employer" }
+      },
+      "subsumtion": {
+        "legalConcept": {
+          "de": "Wichtiger Grund nach Art. 337 Abs. 2 OR",
+          "fr": "Justes motifs au sens de l'art. 337 al. 2 CO",
+          "it": "Cause gravi ai sensi dell'art. 337 cpv. 2 CO",
+          "en": "Just Cause (wichtiger Grund) under Art. 337 para. 2 OR"
+        },
+        "disqualifiers": [
+          {
+            "id": "art337_3_no_fault_incapacity",
+            "label": {
+              "de": "Absoluter gesetzlicher Ausschlussgrund (Art. 337 Abs. 3 OR): Unverschuldete Arbeitsverhinderung ist niemals ein wichtiger Grund.",
+              "fr": "Exclusion légale absolue (art. 337 al. 3 CO): l'empêchement non fautif ne constitue jamais un juste motif.",
+              "it": "Esclusione legale assoluta (art. 337 cpv. 3 CO): l'impedimento senza colpa non costituisce mai causa grave.",
+              "en": "Absolute statutory disqualifier (Art. 337 para. 3 OR): no-fault inability to work can never constitute just cause."
+            },
+            "authorityRef": "ch_or_337",
+            "when": { "op": "eq", "left": { "op": "input", "name": "reasonIsNoFaultIncapacity" }, "right": { "op": "lit", "value": true } }
+          }
+        ],
+        "factors": [
+          {
+            "id": "severe_loyalty_breach",
+            "label": {
+              "de": "Besonders schwere Treuepflichtverletzung zerstört Vertrauensgrundlage objektiv und subjektiv (BGE 130 III 28 E. 4.1; BGE 142 III 579 E. 4.2)",
+              "fr": "Manquement particulièrement grave détruisant le rapport de confiance (ATF 130 III 28 consid. 4.1)",
+              "it": "Grave violazione che distrugge il rapporto di fiducia (DTF 130 III 28 consid. 4.1)",
+              "en": "Severe breach of loyalty objectively and subjectively destroys trust (BGE 130 III 28 E. 4.1; BGE 142 III 579 E. 4.2)"
+            },
+            "direction": "pro",
+            "weight": 6,
+            "authorityRef": "bge_130_iii_28_e41",
+            "when": { "op": "eq", "left": { "op": "input", "name": "severeLoyaltyBreachOrCrime" }, "right": { "op": "lit", "value": true } },
+            "evidenceInput": "severeLoyaltyBreachOrCrime"
+          },
+          {
+            "id": "prior_warning_ignored",
+            "label": {
+              "de": "Wiederholung trotz vorgängiger schriftlicher Verwarnung (BGE 117 II 560)",
+              "fr": "Réitération malgré un avertissement écrit préalable (ATF 117 II 560)",
+              "it": "Recidiva nonostante diffida scritta preventiva (DTF 117 II 560)",
+              "en": "Recurrence despite prior explicit written warning (BGE 117 II 560)"
+            },
+            "direction": "pro",
+            "weight": 4,
+            "authorityRef": "bge_117_ii_560",
+            "when": { "op": "eq", "left": { "op": "input", "name": "priorWrittenWarningIgnored" }, "right": { "op": "lit", "value": true } },
+            "evidenceInput": "priorWrittenWarningIgnored"
+          },
+          {
+            "id": "executive_trust",
+            "label": {
+              "de": "Erhöhte Treuepflicht wegen leitender Vertrauensposition",
+              "fr": "Devoir de fidélité accru en raison d'une fonction dirigeante",
+              "it": "Obbligo di fedeltà accresciuto per posizione dirigenziale",
+              "en": "Heightened duty of loyalty in an executive position of trust"
+            },
+            "direction": "pro",
+            "weight": 2,
+            "authorityRef": "bge_142_iii_579_e42",
+            "when": { "op": "eq", "left": { "op": "input", "name": "executiveTrustPosition" }, "right": { "op": "lit", "value": true } },
+            "evidenceInput": "executiveTrustPosition"
+          },
+          {
+            "id": "minor_without_warning",
+            "label": {
+              "de": "Leichtere Erstverfehlung ohne vorgängige Verwarnung spricht gegen Unzumutbarkeit (BGE 117 II 560)",
+              "fr": "Faute légère initiale sans avertissement préalable exclut en principe l'exigibilité immédiate (ATF 117 II 560)",
+              "it": "Infrazione lieve senza diffida preventiva esclude di regola la causa grave (DTF 117 II 560)",
+              "en": "Minor first offence without prior warning militates strongly against just cause (BGE 117 II 560)"
+            },
+            "direction": "contra",
+            "weight": 5,
+            "authorityRef": "bge_117_ii_560",
+            "when": { "op": "eq", "left": { "op": "input", "name": "minorFirstOffenseWithoutWarning" }, "right": { "op": "lit", "value": true } },
+            "evidenceInput": "minorFirstOffenseWithoutWarning"
+          }
+        ],
+        "escalationBand": { "low": 1, "high": 6 },
+        "requiresHumanReviewLabel": {
+          "de": "Grenzfall im richterlichen Ermessen nach Art. 337 Abs. 3 OR: Juristische Einzelfallprüfung zwingend erforderlich.",
+          "fr": "Cas limite relevant du pouvoir d'appréciation du juge (art. 337 al. 3 CO): examen juridique humain obligatoire.",
+          "it": "Caso limite nel libero apprezzamento del giudice (art. 337 cpv. 3 CO): verifica giuridica umana obbligatoria.",
+          "en": "Borderline judicial-discretion case under Art. 337 para. 3 OR: mandatory human jurist review required."
+        }
+      }
+    },
+    {
+      "id": "termination_validity_base",
+      "target": "termination_status",
+      "kind": "base",
+      "label": {
+        "de": "Grundsatz: Ordentliche Kündigung ist gültig (Kündigungsfreiheit)",
+        "fr": "Principe: la résiliation ordinaire est valable (liberté de résilier)",
+        "it": "Principio: la disdetta ordinaria è valida",
+        "en": "Base Rule: Ordinary Termination Valid (Freedom of Termination)"
+      },
+      "authorities": ["ch_or_335c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "compute": { "op": "lit", "value": "valid_ordinary" }
+    },
+    {
+      "id": "termination_null_sperrfrist",
+      "target": "termination_status",
+      "kind": "exception",
+      "label": {
+        "de": "Nichtigkeit der Kündigung zur Unzeit (Art. 336c Abs. 2 OR)",
+        "fr": "Nullité du congé donné en temps inopportun (art. 336c al. 2 CO)",
+        "it": "Nullità della disdetta data in tempo inopportuno (art. 336c cpv. 2 CO)",
+        "en": "Termination Null & Void During Blocking Period (Art. 336c para. 2 OR)"
+      },
+      "authorities": ["ch_or_336c", "bge_128_iii_212_e2c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 20,
+      "overrides": ["termination_validity_base"],
+      "when": { "op": "eq", "left": { "op": "ref", "target": "sperrfrist_blocks_notice" }, "right": { "op": "lit", "value": true } },
+      "compute": { "op": "lit", "value": "null_and_void_sperrfrist" }
+    },
+    {
+      "id": "termination_summary_justified",
+      "target": "termination_status",
+      "kind": "counter_exception",
+      "label": {
+        "de": "Gerechtfertigte fristlose Entlassung beendet Vertrag sofort (Art. 337 OR)",
+        "fr": "Résiliation immédiate justifiée mettant fin immédiatement au contrat (art. 337 CO)",
+        "it": "Risoluzione immediata giustificata con effetto immediato (art. 337 CO)",
+        "en": "Justified Summary Dismissal Ends Contract Immediately (Art. 337 OR)"
+      },
+      "authorities": ["ch_or_337", "bge_130_iii_28_e41", "bge_138_i_113_e631"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 30,
+      "overrides": ["termination_validity_base", "termination_null_sperrfrist"],
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "terminationType" }, "right": { "op": "lit", "value": "summary_employer" } },
+          { "op": "eq", "left": { "op": "ref", "target": "summary_dismissal_timely" }, "right": { "op": "lit", "value": true } },
+          { "op": "eq", "left": { "op": "ref", "target": "wichtiger_grund_established" }, "right": { "op": "lit", "value": true } }
+        ]
+      },
+      "compute": { "op": "lit", "value": "valid_summary_immediate" }
+    },
+    {
+      "id": "termination_summary_unjustified",
+      "target": "termination_status",
+      "kind": "exception",
+      "label": {
+        "de": "Ungerechtfertigte fristlose Entlassung (beendet Vertrag faktisch, löst Ersatz- und Entschädigungsansprüche nach Art. 337c OR aus)",
+        "fr": "Résiliation immédiate injustifiée (ouvre droit aux indemnités selon l'art. 337c CO)",
+        "it": "Risoluzione immediata ingiustificata (diritto al risarcimento e indennità ex art. 337c CO)",
+        "en": "Unjustified Summary Dismissal (Triggers Full Wage Replacement & Art. 337c para. 3 Indemnity)"
+      },
+      "authorities": ["ch_or_337", "ch_or_337c", "bge_138_i_113_e631"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 28,
+      "overrides": ["termination_validity_base"],
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "terminationType" }, "right": { "op": "lit", "value": "summary_employer" } },
+          {
+            "op": "or",
+            "args": [
+              { "op": "eq", "left": { "op": "ref", "target": "summary_dismissal_timely" }, "right": { "op": "lit", "value": false } },
+              { "op": "eq", "left": { "op": "ref", "target": "wichtiger_grund_established" }, "right": { "op": "lit", "value": false } }
+            ]
+          }
+        ]
+      },
+      "compute": { "op": "lit", "value": "unjustified_summary_art337c" }
+    },
+    {
+      "id": "termination_summary_escalate",
+      "target": "termination_status",
+      "kind": "exception",
+      "label": {
+        "de": "Fristlose Kündigung im richterlichen Ermessensbereich (Art. 337 Abs. 3 OR): menschliche Beurteilung erforderlich",
+        "fr": "Résiliation immédiate en zone grise (art. 337 al. 3 CO): appréciation humaine requise",
+        "it": "Risoluzione immediata in zona grigia (art. 337 cpv. 3 CO): valutazione umana richiesta",
+        "en": "Summary Dismissal in Judicial Discretion Band (Art. 337 para. 3 OR): Human Review Required"
+      },
+      "authorities": ["ch_or_337"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 29,
+      "overrides": ["termination_validity_base"],
+      "when": {
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "terminationType" }, "right": { "op": "lit", "value": "summary_employer" } },
+          { "op": "eq", "left": { "op": "ref", "target": "summary_dismissal_timely" }, "right": { "op": "lit", "value": true } },
+          { "op": "neq", "left": { "op": "ref", "target": "wichtiger_grund_established" }, "right": { "op": "lit", "value": true } },
+          { "op": "neq", "left": { "op": "ref", "target": "wichtiger_grund_established" }, "right": { "op": "lit", "value": false } }
+        ]
+      },
+      "compute": { "op": "lit", "value": "escalate_human_art337" }
+    },
+    {
+      "id": "or_compute_end_date",
+      "target": "termination_end_date",
+      "kind": "derivation",
+      "label": {
+        "de": "Exaktes Beendigungsdatum inkl. Sperrfristunterbruch und Monatsendverlängerung (Art. 335c & 336c Abs. 2–3 OR; BGE 119 II 449; BGer 1C_499/2024)",
+        "fr": "Date exacte de fin des rapports de travail avec suspension et prolongation (art. 335c & 336c al. 2–3 CO)",
+        "it": "Data esatta di cessazione del rapporto con sospensione e proroga (art. 335c e 336c cpv. 2–3 CO)",
+        "en": "Exact Contract End Date with Sperrfrist Suspension & End-of-Month Prolongation (Art. 335c & 336c para. 2–3 OR)"
+      },
+      "authorities": ["ch_or_335b", "ch_or_335c", "ch_or_336c", "bge_119_ii_449_e2", "bge_124_iii_474", "bger_1c_499_2024_e25"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "compute": {
+        "op": "or_termination_end_date",
+        "noticeReceivedDate": { "op": "input", "name": "noticeReceivedDate" },
+        "noticeMonths": { "op": "ref", "target": "notice_months" },
+        "inProbation": { "op": "input", "name": "inProbation" },
+        "incapacityDuringNoticeDays": { "op": "input", "name": "incapacityDuringNoticeDays" },
+        "sperrfristCapDays": { "op": "ref", "target": "sperrfrist_cap_days" },
+        "extraParentalLeaveDays": { "op": "input", "name": "unusedOtherParentLeaveDays" },
+        "endOfMonthOnly": { "op": "lit", "value": true }
+      }
+    },
+    {
+      "id": "or_337c_max_indemnity_zero_base",
+      "target": "art337c_max_indemnity_chf",
+      "kind": "base",
+      "label": {
+        "de": "Keine Pönalentschädigung nach Art. 337c Abs. 3 OR (keine ungerechtfertigte fristlose Entlassung)",
+        "fr": "Aucune indemnité au sens de l'art. 337c al. 3 CO",
+        "it": "Nessuna indennità ex art. 337c cpv. 3 CO",
+        "en": "No Art. 337c para. 3 Punitive Indemnity Applicable"
+      },
+      "authorities": ["ch_or_337c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 10,
+      "compute": { "op": "money_zero", "currency": "CHF" }
+    },
+    {
+      "id": "or_337c_max_indemnity_6months",
+      "target": "art337c_max_indemnity_chf",
+      "kind": "exception",
+      "label": {
+        "de": "Maximalentschädigung bei ungerechtfertigter fristloser Entlassung (6 Monatslöhne, Art. 337c Abs. 3 OR)",
+        "fr": "Indemnité maximale pour résiliation immédiate injustifiée (6 mois de salaire, art. 337c al. 3 CO)",
+        "it": "Indennità massima per risoluzione immediata ingiustificata (6 mesi di salario, art. 337c cpv. 3 CO)",
+        "en": "Maximum Statutory Indemnity for Unjustified Summary Dismissal (6 Months' Salary, Art. 337c para. 3 OR)"
+      },
+      "authorities": ["ch_or_337c"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 25,
+      "overrides": ["or_337c_max_indemnity_zero_base"],
+      "when": {
+        "op": "eq",
+        "left": { "op": "ref", "target": "termination_status" },
+        "right": { "op": "lit", "value": "unjustified_summary_art337c" }
+      },
+      "compute": {
+        "op": "money_mul",
+        "money": { "op": "input", "name": "monthlyGrossSalary" },
+        "factor": { "op": "lit", "value": 6 }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "termination_status",
+      "target": "termination_status",
+      "label": {
+        "de": "Rechtswirksamkeit der Kündigung",
+        "fr": "Validité juridique de la résiliation",
+        "it": "Validità giuridica della disdetta",
+        "en": "Legal Validity of Termination"
+      },
+      "valueType": "enum",
+      "modality": "validity",
+      "primary": true
+    },
+    {
+      "id": "notice_months",
+      "target": "notice_months",
+      "label": {
+        "de": "Massgebende Kündigungsfrist (Monate)",
+        "fr": "Délai de congé applicable (mois)",
+        "it": "Termine di disdetta applicabile (mesi)",
+        "en": "Applicable Notice Period (Months)"
+      },
+      "valueType": "integer",
+      "modality": "fact"
+    },
+    {
+      "id": "sperrfrist_cap_days",
+      "target": "sperrfrist_cap_days",
+      "label": {
+        "de": "Maximale Sperrfrist (Tage)",
+        "fr": "Durée maximale de la période de protection (jours)",
+        "it": "Durata massima del periodo di protezione (giorni)",
+        "en": "Maximum Blocking Period Cap (Days)"
+      },
+      "valueType": "integer",
+      "modality": "fact"
+    },
+    {
+      "id": "termination_end_date",
+      "target": "termination_end_date",
+      "label": {
+        "de": "Beendigungsdatum des Arbeitsverhältnisses",
+        "fr": "Date de fin des rapports de travail",
+        "it": "Data di cessazione del rapporto di lavoro",
+        "en": "Computed Employment End Date"
+      },
+      "valueType": "object",
+      "modality": "deadline",
+      "primary": true
+    },
+    {
+      "id": "art337c_max_indemnity_chf",
+      "target": "art337c_max_indemnity_chf",
+      "label": {
+        "de": "Höchstentschädigung nach Art. 337c Abs. 3 OR",
+        "fr": "Indemnité maximale selon l'art. 337c al. 3 CO",
+        "it": "Indennità massima secondo l'art. 337c cpv. 3 CO",
+        "en": "Maximum Indemnity Cap under Art. 337c para. 3 OR"
+      },
+      "valueType": "money",
+      "modality": "amount",
+      "primary": true
+    }
+  ],
+  "tests": [
+    {
+      "id": "test_or_336c_workplace_specific_bger",
+      "name": "BVGer A-5819/2016 E. 4.5.1: Purely workplace-specific incapacity does NOT void employer notice under bger_settled",
+      "authorityRef": "bvger_a5819_2016_e451",
+      "context": { "jurisdiction": "CH", "factDate": "2026-03-15", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "terminationType": "ordinary_employer",
+        "noticeReceivedDate": "2026-03-15",
+        "serviceYear": 4,
+        "inProbation": false,
+        "monthlyGrossSalary": { "amount": "8500.00", "currency": "CHF" },
+        "incapacitatedAtNotice": true,
+        "workplaceSpecificIncapacityOnly": true,
+        "pregnantOrPostpartum16w": false
+      },
+      "expected": {
+        "termination_status": "valid_ordinary",
+        "notice_months": 2,
+        "sperrfrist_cap_days": 90
+      }
+    },
+    {
+      "id": "test_or_336c_workplace_specific_strict_text",
+      "name": "Streitstand divergence: identical workplace-specific incapacity voids notice under strict_statutory_text",
+      "authorityRef": "ch_or_336c",
+      "context": { "jurisdiction": "CH", "factDate": "2026-03-15", "lens": "strict_statutory_text", "language": "de" },
+      "inputs": {
+        "terminationType": "ordinary_employer",
+        "noticeReceivedDate": "2026-03-15",
+        "serviceYear": 4,
+        "inProbation": false,
+        "monthlyGrossSalary": { "amount": "8500.00", "currency": "CHF" },
+        "incapacitatedAtNotice": true,
+        "workplaceSpecificIncapacityOnly": true,
+        "pregnantOrPostpartum16w": false
+      },
+      "expected": {
+        "termination_status": "null_and_void_sperrfrist"
+      }
+    },
+    {
+      "id": "test_or_337_bge_130_iii_28_justified",
+      "name": "BGE 130 III 28 E. 4.1: Severe breach of loyalty dismissed within 2 business days is justified summary dismissal",
+      "authorityRef": "bge_130_iii_28_e41",
+      "context": { "jurisdiction": "CH", "factDate": "2026-05-10", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "terminationType": "summary_employer",
+        "noticeReceivedDate": "2026-05-10",
+        "serviceYear": 6,
+        "inProbation": false,
+        "monthlyGrossSalary": { "amount": "9200.00", "currency": "CHF" },
+        "daysBetweenKnowledgeAndSummaryDismissal": 2,
+        "severeLoyaltyBreachOrCrime": true,
+        "reasonIsNoFaultIncapacity": false
+      },
+      "expected": {
+        "termination_status": "valid_summary_immediate",
+        "art337c_max_indemnity_chf": { "amount": "0.00", "currency": "CHF" }
+      }
+    },
+    {
+      "id": "test_or_337_abs3_disqualifier_indemnity",
+      "name": "Art. 337 para. 3 OR absolute disqualifier: summary dismissal for no-fault illness is unjustified and triggers exact 6x CHF indemnity cap",
+      "authorityRef": "ch_or_337c",
+      "context": { "jurisdiction": "CH", "factDate": "2026-05-10", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "terminationType": "summary_employer",
+        "noticeReceivedDate": "2026-05-10",
+        "serviceYear": 6,
+        "inProbation": false,
+        "monthlyGrossSalary": { "amount": "8333.35", "currency": "CHF" },
+        "daysBetweenKnowledgeAndSummaryDismissal": 1,
+        "reasonIsNoFaultIncapacity": true
+      },
+      "expected": {
+        "termination_status": "unjustified_summary_art337c",
+        "art337c_max_indemnity_chf": { "amount": "50000.10", "currency": "CHF" }
+      }
+    },
+    {
+      "id": "test_or_337_borderline_escalation",
+      "name": "Court-grade Subsumtion escalation: prior warning ignored (+4) without severe crime lands in [1, 6] escalation band -> escalate_human_art337",
+      "authorityRef": "bge_117_ii_560",
+      "context": { "jurisdiction": "CH", "factDate": "2026-05-10", "lens": "bger_settled", "language": "de" },
+      "inputs": {
+        "terminationType": "summary_employer",
+        "noticeReceivedDate": "2026-05-10",
+        "serviceYear": 3,
+        "inProbation": false,
+        "monthlyGrossSalary": { "amount": "7000.00", "currency": "CHF" },
+        "daysBetweenKnowledgeAndSummaryDismissal": 2,
+        "priorWrittenWarningIgnored": true,
+        "severeLoyaltyBreachOrCrime": false
+      },
+      "expected": {
+        "termination_status": "escalate_human_art337"
+      }
+    }
+  ]
+}
