@@ -44,7 +44,10 @@ import {
   type RealCourtCaseRecord,
 } from "../packages/cegar/src/index.ts";
 import {
+  adviseMultiRegime,
+  checkLivingAdviceFreshness,
   evaluateEnterprisePortfolio,
+  type ClientFactGraph,
   type OrganizationDigitalTwin,
 } from "../packages/enterprise/src/index.ts";
 
@@ -59,6 +62,9 @@ const enterpriseCyberLawSrc = readFileSync(
   "utf8",
 );
 const enterpriseCyberDoc = compileLawDsl(enterpriseCyberLawSrc);
+const blockingStatuteDoc = compileLawDsl(
+  readFileSync(resolve("corpus/ch/blocking-statute-271/rules.law"), "utf8"),
+);
 const orBgeReplayCases = JSON.parse(
   readFileSync(resolve("corpus/ch/or-termination/bge-replay.json"), "utf8"),
 ) as RealCourtCaseRecord[];
@@ -554,5 +560,212 @@ describe("09. CEGAR Empirical BGE Replay Oracle & Enterprise Client Digital Twin
     assert.ok(preVsPost.crossBorderSummary.futureLawImpacts.some((i) => i.entityId === "ch-hq-bank"));
     assert.match(dossier.executiveMemoMarkdown, /HIGH-WATER MARK ALERT/);
     assert.match(dossier.executiveMemoMarkdown, /Helvetia Global Financial Group AG/);
+  });
+});
+
+describe("10. Phase A Layer 3: Precedent-Anchored Fallgruppen Dialectics (No Arbitrary Numeric Weights)", () => {
+  it("escalates competing PRO + CONTRA precedent poles with dialectical_tension_escalate and distinguishing questions", () => {
+    // Prior warning ignored + executive trust (PRO pole) BUT no severe crime -> restraint pole (CONTRA pole) also fires!
+    const res = evaluateDocument(
+      orDoc,
+      {
+        terminationType: "summary_employer",
+        noticeReceivedDate: "2026-05-10",
+        serviceYear: 6,
+        inProbation: false,
+        monthlyGrossSalary: { amount: "12000.00", currency: "CHF" },
+        daysBetweenKnowledgeAndSummaryDismissal: 2,
+        severeLoyaltyBreachOrCrime: false,
+        priorWrittenWarningIgnored: true,
+        executiveTrustPosition: true,
+        reasonIsNoFaultIncapacity: false,
+      },
+      { jurisdiction: "CH", factDate: "2026-05-10", language: "de" },
+    );
+    assert.equal(res.outputs["termination_status"], "escalate_human_art337");
+    assert.equal(res.escalations.length, 1);
+    const dia = res.escalations[0]?.dialecticalDetail;
+    assert.ok(dia);
+    assert.equal(dia.verdict, "dialectical_tension_escalate");
+    assert.equal(dia.matchedAffirmingPoles.length, 1);
+    assert.equal(dia.matchedDenyingPoles.length, 1);
+    assert.ok(dia.distinguishingQuestions.length >= 2);
+    assert.equal(dia.teleology?.authorityRef, "ch_botschaft_1984_or337");
+
+    const memo = generateBegruendung(orDoc, res);
+    assert.match(memo, /Dialectical Fallgruppen Analysis/);
+    assert.match(memo, /PRO \/ Affirming Precedent Pole/);
+    assert.match(memo, /CONTRA \/ Denying Precedent Pole/);
+    assert.match(memo, /BBl 1984 II 551/);
+  });
+
+  it("escalates novel fact patterns outside established Fallgruppen as novel_case_escalate", () => {
+    const res = evaluateDocument(
+      orDoc,
+      {
+        terminationType: "summary_employer",
+        noticeReceivedDate: "2026-05-10",
+        serviceYear: 3,
+        inProbation: false,
+        monthlyGrossSalary: { amount: "7000.00", currency: "CHF" },
+        daysBetweenKnowledgeAndSummaryDismissal: 2,
+        severeLoyaltyBreachOrCrime: false,
+        priorWrittenWarningIgnored: true,
+        executiveTrustPosition: false,
+        minorFirstOffenseWithoutWarning: false,
+        reasonIsNoFaultIncapacity: false,
+      },
+      { jurisdiction: "CH", factDate: "2026-05-10", language: "en" },
+    );
+    assert.equal(res.outputs["termination_status"], "escalate_human_art337");
+    assert.equal(res.escalations[0]?.dialecticalDetail?.verdict, "novel_case_escalate");
+  });
+});
+
+describe("11. Swiss Blocking Statute (Art. 271 StGB & Art. 42c FINMAG) Verification", () => {
+  it("compiles ch-blocking-statute-271 from .law, achieves 100/100 Digitalcheck, and proves PROVEN_SOUND", () => {
+    const rep = verifyDocument(blockingStatuteDoc);
+    assert.equal(rep.structuralValid, true);
+    assert.equal(rep.readinessScore, 100);
+    assert.equal(rep.checks.goldenTestsPassed, 2);
+    const cert = proveDocument(blockingStatuteDoc, { maxStates: 200 });
+    assert.equal(cert.soundnessVerdict, "PROVEN_SOUND");
+  });
+});
+
+describe("12. Cross-Regime Issue Spotting, Sovereign Conflict Detection & Living Advice Freshness", () => {
+  it("automatically detects EU DORA/GDPR disclosure obligation colliding with Swiss Art. 271 StGB prohibition and computes Art. 42c FINMAG de-confliction bridges", () => {
+    const twin: OrganizationDigitalTwin = {
+      organizationId: "org-alpen-bank",
+      organizationName: "Alpen Global Bank AG",
+      headquarters: "CH-ZH",
+      entities: [
+        {
+          entityId: "ch-hq",
+          name: "Alpen Global Bank AG (Zurich HQ)",
+          jurisdiction: "CH-ZH",
+          language: "de",
+          attributes: { sector: "financial_regulated", controllerSector: "private" },
+        },
+        {
+          entityId: "de-sub",
+          name: "Alpen Bank Europe GmbH (Frankfurt)",
+          jurisdiction: "DE",
+          language: "de",
+          attributes: { sector: "financial_regulated", controllerSector: "private" },
+        },
+        {
+          entityId: "uk-sub",
+          name: "Alpen UK Securities Ltd (London)",
+          jurisdiction: "UK",
+          language: "en",
+          attributes: { sector: "financial_regulated", controllerSector: "private" },
+        },
+      ],
+    };
+
+    const factGraph: ClientFactGraph = {
+      caseTitle: "Cross-Border Core-Banking Cyber Intrusion & Foreign Regulator Forensic Demand",
+      facts: {
+        cyberAttackTriggered: true,
+        affectsOnlyNonCriticalCarveOut: false,
+        personalDataBreached: true,
+        dataRiskLevel: "moderate",
+        foreignAuthorityCompelledTransmissionFromCH: true,
+        officialAuthorizationOrMutualAssistance: false,
+        finma42cConditionsMet: true,
+        materialSupervisorySignificance: true,
+        priorFinmaNoticeFiled: false,
+        hasConsent: false,
+        necessaryForContract: false,
+        infringesPersonalityWithoutObjection: false,
+      },
+      evidence: [
+        {
+          evidenceId: "ev-01",
+          sourceDoc: "SOC Incident Ticket #INC-2026-441",
+          pinpoint: "Timeline 02:14 CET",
+          factKeys: ["cyberAttackTriggered", "personalDataBreached", "dataRiskLevel"],
+          verifiedAt: "2026-06-01T03:00:00Z",
+        },
+        {
+          evidenceId: "ev-02",
+          sourceDoc: "Foreign Regulator Urgent Production Demand",
+          pinpoint: "Section 2(a) Swiss-hosted core logs",
+          factKeys: ["foreignAuthorityCompelledTransmissionFromCH"],
+        },
+      ],
+    };
+
+    const report = adviseMultiRegime(
+      twin,
+      [enterpriseCyberDoc, blockingStatuteDoc, euDataDoc],
+      factGraph,
+      { factDate: "2026-06-01", language: "en" },
+    );
+
+    // 1. Cross-regime issue spotting: all 3 regimes triggered automatically
+    assert.deepEqual(report.triggeredModules.sort(), [
+      "ch-blocking-statute-271",
+      "enterprise-cyber-data-incident",
+      "europe-data-lawful-basis",
+    ]);
+
+    // 2. Sovereign Conflict Detection: DE/UK disclosure obligation collides with CH Art. 271 StGB criminal bar!
+    assert.ok(report.sovereignConflicts.length >= 1);
+    const crimConflict = report.sovereignConflicts.find(
+      (c) =>
+        c.severity === "critical_criminal_conflict" &&
+        c.prohibitingOutputId === "swiss_criminal_prohibition_art271" &&
+        c.obligatingJurisdiction === "DE",
+    );
+    assert.ok(crimConflict, "Expected critical_criminal_conflict between DE obligation and CH Art. 271 StGB");
+
+    // 3. Automated Lawful De-Confliction Levers: finds Art. 42c(3) FINMA prior notice OR official authorization!
+    assert.ok(
+      crimConflict.deconflictionLevers.some(
+        (l) => l.changes.some((ch) => ch.inputName === "priorFinmaNoticeFiled" && ch.to === true),
+      ),
+    );
+    assert.ok(
+      crimConflict.deconflictionLevers.some(
+        (l) => l.changes.some((ch) => ch.inputName === "officialAuthorizationOrMutualAssistance" && ch.to === true),
+      ),
+    );
+
+    // 4. Living Advice Contract & Freshness Monitoring
+    const la = report.livingAdvice;
+    assert.ok(la.swisslawGitWatchPaths.includes("ch/3/311.0/de.md"));
+    assert.ok(la.swisslawGitWatchPaths.includes("ch/1/128/de.md"));
+    assert.ok(la.opencaselawWatchIds.includes("bge_148 IV 66"));
+    assert.ok(la.assumptionWatchlist.length >= 3);
+
+    // Still VALID when nothing changed
+    const freshValid = checkLivingAdviceFreshness(la, { asOfDate: "2026-06-15" });
+    assert.equal(freshValid.status, "VALID");
+
+    // REVIEW_REQUIRED when swisslaw-git modifies ch/3/311.0/de.md
+    const freshGit = checkLivingAdviceFreshness(la, {
+      asOfDate: "2026-06-15",
+      changedGitPaths: ["ch/3/311.0/de.md"],
+    });
+    assert.equal(freshGit.status, "REVIEW_REQUIRED");
+    assert.deepEqual(freshGit.triggeredGitPaths, ["ch/3/311.0/de.md"]);
+
+    // REVIEW_REQUIRED on 2027-01-02 when pending FINMAG consolidation enters into force
+    const freshPending = checkLivingAdviceFreshness(la, { asOfDate: "2027-01-02" });
+    assert.equal(freshPending.status, "REVIEW_REQUIRED");
+    assert.ok(freshPending.triggeredPendingAmendments.length >= 1);
+
+    // INVALIDATED when a watched factual assumption flips (e.g. dataRiskLevel escalates moderate -> high!)
+    const freshInvalid = checkLivingAdviceFreshness(la, {
+      asOfDate: "2026-06-02",
+      updatedFacts: { dataRiskLevel: "high" },
+    });
+    assert.equal(freshInvalid.status, "INVALIDATED");
+    assert.ok(freshInvalid.invalidatedAssumptions.some((a) => a.inputName === "dataRiskLevel"));
+
+    assert.match(report.executiveBriefMarkdown, /CRITICAL SOVEREIGN CONFLICTS DETECTED/);
+    assert.match(report.executiveBriefMarkdown, /priorFinmaNoticeFiled/);
   });
 });

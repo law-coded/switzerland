@@ -208,7 +208,7 @@ export function exportToRuml10(
     }
     if (r.burdenOfProof) hasBurdenOfProof = true;
     if (r.temporal?.validFrom || r.temporal?.validUntil) hasTemporal = true;
-    if (r.kind === "subsumtion") hasSubsumtion = true;
+    if (r.kind === "subsumtion" || r.kind === "dialectical") hasSubsumtion = true;
     const raw = JSON.stringify(r.compute ?? {});
     if (raw.includes("zpo_deadline") || raw.includes("or_termination_end_date")) hasCalendar = true;
     if (raw.includes("money_")) hasMoney = true;
@@ -320,7 +320,16 @@ export function exportToRuml10(
       childLexIds.push(leafLex);
       const nodeCaps: Array<{ id: string; payload: Record<string, unknown> }> = [];
 
-      if (rule.kind === "subsumtion" && rule.subsumtion) {
+      if (rule.kind === "dialectical" && rule.dialectical) {
+        nodeCaps.push({
+          id: "ruml:ai-query",
+          payload: {
+            model: "strong",
+            prompt: `Assess "${pickText(rule.dialectical.legalConcept, language)}" dialectically against precedent poles: ${rule.dialectical.poles.map((p) => `[${p.polarity}] ${pickText(p.label, language)}`).join("; ")}. Return strictly true, false, or undefined.`,
+            description: pickText(rule.label, language),
+          },
+        });
+      } else if (rule.kind === "subsumtion" && rule.subsumtion) {
         nodeCaps.push({
           id: "ruml:ai-query",
           payload: {

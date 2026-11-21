@@ -250,7 +250,7 @@
         "target": { "type": "string" },
         "kind": {
           "type": "string",
-          "enum": ["base", "exception", "counter_exception", "overlay", "derivation", "subsumtion"]
+          "enum": ["base", "exception", "counter_exception", "overlay", "derivation", "subsumtion", "dialectical"]
         },
         "label": { "$ref": "#/$defs/localizedText" },
         "explanation": { "$ref": "#/$defs/localizedText" },
@@ -293,7 +293,8 @@
         "burdenOfProof": { "$ref": "#/$defs/burdenOfProof" },
         "when": { "type": "object" },
         "compute": { "type": "object" },
-        "subsumtion": { "type": "object" }
+        "subsumtion": { "type": "object" },
+        "dialectical": { "type": "object" }
       }
     }
   }

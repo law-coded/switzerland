@@ -11,6 +11,8 @@ import {
   pickText,
   type AuthorityLevel,
   type ConflictItem,
+  type DialecticalPoleMatch,
+  type DialecticalTraceDetail,
   type EscalationItem,
   type EvaluationContext,
   type EvaluationResult,
@@ -480,6 +482,10 @@ function orderTargets(rules: Rule[]): string[] {
       for (const d of r.subsumtion.disqualifiers ?? []) collectExprDependencies(d.when, tDeps, iDeps);
       for (const f of r.subsumtion.factors) collectExprDependencies(f.when, tDeps, iDeps);
     }
+    if (r.dialectical) {
+      for (const d of r.dialectical.disqualifiers ?? []) collectExprDependencies(d.when, tDeps, iDeps);
+      for (const p of r.dialectical.poles) collectExprDependencies(p.when, tDeps, iDeps);
+    }
     for (const d of tDeps) {
       if (d !== r.target) deps.get(r.target)!.add(d);
     }
@@ -598,6 +604,130 @@ function evaluateSubsumtion(rule: Rule, env: EvalEnv): { value: unknown; detail:
   };
 }
 
+function evaluateDialectical(
+  rule: Rule,
+  env: EvalEnv,
+): { value: unknown; detail: DialecticalTraceDetail; escalate: boolean } {
+  const contract = rule.dialectical!;
+  const lang = env.context.language;
+  const concept = pickText(contract.legalConcept, lang);
+  const teleology = contract.teleology
+    ? {
+        summary: pickText(contract.teleology.summary, lang),
+        authorityRef: contract.teleology.authorityRef,
+      }
+    : undefined;
+
+  // 1. Check hard statutory / binding disqualifiers first (Layer 1 cutoff)
+  for (const dq of contract.disqualifiers ?? []) {
+    if (evalExpr(dq.when, env) === true) {
+      return {
+        value: false,
+        escalate: false,
+        detail: {
+          legalConcept: concept,
+          teleology,
+          disqualifiedBy: {
+            id: dq.id,
+            label: pickText(dq.label, lang),
+            authorityRef: dq.authorityRef,
+          },
+          verdict: "clear_negative",
+          matchedAffirmingPoles: [],
+          matchedDenyingPoles: [],
+          distinguishingQuestions: [],
+        },
+      };
+    }
+  }
+
+  // 2. Match concrete decided Fallgruppen poles on BOTH sides (no arbitrary numeric scoring)
+  const matchedAffirmingPoles: DialecticalPoleMatch[] = [];
+  const matchedDenyingPoles: DialecticalPoleMatch[] = [];
+
+  for (const pole of contract.poles) {
+    if (evalExpr(pole.when, env) === true) {
+      const m: DialecticalPoleMatch = {
+        id: pole.id,
+        polarity: pole.polarity,
+        label: pickText(pole.label, lang),
+        holdingSummary: pickText(pole.holdingSummary, lang),
+        distinguishingQuestion: pickText(pole.distinguishingQuestion, lang),
+        authorityRef: pole.authorityRef,
+        evidenceValue: pole.evidenceInput ? env.inputs[pole.evidenceInput] : undefined,
+      };
+      if (pole.polarity === "affirming") matchedAffirmingPoles.push(m);
+      else matchedDenyingPoles.push(m);
+    }
+  }
+
+  const distinguishingQuestions = [
+    ...matchedAffirmingPoles.map((p) => p.distinguishingQuestion),
+    ...matchedDenyingPoles.map((p) => p.distinguishingQuestion),
+  ];
+
+  // 3. Pure dialectical resolution:
+  // - Only affirming poles match -> clear_affirmative
+  // - Only denying poles match -> clear_negative
+  // - Both sides match -> dialectical_tension_escalate (steelman both poles for human counsel)
+  // - Neither side matches -> novel_case_escalate (outside established Fallgruppen)
+  if (matchedAffirmingPoles.length > 0 && matchedDenyingPoles.length === 0) {
+    return {
+      value: true,
+      escalate: false,
+      detail: {
+        legalConcept: concept,
+        teleology,
+        verdict: "clear_affirmative",
+        matchedAffirmingPoles,
+        matchedDenyingPoles,
+        distinguishingQuestions,
+      },
+    };
+  }
+
+  if (matchedDenyingPoles.length > 0 && matchedAffirmingPoles.length === 0) {
+    return {
+      value: false,
+      escalate: false,
+      detail: {
+        legalConcept: concept,
+        teleology,
+        verdict: "clear_negative",
+        matchedAffirmingPoles,
+        matchedDenyingPoles,
+        distinguishingQuestions,
+      },
+    };
+  }
+
+  const verdict =
+    matchedAffirmingPoles.length > 0 && matchedDenyingPoles.length > 0
+      ? "dialectical_tension_escalate"
+      : "novel_case_escalate";
+
+  return {
+    value: {
+      $state: "escalate_human",
+      verdict,
+      affirmingPoles: matchedAffirmingPoles.map((p) => p.id),
+      denyingPoles: matchedDenyingPoles.map((p) => p.id),
+    },
+    escalate: true,
+    detail: {
+      legalConcept: concept,
+      teleology,
+      verdict,
+      matchedAffirmingPoles,
+      matchedDenyingPoles,
+      distinguishingQuestions:
+        distinguishingQuestions.length > 0
+          ? distinguishingQuestions
+          : contract.poles.map((p) => pickText(p.distinguishingQuestion, lang)),
+    },
+  };
+}
+
 export function evaluateDocument(
   doc: LcfDocument,
   inputs: Record<string, unknown>,
@@ -619,6 +749,7 @@ export function evaluateDocument(
       value: unknown;
       traceIndex: number;
       subsumtionDetail?: SubsumtionTraceDetail;
+      dialecticalDetail?: DialecticalTraceDetail;
       escalate?: boolean;
     }> = [];
 
@@ -754,12 +885,18 @@ export function evaluateDocument(
         continue;
       }
 
-      // 5. Evaluate rule consequence (`subsumtion` or `compute`)
+      // 5. Evaluate rule consequence (`dialectical`, `subsumtion`, or `compute`)
       let value: unknown = true;
       let subsumtionDetail: SubsumtionTraceDetail | undefined;
+      let dialecticalDetail: DialecticalTraceDetail | undefined;
       let escalate = false;
 
-      if (rule.kind === "subsumtion" && rule.subsumtion) {
+      if (rule.kind === "dialectical" && rule.dialectical) {
+        const diaRes = evaluateDialectical(rule, env);
+        value = diaRes.value;
+        dialecticalDetail = diaRes.detail;
+        escalate = diaRes.escalate;
+      } else if (rule.kind === "subsumtion" && rule.subsumtion) {
         const subRes = evaluateSubsumtion(rule, env);
         value = subRes.value;
         subsumtionDetail = subRes.detail;
@@ -793,9 +930,10 @@ export function evaluateDocument(
         authorities: rule.authorities,
         explanation,
         subsumtionDetail,
+        dialecticalDetail,
       });
 
-      activeFired.push({ rule, value, traceIndex, subsumtionDetail, escalate });
+      activeFired.push({ rule, value, traceIndex, subsumtionDetail, dialecticalDetail, escalate });
     }
 
     if (activeFired.length === 0) {
@@ -869,14 +1007,23 @@ export function evaluateDocument(
         citationsUsed.add(f.authorityRef);
       }
     }
+    if (top.dialecticalDetail) {
+      if (top.dialecticalDetail.teleology) citationsUsed.add(top.dialecticalDetail.teleology.authorityRef);
+      if (top.dialecticalDetail.disqualifiedBy) citationsUsed.add(top.dialecticalDetail.disqualifiedBy.authorityRef);
+      for (const p of top.dialecticalDetail.matchedAffirmingPoles) citationsUsed.add(p.authorityRef);
+      for (const p of top.dialecticalDetail.matchedDenyingPoles) citationsUsed.add(p.authorityRef);
+    }
     if (top.escalate) {
       escalations.push({
         ruleId: top.rule.id,
         target,
-        reason: pickText(top.rule.subsumtion?.requiresHumanReviewLabel, ctx.language) ||
-          `Borderline legal assessment (${top.subsumtionDetail?.legalConcept}) requires human jurist review.`,
+        reason:
+          pickText(top.rule.dialectical?.requiresHumanReviewLabel, ctx.language) ||
+          pickText(top.rule.subsumtion?.requiresHumanReviewLabel, ctx.language) ||
+          `Borderline legal assessment (${top.dialecticalDetail?.legalConcept ?? top.subsumtionDetail?.legalConcept}) requires human jurist review.`,
         authorities: top.rule.authorities,
         subsumtionDetail: top.subsumtionDetail,
+        dialecticalDetail: top.dialecticalDetail,
       });
     }
 

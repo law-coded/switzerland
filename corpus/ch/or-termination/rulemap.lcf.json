@@ -209,6 +209,31 @@
       "decisionDate": "2017-11-22",
       "url": "https://mcp.opencaselaw.ch/entscheid/bvger_A-5819_2016#e-4-5-1"
     },
+    "bge_129_iii_380_e21": {
+      "kind": "case_law",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "BGE 129 III 380, E. 2.1",
+        "fr": "ATF 129 III 380, consid. 2.1",
+        "it": "DTF 129 III 380, consid. 2.1",
+        "en": "BGE 129 III 380, E. 2.1"
+      },
+      "opencaselawId": "bge_129 III 380",
+      "pinpoint": "2.1",
+      "decisionDate": "2003-05-05",
+      "url": "https://mcp.opencaselaw.ch/entscheid/bge_129%20III%20380#e-2-1"
+    },
+    "ch_botschaft_1984_or337": {
+      "kind": "materialien",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Botschaft des Bundesrates vom 9. Mai 1984 (BBl 1984 II 551)",
+        "fr": "Message du Conseil fédéral du 9 mai 1984 (FF 1984 II 574)",
+        "it": "Messaggio del Consiglio federale del 9 maggio 1984 (FF 1984 II 494)",
+        "en": "Federal Council Dispatch of 9 May 1984 (BBl 1984 II 551)"
+      },
+      "url": "https://fedlex.data.admin.ch/eli/fga/1984/2_551_574_494"
+    },
     "bge_130_iii_28_e41": {
       "kind": "case_law",
       "jurisdiction": "CH",
@@ -671,26 +696,35 @@
     {
       "id": "or_337_wichtiger_grund_subsumtion",
       "target": "wichtiger_grund_established",
-      "kind": "subsumtion",
+      "kind": "dialectical",
       "label": {
-        "de": "Strukturierte BGE-Subsumtion: Wichtiger Grund für fristlose Kündigung (Art. 337 Abs. 2–3 OR)",
-        "fr": "Subsomption structurée ATF: justes motifs de résiliation immédiate (art. 337 al. 2–3 CO)",
-        "it": "Sussunzione strutturata DTF: cause gravi per risoluzione immediata (art. 337 cpv. 2–3 CO)",
-        "en": "Court-Grade BGE Subsumtion: Just Cause (wichtiger Grund) for Summary Dismissal (Art. 337 para. 2–3 OR)"
+        "de": "Präjudizien-Dialektik (Fallgruppen): Wichtiger Grund für fristlose Kündigung (Art. 337 Abs. 2–3 OR)",
+        "fr": "Dialectique jurisprudentielle (Fallgruppen): justes motifs de résiliation immédiate (art. 337 al. 2–3 CO)",
+        "it": "Dialettica giurisprudenziale: cause gravi per risoluzione immediata (art. 337 cpv. 2–3 CO)",
+        "en": "Precedent-Anchored Dialectical Fallgruppen: Just Cause (wichtiger Grund) under Art. 337 para. 2–3 OR"
       },
-      "authorities": ["ch_or_337", "bge_130_iii_28_e41", "bge_142_iii_579_e42", "bge_117_ii_560"],
+      "authorities": ["ch_or_337", "ch_botschaft_1984_or337", "bge_129_iii_380_e21", "bge_130_iii_28_e41", "bge_142_iii_579_e42", "bge_117_ii_560"],
       "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
       "when": {
         "op": "eq",
         "left": { "op": "input", "name": "terminationType" },
         "right": { "op": "lit", "value": "summary_employer" }
       },
-      "subsumtion": {
+      "dialectical": {
         "legalConcept": {
           "de": "Wichtiger Grund nach Art. 337 Abs. 2 OR",
           "fr": "Justes motifs au sens de l'art. 337 al. 2 CO",
           "it": "Cause gravi ai sensi dell'art. 337 cpv. 2 CO",
           "en": "Just Cause (wichtiger Grund) under Art. 337 para. 2 OR"
+        },
+        "teleology": {
+          "authorityRef": "ch_botschaft_1984_or337",
+          "summary": {
+            "de": "Ausnahmebehelf (ultima ratio) bei objektiver und subjektiver Unzumutbarkeit der Vertragsfortsetzung nach Treu und Glauben (BBl 1984 II 551; BGE 129 III 380 E. 2.1).",
+            "fr": "Remède exceptionnel (ultima ratio) lorsque la poursuite des rapports de travail ne peut plus être exigée selon la bonne foi (FF 1984 II 574; ATF 129 III 380 consid. 2.1).",
+            "it": "Rimedio eccezionale (ultima ratio) in caso di inesigibilità della continuazione del rapporto (DTF 129 III 380 consid. 2.1).",
+            "en": "Exceptional ultima ratio remedy reserved for breaches that objectively and subjectively destroy trust (BBl 1984 II 551; BGE 129 III 380 E. 2.1)."
+          }
         },
         "disqualifiers": [
           {
@@ -705,70 +739,126 @@
             "when": { "op": "eq", "left": { "op": "input", "name": "reasonIsNoFaultIncapacity" }, "right": { "op": "lit", "value": true } }
           }
         ],
-        "factors": [
+        "poles": [
           {
-            "id": "severe_loyalty_breach",
+            "id": "pole_affirm_severe_loyalty_breach",
+            "polarity": "affirming",
             "label": {
-              "de": "Besonders schwere Treuepflichtverletzung zerstört Vertrauensgrundlage objektiv und subjektiv (BGE 130 III 28 E. 4.1; BGE 142 III 579 E. 4.2)",
-              "fr": "Manquement particulièrement grave détruisant le rapport de confiance (ATF 130 III 28 consid. 4.1)",
-              "it": "Grave violazione che distrugge il rapporto di fiducia (DTF 130 III 28 consid. 4.1)",
-              "en": "Severe breach of loyalty objectively and subjectively destroys trust (BGE 130 III 28 E. 4.1; BGE 142 III 579 E. 4.2)"
+              "de": "Bejahungs-Fallgruppe: Besonders schwere Treuepflichtverletzung oder Betriebsdelikt (BGE 130 III 28 E. 4.1; BGE 142 III 579 E. 4.2)",
+              "fr": "Pôle affirmatif: manquement particulièrement grave au devoir de fidélité ou infraction (ATF 130 III 28 consid. 4.1)",
+              "it": "Polo affermativo: grave violazione della fedeltà o reato aziendale (DTF 130 III 28 consid. 4.1)",
+              "en": "Affirming Pole: Severe breach of loyalty or workplace offence destroys trust without prior warning (BGE 130 III 28 E. 4.1)"
             },
-            "direction": "pro",
-            "weight": 6,
+            "holdingSummary": {
+              "de": "Objektiv schwere Verfehlung (z.B. heimliche Umleitung der Vorgesetzten-E-Mails) zerstört die Vertrauensgrundlage sofort und rechtfertigt fristlose Entlassung auch ohne vorgängige Verwarnung.",
+              "fr": "Un manquement particulièrement grave détruit immédiatement le lien de confiance et justifie la résiliation immédiate sans avertissement préalable.",
+              "it": "Una violazione particolarmente grave distrugge immediatamente la fiducia e giustifica il licenziamento immediato senza diffida.",
+              "en": "Particularly severe misconduct (e.g. covertly redirecting a supervisor's email) destroys trust immediately and justifies summary dismissal without prior warning."
+            },
+            "distinguishingQuestion": {
+              "de": "War die konkrete Verfehlung im Gewicht vergleichbar mit einem schwerwiegenden Vertrauensbruch oder Delikt (BGE 130 III 28), und bestand kein milderes Mittel?",
+              "fr": "La faute atteint-elle la gravité d'un manquement majeur au devoir de fidélité (ATF 130 III 28)?",
+              "it": "La violazione raggiunge la gravità di BGE 130 III 28?",
+              "en": "Does the misconduct reach the severity threshold of BGE 130 III 28 where no lesser sanction suffices?"
+            },
             "authorityRef": "bge_130_iii_28_e41",
             "when": { "op": "eq", "left": { "op": "input", "name": "severeLoyaltyBreachOrCrime" }, "right": { "op": "lit", "value": true } },
             "evidenceInput": "severeLoyaltyBreachOrCrime"
           },
           {
-            "id": "prior_warning_ignored",
+            "id": "pole_affirm_warning_and_exec_trust",
+            "polarity": "affirming",
             "label": {
-              "de": "Wiederholung trotz vorgängiger schriftlicher Verwarnung (BGE 117 II 560)",
-              "fr": "Réitération malgré un avertissement écrit préalable (ATF 117 II 560)",
-              "it": "Recidiva nonostante diffida scritta preventiva (DTF 117 II 560)",
-              "en": "Recurrence despite prior explicit written warning (BGE 117 II 560)"
+              "de": "Bejahungs-Fallgruppe: Wiederholung nach klarer Verwarnung bei erhöhter Vertrauensstellung (BGE 142 III 579 E. 4.2)",
+              "fr": "Pôle affirmatif: récidive après avertissement formel dans une fonction de confiance accrue",
+              "it": "Polo affermativo: recidiva dopo diffida formale in posizione di fiducia accresciuta",
+              "en": "Affirming Pole: Recurrence after clear written warning in an executive position of trust (BGE 142 III 579 E. 4.2)"
             },
-            "direction": "pro",
-            "weight": 4,
-            "authorityRef": "bge_117_ii_560",
-            "when": { "op": "eq", "left": { "op": "input", "name": "priorWrittenWarningIgnored" }, "right": { "op": "lit", "value": true } },
+            "holdingSummary": {
+              "de": "Bei wiederholter Pflichtverletzung nach ausdrücklicher schriftlicher Verwarnung und erhöhter Treuepflicht spricht die Fallgruppe für die Zulässigkeit der fristlosen Kündigung.",
+              "fr": "Une récidive après avertissement écrit formel dans un poste dirigeant plaide en faveur de justes motifs.",
+              "it": "La recidiva dopo diffida scritta in ruolo dirigenziale sostiene la causa grave.",
+              "en": "Recurrence after formal written warning in an executive trust role strongly supports just cause."
+            },
+            "distinguishingQuestion": {
+              "de": "War die frühere Verwarnung konkret genug, zeitlich nahe und mit ausdrücklicher Androhung der fristlosen Kündigung verbunden?",
+              "fr": "L'avertissement préalable était-il suffisamment précis et assorti de la menace d'un licenciement immédiat?",
+              "it": "La diffida era sufficientemente precisa e accompagnata dalla minaccia di risoluzione immediata?",
+              "en": "Was the prior warning specific, recent, and accompanied by an explicit threat of immediate dismissal?"
+            },
+            "authorityRef": "bge_142_iii_579_e42",
+            "when": {
+              "op": "and",
+              "args": [
+                { "op": "eq", "left": { "op": "input", "name": "priorWrittenWarningIgnored" }, "right": { "op": "lit", "value": true } },
+                { "op": "eq", "left": { "op": "input", "name": "executiveTrustPosition" }, "right": { "op": "lit", "value": true } }
+              ]
+            },
             "evidenceInput": "priorWrittenWarningIgnored"
           },
           {
-            "id": "executive_trust",
+            "id": "pole_deny_minor_without_warning",
+            "polarity": "denying",
             "label": {
-              "de": "Erhöhte Treuepflicht wegen leitender Vertrauensposition",
-              "fr": "Devoir de fidélité accru en raison d'une fonction dirigeante",
-              "it": "Obbligo di fedeltà accresciuto per posizione dirigenziale",
-              "en": "Heightened duty of loyalty in an executive position of trust"
+              "de": "Verneinungs-Fallgruppe: Leichtere Erstverfehlung ohne erfolglose vorgängige Verwarnung (BGE 117 II 560)",
+              "fr": "Pôle négatif: faute légère initiale sans avertissement préalable resté sans effet (ATF 117 II 560)",
+              "it": "Polo negativo: infrazione lieve iniziale senza diffida preventiva (DTF 117 II 560)",
+              "en": "Denying Pole: Lesser first offence without prior unsuccessful written warning (BGE 117 II 560)"
             },
-            "direction": "pro",
-            "weight": 2,
-            "authorityRef": "bge_142_iii_579_e42",
-            "when": { "op": "eq", "left": { "op": "input", "name": "executiveTrustPosition" }, "right": { "op": "lit", "value": true } },
-            "evidenceInput": "executiveTrustPosition"
-          },
-          {
-            "id": "minor_without_warning",
-            "label": {
-              "de": "Leichtere Erstverfehlung ohne vorgängige Verwarnung spricht gegen Unzumutbarkeit (BGE 117 II 560)",
-              "fr": "Faute légère initiale sans avertissement préalable exclut en principe l'exigibilité immédiate (ATF 117 II 560)",
-              "it": "Infrazione lieve senza diffida preventiva esclude di regola la causa grave (DTF 117 II 560)",
-              "en": "Minor first offence without prior warning militates strongly against just cause (BGE 117 II 560)"
+            "holdingSummary": {
+              "de": "Ohne vorgängige erfolglose Verwarnung ist die Unzumutbarkeit der ordentlichen Kündigungsfrist bei leichteren bis mittleren Pflichtverletzungen zu verneinen.",
+              "fr": "En l'absence d'avertissement préalable infructueux, une faute légère ou moyenne ne suffit pas.",
+              "it": "Senza previa diffida infruttuosa, una violazione lieve o media non giustifica la risoluzione immediata.",
+              "en": "Without a prior unsuccessful warning, lesser or moderate breaches do not make ordinary notice intolerable."
             },
-            "direction": "contra",
-            "weight": 5,
+            "distinguishingQuestion": {
+              "de": "Hätte eine ordentliche Kündigung oder formelle Abmahnung die berechtigten Arbeitgeberinteressen ausreichend geschützt (Verhältnismässigkeit)?",
+              "fr": "Un congé ordinaire ou un avertissement formel aurait-il suffi à protéger les intérêts de l'employeur?",
+              "it": "Sarebbe stata sufficiente una disdetta ordinaria o una diffida formale?",
+              "en": "Would ordinary notice or a formal warning have adequately protected the employer's legitimate interests?"
+            },
             "authorityRef": "bge_117_ii_560",
             "when": { "op": "eq", "left": { "op": "input", "name": "minorFirstOffenseWithoutWarning" }, "right": { "op": "lit", "value": true } },
             "evidenceInput": "minorFirstOffenseWithoutWarning"
+          },
+          {
+            "id": "pole_deny_restraint_ultima_ratio",
+            "polarity": "denying",
+            "label": {
+              "de": "Verneinungs-Fallgruppe: Restriktiver Massstab bei blosser Nachverfehlung ohne schweres Delikt (BGE 129 III 380 E. 2.1)",
+              "fr": "Pôle négatif: réserve stricte exigée hors faute d'une gravité exceptionnelle (ATF 129 III 380 consid. 2.1)",
+              "it": "Polo negativo: criterio restrittivo fuori da violazioni particolarmente gravi (DTF 129 III 380 consid. 2.1)",
+              "en": "Denying Pole: Strict judicial restraint where conduct falls short of severe trust destruction (BGE 129 III 380 E. 2.1)"
+            },
+            "holdingSummary": {
+              "de": "Die Zulässigkeit der fristlosen Entlassung darf nach BGE 129 III 380 E. 2.1 nur mit grosser Zurückhaltung angenommen werden; bei konkurrierenden Umständen bleibt die richterliche Gesamtabwägung nach Art. 337 Abs. 3 OR vorbehalten.",
+              "fr": "Selon l'ATF 129 III 380 consid. 2.1, la résiliation immédiate ne doit être admise qu'avec une grande retenue.",
+              "it": "Secondo DTF 129 III 380 consid. 2.1, la risoluzione immediata va ammessa con grande riserbo.",
+              "en": "Per BGE 129 III 380 E. 2.1, summary dismissal may only be upheld with great restraint; competing circumstances require holistic judicial balancing under Art. 337 para. 3 OR."
+            },
+            "distinguishingQuestion": {
+              "de": "Reicht die Restdauer bis zum ordentlichen Kündigungstermin in Abwägung mit Dienstalter und Schwere der Pflichtverletzung aus, um die Fortsetzung unzumutbar zu machen?",
+              "fr": "La durée résiduelle jusqu'au terme ordinaire rend-elle la poursuite véritablement intolérable?",
+              "it": "La durata residua fino al termine ordinario rende effettivamente intollerabile la prosecuzione?",
+              "en": "Given tenure and remaining ordinary notice duration, is continuation genuinely intolerable?"
+            },
+            "authorityRef": "bge_129_iii_380_e21",
+            "when": {
+              "op": "and",
+              "args": [
+                { "op": "eq", "left": { "op": "input", "name": "severeLoyaltyBreachOrCrime" }, "right": { "op": "lit", "value": false } },
+                { "op": "eq", "left": { "op": "input", "name": "priorWrittenWarningIgnored" }, "right": { "op": "lit", "value": true } },
+                { "op": "eq", "left": { "op": "input", "name": "executiveTrustPosition" }, "right": { "op": "lit", "value": true } }
+              ]
+            },
+            "evidenceInput": "executiveTrustPosition"
           }
         ],
-        "escalationBand": { "low": 1, "high": 6 },
         "requiresHumanReviewLabel": {
-          "de": "Grenzfall im richterlichen Ermessen nach Art. 337 Abs. 3 OR: Juristische Einzelfallprüfung zwingend erforderlich.",
-          "fr": "Cas limite relevant du pouvoir d'appréciation du juge (art. 337 al. 3 CO): examen juridique humain obligatoire.",
-          "it": "Caso limite nel libero apprezzamento del giudice (art. 337 cpv. 3 CO): verifica giuridica umana obbligatoria.",
-          "en": "Borderline judicial-discretion case under Art. 337 para. 3 OR: mandatory human jurist review required."
+          "de": "Präjudizien-Spannungsfeld bzw. offener Ermessensfall nach Art. 337 Abs. 3 OR: Pro- und Contra-Fallgruppen verlangen menschliche juristische Beurteilung.",
+          "fr": "Tension jurisprudentielle ou cas ouvert selon l'art. 337 al. 3 CO: examen juridique humain obligatoire.",
+          "it": "Tensione giurisprudenziale o caso aperto ex art. 337 cpv. 3 CO: valutazione giuridica umana obbligatoria.",
+          "en": "Competing precedent poles or novel fact pattern under Art. 337 para. 3 OR: mandatory human jurist review required."
         }
       }
     },

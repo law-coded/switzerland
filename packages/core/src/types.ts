@@ -236,13 +236,41 @@ export interface SubsumtionContract {
   requiresHumanReviewLabel?: LocalizedText;
 }
 
+export interface PrecedentPole {
+  id: string;
+  polarity: "affirming" | "denying";
+  label: LocalizedText;
+  holdingSummary: LocalizedText;
+  distinguishingQuestion: LocalizedText;
+  authorityRef: string;
+  when: Expr;
+  evidenceInput?: string;
+}
+
+export interface DialecticalContract {
+  legalConcept: LocalizedText;
+  teleology?: {
+    summary: LocalizedText;
+    authorityRef: string;
+  };
+  disqualifiers?: Array<{
+    id: string;
+    label: LocalizedText;
+    authorityRef: string;
+    when: Expr;
+  }>;
+  poles: PrecedentPole[];
+  requiresHumanReviewLabel?: LocalizedText;
+}
+
 export type RuleKind =
   | "base"
   | "exception"
   | "counter_exception"
   | "overlay"
   | "derivation"
-  | "subsumtion";
+  | "subsumtion"
+  | "dialectical";
 
 export interface Rule {
   id: string;
@@ -259,6 +287,7 @@ export interface Rule {
   when?: Expr;
   compute?: Expr;
   subsumtion?: SubsumtionContract;
+  dialectical?: DialecticalContract;
 }
 
 export interface OutputSpec {
@@ -356,6 +385,30 @@ export interface SubsumtionTraceDetail {
   }>;
 }
 
+export interface DialecticalPoleMatch {
+  id: string;
+  polarity: "affirming" | "denying";
+  label: string;
+  holdingSummary: string;
+  distinguishingQuestion: string;
+  authorityRef: string;
+  evidenceValue?: unknown;
+}
+
+export interface DialecticalTraceDetail {
+  legalConcept: string;
+  teleology?: { summary: string; authorityRef: string };
+  disqualifiedBy?: { id: string; label: string; authorityRef: string };
+  verdict:
+    | "clear_affirmative"
+    | "clear_negative"
+    | "dialectical_tension_escalate"
+    | "novel_case_escalate";
+  matchedAffirmingPoles: DialecticalPoleMatch[];
+  matchedDenyingPoles: DialecticalPoleMatch[];
+  distinguishingQuestions: string[];
+}
+
 export interface TraceEntry {
   ruleId: string;
   target: string;
@@ -374,6 +427,7 @@ export interface TraceEntry {
     resolvedTo: unknown;
   };
   subsumtionDetail?: SubsumtionTraceDetail;
+  dialecticalDetail?: DialecticalTraceDetail;
 }
 
 export interface EscalationItem {
@@ -382,6 +436,7 @@ export interface EscalationItem {
   reason: string;
   authorities: string[];
   subsumtionDetail?: SubsumtionTraceDetail;
+  dialecticalDetail?: DialecticalTraceDetail;
 }
 
 export interface ConflictItem {

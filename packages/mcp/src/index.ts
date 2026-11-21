@@ -26,7 +26,14 @@ import { exportToRuml10 } from "../../ruml-bridge/src/index.ts";
 import { detectAmendmentDrift } from "../../grounding/src/index.ts";
 import { compileLawDsl } from "../../dsl/src/index.ts";
 import { findStructuringLevers, proveDocument } from "../../prover/src/index.ts";
-import { evaluateEnterprisePortfolio, type OrganizationDigitalTwin } from "../../enterprise/src/index.ts";
+import {
+  adviseMultiRegime,
+  checkLivingAdviceFreshness,
+  evaluateEnterprisePortfolio,
+  type ClientFactGraph,
+  type LivingAdviceRecord,
+  type OrganizationDigitalTwin,
+} from "../../enterprise/src/index.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CORPUS_DIR = resolve(__dirname, "../../../corpus");
@@ -176,6 +183,36 @@ const TOOLS = [
       },
     },
   },
+  {
+    name: "advise_multi_regime",
+    description: "Run ONE Client Fact Graph + Organization Digital Twin across ALL loaded legal modules simultaneously to spot cross-regime issues, detect sovereign conflicts (e.g. EU DORA/GDPR disclosure obligation vs. Swiss Art. 271 StGB criminal prohibition), compute lawful de-confliction levers, and issue a Living Advice Contract.",
+    inputSchema: {
+      type: "object",
+      required: ["twin", "factGraph"],
+      properties: {
+        twin: { type: "object" },
+        factGraph: { type: "object" },
+        slugs: { type: "array", items: { type: "string" } },
+        factDate: { type: "string" },
+        futureDate: { type: "string" },
+        language: { type: "string" },
+      },
+    },
+  },
+  {
+    name: "check_living_advice",
+    description: "Check whether a previously issued Living Advice Contract is still VALID, REVIEW_REQUIRED (swisslaw-git amendment or pending consolidation effective), or INVALIDATED (factual assumption flipped).",
+    inputSchema: {
+      type: "object",
+      required: ["record", "asOfDate"],
+      properties: {
+        record: { type: "object" },
+        asOfDate: { type: "string" },
+        changedGitPaths: { type: "array", items: { type: "string" } },
+        updatedFacts: { type: "object" },
+      },
+    },
+  },
 ];
 
 function handleToolCall(name: string, args: Record<string, unknown>): unknown {
@@ -194,6 +231,29 @@ function handleToolCall(name: string, args: Record<string, unknown>): unknown {
         canonicalHash: computeCanonicalHash(doc),
         driftAlerts: detectAmendmentDrift(doc, new Date().toISOString().slice(0, 10)),
       };
+    });
+  }
+
+  if (name === "advise_multi_regime") {
+    const slugs = Array.isArray(args["slugs"]) ? (args["slugs"] as string[]) : undefined;
+    const mods = slugs ? slugs.map((s) => corpus[s]).filter((d): d is LcfDocument => Boolean(d)) : Object.values(corpus);
+    return adviseMultiRegime(
+      args["twin"] as OrganizationDigitalTwin,
+      mods,
+      args["factGraph"] as ClientFactGraph,
+      {
+        factDate: typeof args["factDate"] === "string" ? args["factDate"] : undefined,
+        futureDate: typeof args["futureDate"] === "string" ? args["futureDate"] : undefined,
+        language: typeof args["language"] === "string" ? args["language"] : undefined,
+      },
+    );
+  }
+
+  if (name === "check_living_advice") {
+    return checkLivingAdviceFreshness(args["record"] as LivingAdviceRecord, {
+      asOfDate: String(args["asOfDate"]),
+      changedGitPaths: Array.isArray(args["changedGitPaths"]) ? (args["changedGitPaths"] as string[]) : undefined,
+      updatedFacts: args["updatedFacts"] as Record<string, unknown> | undefined,
     });
   }
 

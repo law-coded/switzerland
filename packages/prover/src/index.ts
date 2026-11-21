@@ -117,6 +117,10 @@ function extractNumericThresholds(doc: LcfDocument): Map<string, Set<number>> {
       r.subsumtion.disqualifiers?.forEach((d) => walk(d.when));
       r.subsumtion.factors.forEach((f) => walk(f.when));
     }
+    if (r.dialectical) {
+      r.dialectical.disqualifiers?.forEach((d) => walk(d.when));
+      r.dialectical.poles.forEach((p) => walk(p.when));
+    }
   }
   return map;
 }

@@ -120,6 +120,31 @@ export function generateBegruendung(doc: LcfDocument, result: EvaluationResult):
         lines.push(`   - Criterion (${f.weight >= 0 ? "+" : ""}${f.weight}): ${f.label}`);
       }
     }
+    if (t.dialecticalDetail) {
+      const dd = t.dialecticalDetail;
+      lines.push(`   - Dialectical Fallgruppen Analysis (${dd.legalConcept}): verdict \`${dd.verdict}\`.`);
+      if (dd.teleology) {
+        const telAuth = doc.authorities[dd.teleology.authorityRef];
+        const telCite = telAuth ? formatAuthorityLink(telAuth, lang) : dd.teleology.authorityRef;
+        lines.push(`   - Ratio legis / Teleology (${telCite}): ${dd.teleology.summary}`);
+      }
+      if (dd.disqualifiedBy) {
+        lines.push(`   - Hard Statutory Disqualifier: ${dd.disqualifiedBy.label} (\`${dd.disqualifiedBy.authorityRef}\`).`);
+      }
+      for (const p of dd.matchedAffirmingPoles) {
+        const pAuth = doc.authorities[p.authorityRef];
+        const pLink = pAuth ? formatAuthorityLink(pAuth, lang) : p.authorityRef;
+        lines.push(`   - PRO / Affirming Precedent Pole (${pLink}): ${p.label} -> ${p.holdingSummary}`);
+      }
+      for (const p of dd.matchedDenyingPoles) {
+        const pAuth = doc.authorities[p.authorityRef];
+        const pLink = pAuth ? formatAuthorityLink(pAuth, lang) : p.authorityRef;
+        lines.push(`   - CONTRA / Denying Precedent Pole (${pLink}): ${p.label} -> ${p.holdingSummary}`);
+      }
+      if (dd.distinguishingQuestions.length > 0 && dd.verdict.includes("escalate")) {
+        lines.push(`   - Key Distinguishing Questions for Counsel: ${dd.distinguishingQuestions.join(" | ")}`);
+      }
+    }
     if (authLinks) lines.push(`   - Authorities: ${authLinks}`);
   }
   lines.push("");

@@ -447,6 +447,18 @@
           ctx: { jurisdiction: "CH-ZH", factDate: "2026-06-01", lens: "strict_regulatory" },
           inputs: { sector: "financial_regulated", cyberAttackTriggered: true, affectsOnlyNonCriticalCarveOut: true, personalDataBreached: false, dataRiskLevel: "unlikely" }
         }
+      ],
+      "ch-blocking-statute-271": [
+        {
+          label: "Art. 271 StGB Criminal Bar (No Prior FINMA Notice)",
+          ctx: { jurisdiction: "CH-ZH", factDate: "2026-06-01" },
+          inputs: { sector: "financial_regulated", foreignAuthorityCompelledTransmissionFromCH: true, officialAuthorizationOrMutualAssistance: false, finma42cConditionsMet: true, materialSupervisorySignificance: true, priorFinmaNoticeFiled: false }
+        },
+        {
+          label: "Art. 42c FINMAG Safe Harbour Cleared",
+          ctx: { jurisdiction: "CH-ZH", factDate: "2026-06-01" },
+          inputs: { sector: "financial_regulated", foreignAuthorityCompelledTransmissionFromCH: true, officialAuthorizationOrMutualAssistance: false, finma42cConditionsMet: true, materialSupervisorySignificance: true, priorFinmaNoticeFiled: true }
+        }
       ]
     };
 
@@ -633,6 +645,11 @@
           const sub = t.subsumtionDetail
             ? `<div class="trace-meta">Subsumtion score: <strong>${t.subsumtionDetail.score}</strong> (escalation band [${t.subsumtionDetail.escalationBand.low}, ${t.subsumtionDetail.escalationBand.high}]) · verdict: <code>${esc(t.subsumtionDetail.verdict)}</code></div>`
             : "";
+          const dia = t.dialecticalDetail
+            ? `<div class="trace-meta"><strong>Dialectical Fallgruppen (${esc(t.dialecticalDetail.verdict)}):</strong> ` +
+              `PRO poles: ${t.dialecticalDetail.matchedAffirmingPoles.map((p) => esc(p.label)).join("; ") || "none"} · ` +
+              `CONTRA poles: ${t.dialecticalDetail.matchedDenyingPoles.map((p) => esc(p.label)).join("; ") || "none"}</div>`
+            : "";
           html += `
             <div class="trace-item">
               <div class="trace-head">
@@ -641,7 +658,7 @@
               </div>
               <div class="trace-meta">Kind: <code>${esc(t.kind)}</code> · Value: <code>${esc(fmtVal(t.value))}</code>${defeated}</div>
               ${t.explanation ? `<div class="trace-meta">${esc(t.explanation)}</div>` : ""}
-              ${sub}
+              ${sub}${dia}
               <div class="trace-meta">Authorities: ${authHtml}</div>
             </div>`;
         }

@@ -26,7 +26,12 @@ import {
 import { compileLawDsl, decompileToLawDsl } from "../../dsl/src/index.ts";
 import { findStructuringLevers, proveDocument } from "../../prover/src/index.ts";
 import { runCegarVerificationGate, type RealCourtCaseRecord } from "../../cegar/src/index.ts";
-import { evaluateEnterprisePortfolio, type OrganizationDigitalTwin } from "../../enterprise/src/index.ts";
+import {
+  adviseMultiRegime,
+  evaluateEnterprisePortfolio,
+  type ClientFactGraph,
+  type OrganizationDigitalTwin,
+} from "../../enterprise/src/index.ts";
 
 function loadJson<T>(filePath: string): T {
   return JSON.parse(readFileSync(resolve(filePath), "utf8")) as T;
@@ -106,6 +111,7 @@ Commands:
   structuring <file> --inputs '<json>' --target <id> --want '<json>'  Find lawful structuring levers
   cegar <file> --cases <bge-replay.json>                    Run CEGAR formal + real court replay verification gate
   advise-enterprise <file> --twin <org.json> --inputs '<json>'  Evaluate multinational organization Digital Twin
+  advise-multi [corpusDir] --twin <org.json> --facts <fg.json>  Cross-regime issue spotter + sovereign conflict + Living Advice
   drift <file.lcf.json|file.law> [--as-of YYYY-MM-DD]       Check Fedlex / swisslaw-git drift
 
 Context flags: --jurisdiction CH-ZH --lang de|fr|it|en --fact-date YYYY-MM-DD --lens <id> --mode adjudicate|triage`);
@@ -249,6 +255,20 @@ function main(): void {
         lens: flags["lens"],
       });
       console.log(flags["format"] === "markdown" ? dossier.executiveMemoMarkdown : JSON.stringify(dossier, null, 2));
+      return;
+    }
+    case "advise-multi": {
+      const root = resolve(positional[0] ?? "corpus");
+      const mods = findCorpusFiles(root).map((f) => loadLcfOrLaw(f));
+      const twin = loadJson<OrganizationDigitalTwin>(flags["twin"]!);
+      const factGraph = loadJson<ClientFactGraph>(flags["facts"]!);
+      const report = adviseMultiRegime(twin, mods, factGraph, {
+        factDate: flags["fact-date"],
+        futureDate: flags["future-date"],
+        language: flags["lang"],
+        lens: flags["lens"],
+      });
+      console.log(flags["format"] === "markdown" ? report.executiveBriefMarkdown : JSON.stringify(report, null, 2));
       return;
     }
     case "drift": {

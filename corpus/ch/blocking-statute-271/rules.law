@@ -1,0 +1,196 @@
+# Swiss Blocking Statute & Cross-Border Regulatory Transmission Safe Harbour
+# Grounded verbatim in Fedlex / OpenCaseLaw:
+# - Art. 271 Ziff. 1 StGB (SR 311.0), BGE 148 IV 66 E. 1.4.1, BGE 114 IV 128 E. 2b
+# - Art. 42c FINMAG (SR 956.1)
+
+module ch-blocking-statute-271 @ 2026.11.01
+jurisdictions: CH, CH-ZH, CH-GE, CH-BS
+languages: de, fr, it, en
+domains: criminal-law, sovereign-blocking-statute, financial-regulation, cross-border-discovery
+title.de: "Schweizerische Blocking-Statute & Auslandsübermittlung (Art. 271 StGB & Art. 42c FINMAG)"
+title.fr: "Loi de blocage suisse et transmission transfrontalière (art. 271 CP & art. 42c LFINMA)"
+title.it: "Norma di blocco svizzera e trasmissione transfrontaliera (art. 271 CP & art. 42c LFINMA)"
+title.en: "Swiss Blocking Statute & Cross-Border Authority Transmission (Art. 271 StGB & Art. 42c FINMAG)"
+description.de: "Prüft strafrechtliche Verbote bei direkter Daten- oder Aktenübermittlung aus der Schweiz an ausländische Behörden (Art. 271 StGB) sowie den aufsichtsrechtlichen Safe Harbour nach Art. 42c FINMAG inkl. vorgängiger FINMA-Meldung."
+description.en: "Evaluates Swiss criminal prohibition on unauthorized direct transmission of Swiss-located evidence/records to foreign authorities (Art. 271 StGB) and the Art. 42c FINMAG safe harbour for regulated financial institutions."
+pending_change: 2027-01-01 "Fedlex consolidation of FINMAG (SR 956.1) enters into force 2027-01-01; verify Art. 42c FINMAG." https://www.fedlex.admin.ch/eli/cc/2008/736/de#art_42c
+
+authority ch_stgb_271 [statute, CH]
+  de: "Art. 271 Ziff. 1 StGB (SR 311.0: Verbotene Handlungen für einen fremden Staat)"
+  fr: "Art. 271 ch. 1 CP (RS 311.0: actes exécutés sans droit pour un État étranger)"
+  it: "Art. 271 n. 1 CP (RS 311.0: atti compiuti senza autorizzazione per conto di uno Stato estero)"
+  en: "Art. 271(1) Swiss Criminal Code (SR 311.0: Unlawful Acts for a Foreign State)"
+  eli: "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/de#art_271"
+  url.de: "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/de#art_271"
+  url.fr: "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/fr#art_271"
+  url.it: "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/it#art_271"
+  git.de: "ch/3/311.0/de.md#art-271"
+  git.fr: "ch/3/311.0/fr.md#art-271"
+  git.it: "ch/3/311.0/it.md#art-271"
+  consolidation: "2026-11-01"
+  verbatim.de: "1. Wer auf schweizerischem Gebiet ohne Bewilligung für einen fremden Staat Handlungen vornimmt, die einer Behörde oder einem Beamten zukommen, wer solche Handlungen für eine ausländische Partei oder eine andere Organisation des Auslandes vornimmt, wer solchen Handlungen Vorschub leistet, wird mit Freiheitsstrafe bis zu drei Jahren oder Geldstrafe, in schweren Fällen mit Freiheitsstrafe nicht unter einem Jahr bestraft."
+  verbatim.fr: "1. Quiconque, sans y être autorisé, procède sur le territoire suisse pour un État étranger à des actes qui relèvent des pouvoirs publics, quiconque procède à de tels actes pour un parti étranger ou une autre organisation de l’étranger, quiconque favorise de tels actes, est puni d’une peine privative de liberté de trois ans au plus ou d’une peine pécuniaire et, dans les cas graves, d’une peine privative de liberté d’un an au moins."
+  verbatim.it: "1. Chiunque, senza esservi autorizzato, compie sul territorio svizzero per conto di uno Stato estero atti che spettano a poteri pubblici; chiunque compie siffatti atti per conto di un partito estero o di un’altra organizzazione dell’estero; chiunque favorisce tali atti, è punito con una pena detentiva sino a tre anni o con una pena pecuniaria e, in casi gravi, con una pena detentiva non inferiore a un anno."
+
+authority ch_finmag_42c [statute, CH]
+  de: "Art. 42c FINMAG (SR 956.1: Informationsübermittlung durch Beaufsichtigte)"
+  fr: "Art. 42c LFINMA (RS 956.1: transmission d'informations par des assujettis)"
+  it: "Art. 42c LFINMA (RS 956.1: trasmissione di informazioni da parte di assoggettati)"
+  en: "Art. 42c Swiss FINMASA / FINMAG (SR 956.1: Direct Transmission by Supervised Entities)"
+  eli: "https://www.fedlex.admin.ch/eli/cc/2008/736/de#art_42c"
+  url.de: "https://www.fedlex.admin.ch/eli/cc/2008/736/de#art_42c"
+  url.fr: "https://www.fedlex.admin.ch/eli/cc/2008/736/fr#art_42c"
+  url.it: "https://www.fedlex.admin.ch/eli/cc/2008/736/it#art_42c"
+  git.de: "ch/9/956.1/de.md#art-42c"
+  git.fr: "ch/9/956.1/fr.md#art-42c"
+  git.it: "ch/9/956.1/it.md#art-42c"
+  consolidation: "2025-04-01"
+  verbatim.de: "1 Beaufsichtigte dürfen den zuständigen ausländischen Finanzmarktaufsichtsbehörden und weiteren mit der Aufsicht betrauten ausländischen Stellen nicht öffentlich zugängliche Informationen übermitteln, sofern: a. die Voraussetzungen von Artikel 42 Absatz 2 erfüllt sind; b. die Rechte von Kunden und Dritten gewahrt bleiben. 3 Eine Informationsübermittlung von wesentlicher Bedeutung nach Artikel 29 Absatz 2 bedarf der vorgängigen Meldung an die FINMA. 4 Die FINMA kann den Amtshilfeweg vorbehalten."
+
+authority bge_148_iv_66_e141 [case_law, CH]
+  de: "BGE 148 IV 66, E. 1.4.1"
+  fr: "ATF 148 IV 66, consid. 1.4.1"
+  it: "DTF 148 IV 66, consid. 1.4.1"
+  en: "BGE 148 IV 66, E. 1.4.1"
+  opencaselaw: "bge_148 IV 66"
+  pinpoint: "1.4.1"
+  decision_date: "2021-11-01"
+  url: "https://mcp.opencaselaw.ch/entscheid/bge_148%20IV%2066#e-1-4-1"
+
+authority bge_114_iv_128_e2b [case_law, CH]
+  de: "BGE 114 IV 128, E. 2b"
+  fr: "ATF 114 IV 128, consid. 2b"
+  it: "DTF 114 IV 128, consid. 2b"
+  en: "BGE 114 IV 128, E. 2b"
+  opencaselaw: "bge_114 IV 128"
+  pinpoint: "2b"
+  decision_date: "1988-09-30"
+  url: "https://mcp.opencaselaw.ch/entscheid/bge_114%20IV%20128#e-2b"
+
+input sector: enum(financial_regulated, critical_infrastructure, cloud_datacenter, general_enterprise)
+  de: "Unternehmenssektor / FINMA-Unterstellung"
+  fr: "Secteur / assujettissement FINMA"
+  it: "Settore / assoggettamento FINMA"
+  en: "Enterprise Sector / FINMA Supervision"
+  default: "general_enterprise"
+
+input foreignAuthorityCompelledTransmissionFromCH: boolean
+  de: "Ausländische Behörde / Gericht verlangt direkte Herausgabe von Akten/Beweisen aus der Schweiz (Amtshandlungscharakter)"
+  fr: "Autorité ou tribunal étranger exigeant la transmission directe de documents depuis la Suisse"
+  it: "Autorità o tribunale estero che richiede trasmissione diretta di atti dalla Svizzera"
+  en: "Foreign Authority / Court Demands Direct Production of Swiss-Located Non-Public Records (Official Act Character)"
+  default: false
+
+input officialAuthorizationOrMutualAssistance: boolean
+  de: "Schweizerische Bewilligung (Art. 271 StGB) oder formeller Amts-/Rechtshilfeweg liegt vor"
+  fr: "Autorisation suisse (art. 271 CP) ou voie d'entraide officielle obtenue"
+  it: "Autorizzazione svizzera (art. 271 CP) o via di assistenza giudiziaria ottenuta"
+  en: "Swiss Official Authorization or Formal Mutual Legal / Administrative Assistance Channel Used"
+  default: false
+
+input finma42cConditionsMet: boolean
+  de: "Voraussetzungen Art. 42c Abs. 1 FINMAG erfüllt (Spezialität/Vertraulichkeit Art. 42 Abs. 2 + Wahrung Kunden-/Drittrechte)"
+  fr: "Conditions de l'art. 42c al. 1 LFINMA remplies (art. 42 al. 2 + droits des clients/tiers garantis)"
+  it: "Condizioni art. 42c cpv. 1 LFINMA soddisfatte (art. 42 cpv. 2 + diritti clienti/terzi tutelati)"
+  en: "Art. 42c para. 1 FINMAG Conditions Met (Art. 42(2) specialty/confidentiality + client & third-party rights protected)"
+  default: false
+
+input materialSupervisorySignificance: boolean
+  de: "Übermittlung von wesentlicher Bedeutung i.S.v. Art. 29 Abs. 2 FINMAG"
+  fr: "Transmission revêtant une grande importance au sens de l'art. 29 al. 2 LFINMA"
+  it: "Trasmissione di grande importanza ai sensi dell'art. 29 cpv. 2 LFINMA"
+  en: "Transmission of Material Supervisory Significance (Art. 29 para. 2 FINMAG)"
+  default: true
+
+input priorFinmaNoticeFiled: boolean
+  de: "Vorgängige Meldung an die FINMA gemäss Art. 42c Abs. 3 FINMAG erfolgt (ohne Amtshilfevorbehalt nach Abs. 4)"
+  fr: "Déclaration préalable à la FINMA effectuée selon l'art. 42c al. 3 LFINMA"
+  it: "Notifica preventiva alla FINMA effettuata secondo l'art. 42c cpv. 3 LFINMA"
+  en: "Prior Notification Filed with FINMA under Art. 42c para. 3 FINMAG (and no Art. 42c(4) reservation)"
+  default: false
+
+rule finma_42c_safe_harbour_base -> finma_42c_safe_harbour_available [base, CH, federal_statute, prio 10]
+  de: "Kein Art. 42c FINMAG Safe Harbour (ausserhalb FINMA-Aufsicht oder Voraussetzungen nicht erfüllt)"
+  fr: "Aucun safe harbour art. 42c LFINMA"
+  it: "Nessun safe harbour art. 42c LFINMA"
+  en: "Art. 42c FINMAG Safe Harbour Not Met"
+  cite: ch_finmag_42c
+  then: false
+
+rule finma_42c_safe_harbour_met -> finma_42c_safe_harbour_available [exception, CH, federal_statute, prio 20]
+  de: "Art. 42c FINMAG Safe Harbour greift für FINMA-Beaufsichtigte bei Einhaltung von Abs. 1–3"
+  fr: "Safe harbour art. 42c LFINMA applicable aux assujettis FINMA respectant les al. 1–3"
+  it: "Safe harbour art. 42c LFINMA applicabile agli assoggettati FINMA"
+  en: "Art. 42c FINMAG Safe Harbour Permits Direct Transmission to Foreign Financial Supervisor"
+  cite: ch_finmag_42c
+  overrides: finma_42c_safe_harbour_base
+  valid_from: 2016-01-01
+  when: sector == "financial_regulated" and finma42cConditionsMet == true and (materialSupervisorySignificance == false or priorFinmaNoticeFiled == true)
+  then: true
+
+rule art271_prohibition_base -> swiss_criminal_prohibition_art271 [base, CH, federal_statute, prio 10]
+  de: "Grundsatz: Keine strafbare Handlung nach Art. 271 StGB ohne ausländische Amtshandlung auf Schweizer Gebiet"
+  fr: "Principe: pas d'infraction à l'art. 271 CP en l'absence d'acte officiel étranger sur territoire suisse"
+  it: "Principio: nessun reato ex art. 271 CP senza atto d'autorità estero sul territorio svizzero"
+  en: "Base: No Art. 271 StGB Criminal Prohibition Triggered"
+  cite: ch_stgb_271, bge_148_iv_66_e141
+  then: false
+
+rule art271_criminal_bar_triggered -> swiss_criminal_prohibition_art271 [exception, CH, federal_statute, prio 20]
+  de: "Strafrechtliches Verbot (Art. 271 Ziff. 1 StGB): Direkte Herausgabe aus der Schweiz für fremde Behörde ohne Bewilligung/Rechtshilfe strafbar (BGE 148 IV 66 E. 1.4.1; BGE 114 IV 128 E. 2b)"
+  fr: "Interdiction pénale (art. 271 ch. 1 CP): transmission directe depuis la Suisse pour un État étranger sans autorisation punissable"
+  it: "Divieto penale (art. 271 n. 1 CP): trasmissione diretta dalla Svizzera per autorità estera senza autorizzazione punibile"
+  en: "Criminal Prohibition (Art. 271(1) StGB): Unauthorized Direct Production from Switzerland for Foreign Authority Is Criminal (BGE 148 IV 66 E. 1.4.1)"
+  cite: ch_stgb_271, bge_148_iv_66_e141, bge_114_iv_128_e2b
+  overrides: art271_prohibition_base
+  when: foreignAuthorityCompelledTransmissionFromCH == true and officialAuthorizationOrMutualAssistance == false
+  then: true
+
+rule art271_finma_42c_override -> swiss_criminal_prohibition_art271 [counter_exception, CH, federal_statute, prio 30]
+  de: "Gesetzlicher Rechtfertigungsgrund: Art. 42c FINMAG schliesst Strafbarkeit nach Art. 271 StGB aus"
+  fr: "Fait justificatif légal: l'art. 42c LFINMA écarte la punissabilité selon l'art. 271 CP"
+  it: "Esimente legale: l'art. 42c LFINMA esclude la punibilità ai sensi dell'art. 271 CP"
+  en: "Statutory Safe Harbour Counter-Exception: Compliance with Art. 42c FINMAG Negates Art. 271 StGB Criminality"
+  cite: ch_finmag_42c, ch_stgb_271
+  overrides: art271_criminal_bar_triggered
+  valid_from: 2016-01-01
+  when: $finma_42c_safe_harbour_available == true
+  then: false
+
+rule prior_finma_notice_rule -> prior_finma_notice_required [derivation, CH, federal_statute, prio 10]
+  de: "Vorgängige Meldung an FINMA erforderlich bei wesentlicher Auslandsübermittlung (Art. 42c Abs. 3 FINMAG)"
+  fr: "Déclaration préalable à la FINMA requise pour transmission importante (art. 42c al. 3 LFINMA)"
+  it: "Notifica preventiva alla FINMA richiesta per trasmissione importante (art. 42c cpv. 3 LFINMA)"
+  en: "Prior FINMA Notification Required for Material Cross-Border Transmission (Art. 42c para. 3 FINMAG)"
+  cite: ch_finmag_42c
+  then: sector == "financial_regulated" and foreignAuthorityCompelledTransmissionFromCH == true and materialSupervisorySignificance == true
+
+output swiss_criminal_prohibition_art271: boolean [prohibition] primary
+  de: "Strafrechtliches Übermittlungsverbot nach Art. 271 StGB aktiv"
+  fr: "Interdiction pénale de transmission selon l'art. 271 CP active"
+  it: "Divieto penale di trasmissione ex art. 271 CP attivo"
+  en: "Swiss Criminal Blocking Prohibition Active (Art. 271 StGB)"
+
+output finma_42c_safe_harbour_available: boolean [permission] primary
+  de: "Art. 42c FINMAG Safe Harbour erfüllt"
+  fr: "Safe harbour art. 42c LFINMA rempli"
+  it: "Safe harbour art. 42c LFINMA soddisfatto"
+  en: "Art. 42c FINMAG Direct-Transmission Safe Harbour Satisfied"
+
+output prior_finma_notice_required: boolean [obligation]
+  de: "Vorgängige FINMA-Meldung nach Art. 42c Abs. 3 FINMAG erforderlich"
+  fr: "Déclaration préalable à la FINMA requise (art. 42c al. 3 LFINMA)"
+  it: "Notifica preventiva alla FINMA richiesta (art. 42c cpv. 3 LFINMA)"
+  en: "Prior FINMA Notification Required (Art. 42c para. 3 FINMAG)"
+
+test test_art271_blocked_without_42c "Direct transmission from Swiss bank to foreign EU/US regulator without Art. 42c FINMA notice violates Art. 271 StGB"
+  authority: ch_stgb_271
+  context: {"jurisdiction":"CH-ZH","factDate":"2026-06-01","language":"de"}
+  inputs: {"sector":"financial_regulated","foreignAuthorityCompelledTransmissionFromCH":true,"officialAuthorizationOrMutualAssistance":false,"finma42cConditionsMet":true,"materialSupervisorySignificance":true,"priorFinmaNoticeFiled":false}
+  expect: {"swiss_criminal_prohibition_art271":true,"finma_42c_safe_harbour_available":false,"prior_finma_notice_required":true}
+
+test test_art271_cleared_via_42c "Filing prior FINMA notice under Art. 42c para. 3 FINMAG clears Art. 271 StGB criminal bar"
+  authority: ch_finmag_42c
+  context: {"jurisdiction":"CH-ZH","factDate":"2026-06-01","language":"de"}
+  inputs: {"sector":"financial_regulated","foreignAuthorityCompelledTransmissionFromCH":true,"officialAuthorizationOrMutualAssistance":false,"finma42cConditionsMet":true,"materialSupervisorySignificance":true,"priorFinmaNoticeFiled":true}
+  expect: {"swiss_criminal_prohibition_art271":false,"finma_42c_safe_harbour_available":true,"prior_finma_notice_required":true}

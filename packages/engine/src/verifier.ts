@@ -114,6 +114,15 @@ export function verifyDocument(doc: LcfDocument): VerificationReport {
         if (f.evidenceInput) referencedInputs.add(f.evidenceInput);
       }
     }
+    if (r.dialectical) {
+      for (const dq of r.dialectical.disqualifiers ?? []) {
+        collectExprDependencies(dq.when, referencedTargets, referencedInputs);
+      }
+      for (const p of r.dialectical.poles) {
+        collectExprDependencies(p.when, referencedTargets, referencedInputs);
+        if (p.evidenceInput) referencedInputs.add(p.evidenceInput);
+      }
+    }
   }
   const unusedInputs = Object.keys(doc.inputs).filter((k) => !referencedInputs.has(k));
   for (const u of unusedInputs) {

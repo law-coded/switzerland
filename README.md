@@ -53,17 +53,18 @@ OpenCaseLaw (opencaselaw.ch)       : 1.04M+ CH decisions, ECtHR, CJEU, 9.65M cit
 | `packages/engine` | Defeasible evaluator, *Streitstand* diff, bidirectional triage/counterfactuals, *Digitalcheck* verifier, *Begründung* generator |
 | `packages/prover` | Formal symbolic proof kernel (zero conflicts, total coverage, threshold cliffs, divergence witnesses) & adversarial structuring solver |
 | `packages/cegar` | Empirical judicial replay oracle ("BGE Replay Benchmark") & CEGAR auto-formalization refinement gate |
-| `packages/enterprise` | Multinational Client Digital Twin evaluator (CH/EU/EEA/UK matrix, high-water mark clocks, proactive future-law change radar) |
+| `packages/enterprise` | Multinational Client Digital Twin, Cross-Regime Issue Spotter, Sovereign Conflict Detector (`Art. 271 StGB` vs. EU/UK), and Living Advice Freshness Contracts |
 | `packages/ruml-bridge` | Bidirectional RUML 1.0.0 exporter (with fidelity report) and lossless importer |
 | `packages/grounding` | OpenCaseLaw, Fedlex SPARQL/ELI, `swisslaw-git` diff mapper, pan-European legal source registry |
-| `packages/cli` | `law-coded` CLI (`validate`, `verify`, `compile-dsl`, `prove`, `structuring`, `cegar`, `advise-enterprise`, `eval`, `explain`, `diff-lenses`, `export-ruml`, `drift`) |
-| `packages/mcp` | Zero-dependency 10-tool MCP server designed to run alongside `mcp.opencaselaw.ch` |
+| `packages/cli` | `law-coded` CLI (`validate`, `verify`, `compile-dsl`, `prove`, `structuring`, `cegar`, `advise-enterprise`, `advise-multi`, `eval`, `explain`, `diff-lenses`, `export-ruml`, `drift`) |
+| `packages/mcp` | Zero-dependency 12-tool MCP server designed to run alongside `mcp.opencaselaw.ch` |
 | `packages/studio` | Zero-build interactive Web Studio (`http://127.0.0.1:4173`) |
 | `corpus/ch/zpo-deadlines` | Flagship 1: SR 272 Art. 142–145 ZPO (2025 revision + cantons ZH/GE/TI + BGE 139 III 78 & 143 III 554) |
-| `corpus/ch/or-termination` | Flagship 2: SR 220 Art. 335b–337c OR + 5-case OpenCaseLaw BGE Replay Benchmark (`bge-replay.json`) |
-| `corpus/europe/data-lawful-basis` | Flagship 3: Pan-European overlay (EU/EEA GDPR Art. 6 vs. Swiss DSG Art. 31 vs. UK GDPR divergence) |
-| `corpus/enterprise/cyber-data-ai-incident` | Flagship 4 (written in `.law` DSL!): Swiss ISG 24h BACS + DSG Art. 24 + FINMA 05/2020 & 03/2024 vs. EU DORA 4h / NIS2 24h / GDPR 72h vs. UK ICO 72h |
-| `conformance/runner.ts` | 9-suite Conformance, Formal Proof, CEGAR Replay & Enterprise Digital Twin test runner |
+| `corpus/ch/or-termination` | Flagship 2: SR 220 Art. 335b–337c OR + Precedent-Anchored Dialectical *Fallgruppen* + 5-case OpenCaseLaw BGE Replay Benchmark |
+| `corpus/ch/blocking-statute-271` | Flagship 3 (`.law` DSL): SR 311.0 Art. 271 StGB + SR 956.1 Art. 42c FINMAG safe harbour + BGE 148 IV 66 & 114 IV 128 |
+| `corpus/europe/data-lawful-basis` | Flagship 4: Pan-European overlay (EU/EEA GDPR Art. 6 vs. Swiss DSG Art. 31 & Art. 34 vs. UK GDPR divergence) |
+| `corpus/enterprise/cyber-data-ai-incident` | Flagship 5 (`.law` DSL): Swiss ISG 24h BACS + DSG Art. 24 + FINMA 05/2020 & 03/2024 vs. EU DORA 4h / NIS2 24h / GDPR 72h vs. UK ICO 72h |
+| `conformance/runner.ts` | 12-suite Conformance, Formal Proof, Dialectical *Fallgruppen*, CEGAR Replay, Sovereign Conflict & Living Advice test runner |
 
 ---
 
