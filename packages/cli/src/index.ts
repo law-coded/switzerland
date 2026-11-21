@@ -23,9 +23,21 @@ import {
   detectAmendmentDrift,
   mapSwissLawGitDiffToRules,
 } from "../../grounding/src/index.ts";
+import { compileLawDsl, decompileToLawDsl } from "../../dsl/src/index.ts";
+import { findStructuringLevers, proveDocument } from "../../prover/src/index.ts";
+import { runCegarVerificationGate, type RealCourtCaseRecord } from "../../cegar/src/index.ts";
+import { evaluateEnterprisePortfolio, type OrganizationDigitalTwin } from "../../enterprise/src/index.ts";
 
 function loadJson<T>(filePath: string): T {
   return JSON.parse(readFileSync(resolve(filePath), "utf8")) as T;
+}
+
+function loadLcfOrLaw(filePath: string): LcfDocument {
+  const full = resolve(filePath);
+  if (full.endsWith(".law")) {
+    return compileLawDsl(readFileSync(full, "utf8"));
+  }
+  return JSON.parse(readFileSync(full, "utf8")) as LcfDocument;
 }
 
 function findCorpusFiles(dir: string): string[] {
@@ -34,7 +46,7 @@ function findCorpusFiles(dir: string): string[] {
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) {
       out.push(...findCorpusFiles(full));
-    } else if (entry.endsWith(".lcf.json")) {
+    } else if (entry.endsWith(".lcf.json") || entry.endsWith(".law")) {
       out.push(full);
     }
   }
@@ -86,9 +98,15 @@ Commands:
   diff-lenses <file.lcf.json> --inputs '<json>' [ctx flags] Compare outcomes across Streitstand lenses
   counterfactual <file.lcf.json> --inputs '<json>' [flags]  Find minimal factual flips
   next-questions <file.lcf.json> --inputs '<json>' [flags]  Minimal triage next-question solver
-  export-ruml <file.lcf.json> [--lang de] [--lens ...]      Compile to RUML 1.0.0 + Fidelity Report
+  export-ruml <file.lcf.json|file.law> [--lang de]          Compile to RUML 1.0.0 + Fidelity Report
   import-ruml <file.ruml>                                   Import RUML 1.0.0 JSON into LCF 0.1
-  drift <file.lcf.json> [--as-of YYYY-MM-DD] [--git-diff a,b] Check Fedlex / swisslaw-git drift
+  compile-dsl <file.law>                                    Compile literate .law DSL to LCF 0.1 JSON
+  decompile-dsl <file.lcf.json>                             Decompile LCF 0.1 JSON to literate .law DSL
+  prove <file.lcf.json|file.law>                            Run formal symbolic proof kernel (conflicts, coverage, cliffs)
+  structuring <file> --inputs '<json>' --target <id> --want '<json>'  Find lawful structuring levers
+  cegar <file> --cases <bge-replay.json>                    Run CEGAR formal + real court replay verification gate
+  advise-enterprise <file> --twin <org.json> --inputs '<json>'  Evaluate multinational organization Digital Twin
+  drift <file.lcf.json|file.law> [--as-of YYYY-MM-DD]       Check Fedlex / swisslaw-git drift
 
 Context flags: --jurisdiction CH-ZH --lang de|fr|it|en --fact-date YYYY-MM-DD --lens <id> --mode adjudicate|triage`);
 }
@@ -103,14 +121,14 @@ function main(): void {
 
   switch (cmd) {
     case "validate": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const res = validateLcfDocument(doc);
       console.log(JSON.stringify(res, null, 2));
       if (!res.valid) process.exit(1);
       return;
     }
     case "verify": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const rep = verifyDocument(doc);
       console.log(JSON.stringify(rep, null, 2));
       if (!rep.structuralValid) process.exit(1);
@@ -121,7 +139,7 @@ function main(): void {
       const files = findCorpusFiles(root);
       let allOk = true;
       for (const f of files) {
-        const doc = loadJson<LcfDocument>(f);
+        const doc = loadLcfOrLaw(f);
         const rep = verifyDocument(doc);
         const status = rep.structuralValid ? "PASS" : "FAIL";
         console.log(
@@ -136,21 +154,21 @@ function main(): void {
       return;
     }
     case "eval": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
       const res = evaluateDocument(doc, inputs, buildContext(flags));
       console.log(JSON.stringify(res, null, 2));
       return;
     }
     case "explain": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
       const res = evaluateDocument(doc, inputs, buildContext(flags));
       console.log(generateBegruendung(doc, res));
       return;
     }
     case "diff-lenses": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
       const diff = diffLenses(doc, inputs, buildContext(flags));
       console.log(JSON.stringify({
@@ -161,19 +179,19 @@ function main(): void {
       return;
     }
     case "counterfactual": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
       console.log(JSON.stringify(findCounterfactuals(doc, inputs, buildContext(flags)), null, 2));
       return;
     }
     case "next-questions": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
       console.log(JSON.stringify(findMinimalNextQuestions(doc, inputs, buildContext(flags)), null, 2));
       return;
     }
     case "export-ruml": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const exported = exportToRuml10(doc, {
         language: flags["lang"],
         jurisdiction: flags["jurisdiction"],
@@ -187,8 +205,54 @@ function main(): void {
       console.log(JSON.stringify(importFromRuml10(ruml), null, 2));
       return;
     }
+    case "compile-dsl": {
+      const doc = compileLawDsl(readFileSync(resolve(positional[0]!), "utf8"));
+      console.log(JSON.stringify(doc, null, 2));
+      return;
+    }
+    case "decompile-dsl": {
+      const doc = loadLcfOrLaw(positional[0]!);
+      console.log(decompileToLawDsl(doc));
+      return;
+    }
+    case "prove": {
+      const doc = loadLcfOrLaw(positional[0]!);
+      const cert = proveDocument(doc);
+      console.log(JSON.stringify(cert, null, 2));
+      if (cert.soundnessVerdict !== "PROVEN_SOUND") process.exit(1);
+      return;
+    }
+    case "structuring": {
+      const doc = loadLcfOrLaw(positional[0]!);
+      const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
+      const target = flags["target"] ?? doc.outputs[0]!.id;
+      const want = flags["want"] ? JSON.parse(flags["want"]) : true;
+      console.log(JSON.stringify(findStructuringLevers(doc, inputs, buildContext(flags), target, want), null, 2));
+      return;
+    }
+    case "cegar": {
+      const doc = loadLcfOrLaw(positional[0]!);
+      const cases = loadJson<RealCourtCaseRecord[]>(flags["cases"]!);
+      const packet = runCegarVerificationGate(doc, cases);
+      console.log(JSON.stringify(packet, null, 2));
+      if (packet.status !== "CONVERGED") process.exit(1);
+      return;
+    }
+    case "advise-enterprise": {
+      const doc = loadLcfOrLaw(positional[0]!);
+      const twin = loadJson<OrganizationDigitalTwin>(flags["twin"]!);
+      const inputs = flags["inputs"] ? (JSON.parse(flags["inputs"]) as Record<string, unknown>) : {};
+      const dossier = evaluateEnterprisePortfolio(twin, doc, inputs, {
+        factDate: flags["fact-date"],
+        futureDate: flags["future-date"],
+        language: flags["lang"],
+        lens: flags["lens"],
+      });
+      console.log(flags["format"] === "markdown" ? dossier.executiveMemoMarkdown : JSON.stringify(dossier, null, 2));
+      return;
+    }
     case "drift": {
-      const doc = loadJson<LcfDocument>(positional[0]!);
+      const doc = loadLcfOrLaw(positional[0]!);
       const asOf = flags["as-of"] ?? new Date().toISOString().slice(0, 10);
       const alerts = detectAmendmentDrift(doc, asOf);
       const gitHits = flags["git-diff"]

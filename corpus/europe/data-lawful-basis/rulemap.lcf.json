@@ -66,6 +66,34 @@
         "it": "1 Una lesione della personalità è illecita se non è giustificata dal consenso della persona interessata, da un interesse preponderante privato o pubblico oppure dalla legge. 2 Un interesse preponderante del titolare del trattamento può in particolare sussistere se questi: a. tratta dati personali riguardanti l’altra parte contraente in relazione diretta con la conclusione o l’esecuzione di un contratto."
       }
     },
+    "ch_dsg_art34": {
+      "kind": "statute",
+      "jurisdiction": "CH",
+      "citation": {
+        "de": "Art. 34 DSG (SR 235.1: Rechtsgrundlagen für Bundesorgane)",
+        "fr": "Art. 34 LPD (RS 235.1: bases légales des organes fédéraux)",
+        "it": "Art. 34 LPD (RS 235.1: basi legali per organi federali)",
+        "en": "Art. 34 Swiss FADP / DSG (SR 235.1: Statutory Basis for Federal Public Organs)"
+      },
+      "eli": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_34",
+      "swisslawGitPath": {
+        "de": "ch/2/235.1/de.md#art-34",
+        "fr": "ch/2/235.1/fr.md#art-34",
+        "it": "ch/2/235.1/it.md#art-34"
+      },
+      "urls": {
+        "de": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_34",
+        "fr": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_34",
+        "it": "https://www.fedlex.admin.ch/eli/cc/2022/491/it#art_34",
+        "en": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_34"
+      },
+      "consolidationDate": "2025-07-07",
+      "verbatimText": {
+        "de": "1 Bundesorgane dürfen Personendaten nur bearbeiten, wenn dafür eine gesetzliche Grundlage besteht. 4 In Abweichung von den Absätzen 1–3 dürfen Bundesorgane Personendaten bearbeiten, wenn eine der folgenden Voraussetzungen erfüllt ist: b. Die betroffene Person hat im Einzelfall in die Bearbeitung eingewilligt oder hat ihre Personendaten allgemein zugänglich gemacht und eine Bearbeitung nicht ausdrücklich untersagt.",
+        "fr": "1 Les organes fédéraux ne sont en droit de traiter des données personnelles que s’il existe une base légale. 4 En dérogation aux al. 1 à 3, les organes fédéraux peuvent traiter des données personnelles si: b. la personne concernée a consenti au traitement en l’espèce.",
+        "it": "1 Gli organi federali hanno il diritto di trattare dati personali soltanto se lo prevede una base legale. 4 In deroga ai capoversi 1–3, gli organi federali possono trattare dati personali se: b. la persona interessata ha dato, nel caso specifico, il suo consenso al trattamento."
+      }
+    },
     "uk_gdpr_art6": {
       "kind": "statute",
       "jurisdiction": "UK",
@@ -239,6 +267,26 @@
       "compute": { "op": "lit", "value": true }
     },
     {
+      "id": "ch_dsg_public_organ_base",
+      "target": "processing_lawful",
+      "kind": "base",
+      "label": {
+        "de": "Schweiz Bundesorgane (Art. 34 Abs. 1 & Abs. 4 lit. b DSG): Gesetzliche Grundlage oder Einzelfalleinwilligung zwingend erforderlich",
+        "fr": "Suisse organes fédéraux (art. 34 al. 1 et 4 let. b LPD): base légale ou consentement requis",
+        "it": "Svizzera organi federali (art. 34 cpv. 1 e 4 lett. b LPD): base legale o consenso richiesti",
+        "en": "Switzerland Federal Public Organs (Art. 34(1) & (4)(b) DSG): Unlawful without statutory basis or case-specific consent"
+      },
+      "authorities": ["ch_dsg_art34"],
+      "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
+      "priority": 12,
+      "when": {
+        "op": "eq",
+        "left": { "op": "input", "name": "controllerSector" },
+        "right": { "op": "lit", "value": "public" }
+      },
+      "compute": { "op": "eq", "left": { "op": "input", "name": "hasConsent" }, "right": { "op": "lit", "value": true } }
+    },
+    {
       "id": "ch_dsg_infringement_unlawful",
       "target": "processing_lawful",
       "kind": "exception",
@@ -252,9 +300,11 @@
       "scope": { "jurisdictions": ["CH"], "authorityLevel": "federal_statute" },
       "priority": 15,
       "when": {
-        "op": "eq",
-        "left": { "op": "input", "name": "infringesPersonalityWithoutObjection" },
-        "right": { "op": "lit", "value": true }
+        "op": "and",
+        "args": [
+          { "op": "eq", "left": { "op": "input", "name": "controllerSector" }, "right": { "op": "lit", "value": "private" } },
+          { "op": "eq", "left": { "op": "input", "name": "infringesPersonalityWithoutObjection" }, "right": { "op": "lit", "value": true } }
+        ]
       },
       "compute": { "op": "lit", "value": false }
     },
@@ -273,10 +323,16 @@
       "priority": 25,
       "overrides": ["ch_dsg_infringement_unlawful"],
       "when": {
-        "op": "or",
+        "op": "and",
         "args": [
-          { "op": "eq", "left": { "op": "input", "name": "hasConsent" }, "right": { "op": "lit", "value": true } },
-          { "op": "eq", "left": { "op": "input", "name": "necessaryForContract" }, "right": { "op": "lit", "value": true } }
+          { "op": "eq", "left": { "op": "input", "name": "controllerSector" }, "right": { "op": "lit", "value": "private" } },
+          {
+            "op": "or",
+            "args": [
+              { "op": "eq", "left": { "op": "input", "name": "hasConsent" }, "right": { "op": "lit", "value": true } },
+              { "op": "eq", "left": { "op": "input", "name": "necessaryForContract" }, "right": { "op": "lit", "value": true } }
+            ]
+          }
         ]
       },
       "compute": { "op": "lit", "value": true }
@@ -298,6 +354,7 @@
       "when": {
         "op": "and",
         "args": [
+          { "op": "eq", "left": { "op": "input", "name": "controllerSector" }, "right": { "op": "lit", "value": "private" } },
           { "op": "eq", "left": { "op": "input", "name": "creditworthinessPurpose" }, "right": { "op": "lit", "value": true } },
           { "op": "eq", "left": { "op": "input", "name": "sensitiveOrHighRiskProfiling" }, "right": { "op": "lit", "value": false } },
           { "op": "lte", "left": { "op": "input", "name": "creditDataAgeYears" }, "right": { "op": "lit", "value": 10 } },

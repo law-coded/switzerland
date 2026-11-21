@@ -36,6 +36,17 @@ import {
   detectAmendmentDrift,
   mapSwissLawGitDiffToRules,
 } from "../packages/grounding/src/index.ts";
+import { compileLawDsl, decompileToLawDsl } from "../packages/dsl/src/index.ts";
+import { findStructuringLevers, proveDocument } from "../packages/prover/src/index.ts";
+import {
+  runCaseReplayBenchmark,
+  runCegarVerificationGate,
+  type RealCourtCaseRecord,
+} from "../packages/cegar/src/index.ts";
+import {
+  evaluateEnterprisePortfolio,
+  type OrganizationDigitalTwin,
+} from "../packages/enterprise/src/index.ts";
 
 const loadCorpus = (rel: string): LcfDocument =>
   JSON.parse(readFileSync(resolve(rel), "utf8")) as LcfDocument;
@@ -43,6 +54,14 @@ const loadCorpus = (rel: string): LcfDocument =>
 const zpoDoc = loadCorpus("corpus/ch/zpo-deadlines/rulemap.lcf.json");
 const orDoc = loadCorpus("corpus/ch/or-termination/rulemap.lcf.json");
 const euDataDoc = loadCorpus("corpus/europe/data-lawful-basis/rulemap.lcf.json");
+const enterpriseCyberLawSrc = readFileSync(
+  resolve("corpus/enterprise/cyber-data-ai-incident/rules.law"),
+  "utf8",
+);
+const enterpriseCyberDoc = compileLawDsl(enterpriseCyberLawSrc);
+const orBgeReplayCases = JSON.parse(
+  readFileSync(resolve("corpus/ch/or-termination/bge-replay.json"), "utf8"),
+) as RealCourtCaseRecord[];
 
 describe("01. Exact Money Arithmetic & RFC 8785 Canonical Integrity", () => {
   it("eliminates IEEE-754 float errors in CHF calculations", () => {
@@ -396,5 +415,144 @@ describe("06. Digitalcheck Verifier, swisslaw-git Drift & RUML 1.0.0 Bidirection
     const failRes = evaluateDocument(importedLcf, { age: 16, state: "BY" }, { jurisdiction: "DE-BY", language: "de" });
     assert.equal(passRes.outputs["root_result"], true);
     assert.equal(failRes.outputs["root_result"], false);
+  });
+});
+
+describe("07. Literate .law DSL Compiler & Decompiler (Enterprise Cyber/Data Incident Suite)", () => {
+  it("compiles rules.law into valid LCF 0.1 with 100/100 Digitalcheck readiness and 4/4 golden tests", () => {
+    const val = validateLcfDocument(enterpriseCyberDoc);
+    assert.equal(val.valid, true, JSON.stringify(val.errors));
+    const rep = verifyDocument(enterpriseCyberDoc);
+    assert.equal(rep.structuralValid, true);
+    assert.equal(rep.readinessScore, 100);
+    assert.equal(rep.checks.goldenTestsPassed, 4);
+    assert.equal(rep.checks.goldenTestsTotal, 4);
+  });
+
+  it("round-trips LCF 0.1 -> .law DSL -> LCF 0.1 with identical evaluation results", () => {
+    const decompiled = decompileToLawDsl(euDataDoc);
+    assert.match(decompiled, /module europe-data-lawful-basis/);
+    const recompiled = compileLawDsl(decompiled);
+    const rOrig = evaluateDocument(euDataDoc, { controllerSector: "private", hasConsent: false, infringesPersonalityWithoutObjection: false }, { jurisdiction: "CH", factDate: "2026-06-01" });
+    const rRe = evaluateDocument(recompiled, { controllerSector: "private", hasConsent: false, infringesPersonalityWithoutObjection: false }, { jurisdiction: "CH", factDate: "2026-06-01" });
+    assert.deepEqual(rOrig.outputs, rRe.outputs);
+  });
+});
+
+describe("08. AlphaLaw Formal Symbolic Proof Kernel & Adversarial Structuring Solver", () => {
+  it("mathematically proves soundness (zero silent conflicts, total primary coverage) across all 4 flagship modules", () => {
+    for (const doc of [zpoDoc, orDoc, euDataDoc, enterpriseCyberDoc]) {
+      const cert = proveDocument(doc, { maxStates: 250 });
+      assert.equal(cert.soundnessVerdict, "PROVEN_SOUND", `Failed proof for ${doc.metadata.slug}: ${JSON.stringify(cert.properties)}`);
+      assert.equal(cert.properties.zeroSilentConflicts.proven, true);
+      assert.equal(cert.properties.totalPrimaryCoverage.proven, true);
+    }
+  });
+
+  it("automatically discovers statutory threshold cliffs, temporal 2025 shifts, and CH/EU/UK divergence witnesses", () => {
+    const orCert = proveDocument(orDoc, { maxStates: 250 });
+    assert.ok(orCert.thresholdCliffs.some((c) => c.inputName === "serviceYear" && c.fromValue === 1 && c.toValue === 2));
+    assert.ok(orCert.thresholdCliffs.some((c) => c.inputName === "serviceYear" && c.fromValue === 5 && c.toValue === 6));
+    assert.ok(orCert.lensDivergences.length >= 1);
+
+    const zpoCert = proveDocument(zpoDoc, { maxStates: 200 });
+    assert.ok(zpoCert.temporalDivergences.some((t) => t.outputId === "art142_abs1bis_applies"));
+
+    const cyberCert = proveDocument(enterpriseCyberDoc, { maxStates: 250 });
+    assert.ok(cyberCert.jurisdictionDivergences.some((d) => d.outputId === "data_breach_report_required"));
+    assert.ok(cyberCert.jurisdictionDivergences.some((d) => d.outputId === "reporting_deadline_hours"));
+  });
+
+  it("discovers minimal lawful structuring levers to achieve a client's desired legal outcome", () => {
+    // Client in Germany (EU) currently has processing_lawful = false; find lawful levers to reach true
+    const levers = findStructuringLevers(
+      euDataDoc,
+      { controllerSector: "private", hasConsent: false, necessaryForContract: false },
+      { jurisdiction: "DE", factDate: "2026-06-01", language: "en" },
+      "processing_lawful",
+      true,
+      ["hasConsent", "necessaryForContract"],
+    );
+    assert.ok(levers.length >= 2);
+    assert.ok(levers.some((l) => l.steps === 1 && l.changes[0]?.inputName === "hasConsent" && l.changes[0]?.to === true));
+    assert.ok(levers.some((l) => l.steps === 1 && l.changes[0]?.inputName === "necessaryForContract" && l.changes[0]?.to === true));
+  });
+});
+
+describe("09. CEGAR Empirical BGE Replay Oracle & Enterprise Client Digital Twin", () => {
+  it("achieves 100% empirical judicial fidelity (CONVERGED) replaying 5 real OpenCaseLaw Swiss court decisions", () => {
+    const gate = runCegarVerificationGate(orDoc, orBgeReplayCases, 1);
+    assert.equal(gate.status, "CONVERGED");
+    assert.equal(gate.judicialReplay.totalCases, 5);
+    assert.equal(gate.judicialReplay.exactMatches, 5);
+    assert.equal(gate.judicialReplay.judicialFidelityPercent, 100);
+    assert.equal(gate.repairDirectives.length, 0);
+  });
+
+  it("diagnoses Streitstand counterexamples when replayed under a misaligned interpretive lens", () => {
+    const bvgerCase = orBgeReplayCases.find((c) => c.decisionId === "bvger_A-5819_2016")!;
+    const mislignedReplay = runCaseReplayBenchmark(orDoc, [
+      { ...bvgerCase, context: { ...bvgerCase.context, lens: "strict_statutory_text" } },
+    ]);
+    assert.equal(mislignedReplay.converged, false);
+    assert.equal(mislignedReplay.counterexamples[0]?.diagnosis, "streitstand_resolved_by_alternate_lens");
+    assert.equal(mislignedReplay.counterexamples[0]?.alternateLensMatch, "bger_settled");
+  });
+
+  it("evaluates a 5-entity Swiss/EU/EEA/UK multinational Digital Twin with exact reporting clocks & future-law diff", () => {
+    const multinational: OrganizationDigitalTwin = {
+      organizationId: "org-helvetia-fin",
+      organizationName: "Helvetia Global Financial Group AG",
+      headquarters: "CH-ZH",
+      entities: [
+        { entityId: "ch-hq-bank", name: "Helvetia Bank AG (Zurich HQ)", jurisdiction: "CH-ZH", language: "de", attributes: { sector: "financial_regulated" } },
+        { entityId: "de-eu-bank", name: "Helvetia Bank Europe GmbH (Frankfurt)", jurisdiction: "DE", language: "de", attributes: { sector: "financial_regulated" } },
+        { entityId: "no-eea-cloud", name: "Helvetia Nordic Cloud AS (Oslo)", jurisdiction: "NO", language: "en", attributes: { sector: "cloud_datacenter" } },
+        { entityId: "uk-advisory", name: "Helvetia UK Advisory Ltd (London)", jurisdiction: "UK", language: "en", attributes: { sector: "general_enterprise" } },
+      ],
+    };
+
+    const incidentFacts = {
+      cyberAttackTriggered: true,
+      affectsOnlyNonCriticalCarveOut: false,
+      personalDataBreached: true,
+      dataRiskLevel: "moderate",
+    };
+
+    const dossier = evaluateEnterprisePortfolio(multinational, enterpriseCyberDoc, incidentFacts, {
+      factDate: "2026-06-01",
+      language: "en",
+      lens: "strict_regulatory",
+    });
+
+    // High-water mark clock across group is 4 hours (DE EU Bank under DORA)!
+    assert.equal(dossier.crossBorderSummary.strictestDeadlineHours?.hours, 4);
+    assert.equal(dossier.crossBorderSummary.strictestDeadlineHours?.entityId, "de-eu-bank");
+
+    // Verify exact per-entity legal divergence:
+    // - CH-ZH Bank: BACS/FINMA 24h cyber report YES, EDÖB data breach report NO (moderate != high under Art. 24 DSG!)
+    // - DE EU Bank: DORA 4h cyber report YES, EU GDPR Art. 33 YES
+    // - NO EEA Cloud: NIS2 24h cyber report YES, EEA GDPR Art. 33 YES
+    // - UK General Enterprise: cyber report NO, UK ICO 72h GDPR report YES
+    const byId = Object.fromEntries(dossier.entityAssessments.map((e) => [e.entityId, e.outputs]));
+    assert.equal(byId["ch-hq-bank"]!["cyber_authority_report_required"], true);
+    assert.equal(byId["ch-hq-bank"]!["data_breach_report_required"], false);
+    assert.equal(byId["ch-hq-bank"]!["reporting_deadline_hours"], 24);
+    assert.equal(byId["de-eu-bank"]!["reporting_deadline_hours"], 4);
+    assert.equal(byId["de-eu-bank"]!["data_breach_report_required"], true);
+    assert.equal(byId["no-eea-cloud"]!["reporting_deadline_hours"], 24);
+    assert.equal(byId["uk-advisory"]!["reporting_deadline_hours"], 72);
+    assert.equal(byId["uk-advisory"]!["cyber_authority_report_required"], false);
+
+    // Pre-enactment temporal radar: compare 2024-11-01 (pre-ISG 2025-04-01) vs 2026-06-01 (post-ISG)
+    const preVsPost = evaluateEnterprisePortfolio(multinational, enterpriseCyberDoc, incidentFacts, {
+      factDate: "2024-11-01",
+      futureDate: "2026-06-01",
+      language: "en",
+      lens: "strict_regulatory",
+    });
+    assert.ok(preVsPost.crossBorderSummary.futureLawImpacts.some((i) => i.entityId === "ch-hq-bank"));
+    assert.match(dossier.executiveMemoMarkdown, /HIGH-WATER MARK ALERT/);
+    assert.match(dossier.executiveMemoMarkdown, /Helvetia Global Financial Group AG/);
   });
 });

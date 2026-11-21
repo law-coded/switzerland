@@ -20,6 +20,7 @@ import {
   detectAmendmentDrift,
   EUROPEAN_LEGAL_SOURCES,
 } from "../grounding/src/index.ts";
+import { compileLawDsl } from "../dsl/src/index.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "../..");
@@ -34,6 +35,9 @@ function loadAllCorpus(): Record<string, LcfDocument> {
       if (statSync(full).isDirectory()) walk(full);
       else if (entry.endsWith(".lcf.json")) {
         const doc = JSON.parse(readFileSync(full, "utf8")) as LcfDocument;
+        out[doc.metadata.slug] = doc;
+      } else if (entry.endsWith(".law")) {
+        const doc = compileLawDsl(readFileSync(full, "utf8"));
         out[doc.metadata.slug] = doc;
       }
     }

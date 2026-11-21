@@ -24,6 +24,9 @@ import {
 } from "../../engine/src/index.ts";
 import { exportToRuml10 } from "../../ruml-bridge/src/index.ts";
 import { detectAmendmentDrift } from "../../grounding/src/index.ts";
+import { compileLawDsl } from "../../dsl/src/index.ts";
+import { findStructuringLevers, proveDocument } from "../../prover/src/index.ts";
+import { evaluateEnterprisePortfolio, type OrganizationDigitalTwin } from "../../enterprise/src/index.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CORPUS_DIR = resolve(__dirname, "../../../corpus");
@@ -36,6 +39,9 @@ function loadCorpus(): Record<string, LcfDocument> {
       if (statSync(full).isDirectory()) walk(full);
       else if (entry.endsWith(".lcf.json")) {
         const doc = JSON.parse(readFileSync(full, "utf8")) as LcfDocument;
+        out[doc.metadata.slug] = doc;
+      } else if (entry.endsWith(".law")) {
+        const doc = compileLawDsl(readFileSync(full, "utf8"));
         out[doc.metadata.slug] = doc;
       }
     }
@@ -129,6 +135,47 @@ const TOOLS = [
       },
     },
   },
+  {
+    name: "prove_formal",
+    description: "Run the AlphaLaw Formal Legal Proof Kernel over a module to prove zero silent conflicts, total primary coverage, rule reachability, exact threshold cliffs, and cross-jurisdiction/Streitstand/temporal divergence witnesses.",
+    inputSchema: {
+      type: "object",
+      required: ["slug"],
+      properties: { slug: { type: "string" } },
+    },
+  },
+  {
+    name: "find_structuring_levers",
+    description: "Adversarial legal structuring solver: find minimal 1-step or 2-step lawful modifications that achieve a client's desired legal output.",
+    inputSchema: {
+      type: "object",
+      required: ["slug", "inputs", "targetOutputId", "desiredValue"],
+      properties: {
+        slug: { type: "string" },
+        inputs: { type: "object" },
+        context: { type: "object" },
+        targetOutputId: { type: "string" },
+        desiredValue: {},
+        adjustableInputs: { type: "array", items: { type: "string" } },
+      },
+    },
+  },
+  {
+    name: "advise_enterprise",
+    description: "Evaluate a multi-entity large organization Digital Twin across Switzerland, EU/EEA, and UK in one pass, returning a cross-border applicability matrix, strictest reporting clock, future-law impact radar, and executive dossier.",
+    inputSchema: {
+      type: "object",
+      required: ["slug", "twin", "scenarioFacts"],
+      properties: {
+        slug: { type: "string" },
+        twin: { type: "object" },
+        scenarioFacts: { type: "object" },
+        factDate: { type: "string" },
+        futureDate: { type: "string" },
+        language: { type: "string" },
+      },
+    },
+  },
 ];
 
 function handleToolCall(name: string, args: Record<string, unknown>): unknown {
@@ -175,6 +222,28 @@ function handleToolCall(name: string, args: Record<string, unknown>): unknown {
         jurisdiction: typeof args["jurisdiction"] === "string" ? args["jurisdiction"] : undefined,
         lens: typeof args["lens"] === "string" ? args["lens"] : undefined,
       });
+    case "prove_formal":
+      return proveDocument(doc);
+    case "find_structuring_levers":
+      return findStructuringLevers(
+        doc,
+        inputs,
+        context,
+        String(args["targetOutputId"]),
+        args["desiredValue"],
+        Array.isArray(args["adjustableInputs"]) ? (args["adjustableInputs"] as string[]) : undefined,
+      );
+    case "advise_enterprise":
+      return evaluateEnterprisePortfolio(
+        args["twin"] as OrganizationDigitalTwin,
+        doc,
+        (args["scenarioFacts"] ?? {}) as Record<string, unknown>,
+        {
+          factDate: typeof args["factDate"] === "string" ? args["factDate"] : undefined,
+          futureDate: typeof args["futureDate"] === "string" ? args["futureDate"] : undefined,
+          language: typeof args["language"] === "string" ? args["language"] : undefined,
+        },
+      );
     default:
       throw new Error(`Unknown tool "${name}"`);
   }

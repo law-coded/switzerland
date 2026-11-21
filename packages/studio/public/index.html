@@ -430,6 +430,23 @@
           ctx: { jurisdiction: "UK", factDate: "2026-06-01" },
           inputs: { controllerSector: "private", hasConsent: false, necessaryForContract: false, infringesPersonalityWithoutObjection: false, ukRecognisedLegitimateInterest: true }
         }
+      ],
+      "enterprise-cyber-data-incident": [
+        {
+          label: "Swiss Bank Cyberattack (ISG 24h, no EDÖB on moderate risk)",
+          ctx: { jurisdiction: "CH-ZH", factDate: "2026-06-01", lens: "strict_regulatory" },
+          inputs: { sector: "financial_regulated", cyberAttackTriggered: true, affectsOnlyNonCriticalCarveOut: false, personalDataBreached: true, dataRiskLevel: "moderate" }
+        },
+        {
+          label: "German EU Bank Same Attack (DORA 4h + GDPR Art. 33!)",
+          ctx: { jurisdiction: "DE", factDate: "2026-06-01", lens: "strict_regulatory" },
+          inputs: { sector: "financial_regulated", cyberAttackTriggered: true, affectsOnlyNonCriticalCarveOut: false, personalDataBreached: true, dataRiskLevel: "moderate" }
+        },
+        {
+          label: "Art. 74b Abs. 2 ISG Non-Critical Carve-Out (Exempt)",
+          ctx: { jurisdiction: "CH-ZH", factDate: "2026-06-01", lens: "strict_regulatory" },
+          inputs: { sector: "financial_regulated", cyberAttackTriggered: true, affectsOnlyNonCriticalCarveOut: true, personalDataBreached: false, dataRiskLevel: "unlikely" }
+        }
       ]
     };
 

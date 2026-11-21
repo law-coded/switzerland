@@ -17,6 +17,18 @@ importers:
 
   packages/calendars: {}
 
+  packages/cegar:
+    dependencies:
+      '@law-coded/core':
+        specifier: workspace:*
+        version: link:../core
+      '@law-coded/engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@law-coded/prover':
+        specifier: workspace:*
+        version: link:../prover
+
   packages/cli:
     dependencies:
       '@law-coded/core':
@@ -34,6 +46,12 @@ importers:
 
   packages/core: {}
 
+  packages/dsl:
+    dependencies:
+      '@law-coded/core':
+        specifier: workspace:*
+        version: link:../core
+
   packages/engine:
     dependencies:
       '@law-coded/calendars':
@@ -42,6 +60,18 @@ importers:
       '@law-coded/core':
         specifier: workspace:*
         version: link:../core
+
+  packages/enterprise:
+    dependencies:
+      '@law-coded/core':
+        specifier: workspace:*
+        version: link:../core
+      '@law-coded/engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@law-coded/prover':
+        specifier: workspace:*
+        version: link:../prover
 
   packages/grounding:
     dependencies:
@@ -63,6 +93,15 @@ importers:
       '@law-coded/ruml-bridge':
         specifier: workspace:*
         version: link:../ruml-bridge
+
+  packages/prover:
+    dependencies:
+      '@law-coded/core':
+        specifier: workspace:*
+        version: link:../core
+      '@law-coded/engine':
+        specifier: workspace:*
+        version: link:../engine
 
   packages/ruml-bridge:
     dependencies:

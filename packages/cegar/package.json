@@ -1,0 +1,14 @@
+{
+  "name": "@law-coded/cegar",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@law-coded/core": "workspace:*",
+    "@law-coded/engine": "workspace:*",
+    "@law-coded/prover": "workspace:*"
+  }
+}

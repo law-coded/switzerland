@@ -1,0 +1,325 @@
+# Written in literate .law DSL (compiles cleanly to LCF 0.1 + RUML 1.0.0)
+# Verbatim-grounded in Fedlex / OpenCaseLaw (ISG SR 128, DSG SR 235.1, FINMAG SR 956.1 + FINMA 05/2020 & 03/2024)
+# plus EU GDPR Art. 33, EU NIS2 Art. 23, EU DORA Art. 19, and UK GDPR Art. 33.
+
+module enterprise-cyber-data-incident @ 2026.10.01
+jurisdictions: CH, CH-ZH, EU, EEA, DE, FR, NO, UK
+languages: de, fr, it, en
+domains: cybersecurity, data-protection, financial-regulation, incident-response
+title.de: "Unternehmens-Meldepflichten bei Cyber- und Datenschutzvorfällen (CH ISG / DSG / FINMA vs. EU GDPR / NIS2 / DORA vs. UK)"
+title.fr: "Obligations d'annonce en cas de cyberattaque ou violation de données (CH LSI / LPD / FINMA vs. UE / UK)"
+title.it: "Obblighi di segnalazione di ciberattacchi e violazioni di dati (CH LSIn / LPD / FINMA vs. UE / UK)"
+title.en: "Enterprise Cyber & Data Incident Reporting Matrix (CH ISG / DSG / FINMA vs. EU GDPR / NIS2 / DORA vs. UK)"
+description.de: "Ausführbare Mehrländer-Meldefristenmatrix für Grossunternehmen: 24h BACS (Art. 74b/74d/74e ISG), EDÖB Hochrisiko (Art. 24 DSG), FINMA 24h/72h (Art. 29 Abs. 2 FINMAG & AM 05/2020, 03/2024), EU GDPR 72h, EU NIS2 24h, EU DORA 4h und UK ICO 72h."
+description.en: "Executable cross-border incident reporting matrix for large organizations: Swiss 24h BACS/NCSC (Art. 74b/74d/74e ISG), FDPIC high-risk (Art. 24 DSG), FINMA 24h/72h (Art. 29(2) FINMAG & Guidance 05/2020, 03/2024), EU GDPR 72h, NIS2 24h, DORA 4h, and UK ICO 72h."
+pending_change: 2027-01-01 "Fedlex consolidation of FINMAG (SR 956.1) enters into force 2027-01-01; verify Art. 29 FINMAG impact." https://www.fedlex.admin.ch/eli/cc/2008/736/de#art_29
+
+authority ch_isg_74b [statute, CH]
+  de: "Art. 74b ISG (SR 128, in Kraft seit 1.4.2025)"
+  fr: "Art. 74b LSI (RS 128, en vigueur dès 1.4.2025)"
+  it: "Art. 74b LSIn (RS 128, in vigore dal 1.4.2025)"
+  en: "Art. 74b Swiss Information Security Act (ISG, SR 128, effective 1 Apr 2025)"
+  eli: "https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_74b"
+  url.de: "https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_74b"
+  url.fr: "https://www.fedlex.admin.ch/eli/cc/2022/232/fr#art_74b"
+  url.it: "https://www.fedlex.admin.ch/eli/cc/2022/232/it#art_74b"
+  git.de: "ch/1/128/de.md#art-74b"
+  git.fr: "ch/1/128/fr.md#art-74b"
+  git.it: "ch/1/128/it.md#art-74b"
+  consolidation: "2025-10-01"
+  verbatim.de: "1 Die Meldepflicht gilt für: e. Unternehmen, die dem Bankengesetz, dem Versicherungsaufsichtsgesetz oder dem Finanzmarktinfrastrukturgesetz unterstehen; ... 2 Bei Behörden und Organisationen, die auch Tätigkeiten ausüben, die nicht unter Absatz 1 fallen, besteht keine Meldepflicht für Cyberangriffe, die sich ausschliesslich auf diese Tätigkeiten auswirken. 3 Die Meldepflicht nach Absatz 1 gilt für Cyberangriffe, die sich in der Schweiz auswirken, auch wenn sich die betroffenen Informatikmittel im Ausland befinden."
+
+authority ch_isg_74d_74e [statute, CH]
+  de: "Art. 74d und Art. 74e ISG (SR 128: 24-Stunden-Meldepflicht an das BACS)"
+  fr: "Art. 74d et art. 74e LSI (RS 128: signalement dans les 24 heures à l'OFCS)"
+  it: "Art. 74d e art. 74e LSIn (RS 128: segnalazione entro 24 ore all'UFCS)"
+  en: "Art. 74d & Art. 74e Swiss ISG (SR 128: 24-hour mandatory reporting to BACS/NCSC)"
+  eli: "https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_74e"
+  url.de: "https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_74e"
+  url.fr: "https://www.fedlex.admin.ch/eli/cc/2022/232/fr#art_74e"
+  url.it: "https://www.fedlex.admin.ch/eli/cc/2022/232/it#art_74e"
+  git.de: "ch/1/128/de.md#art-74e"
+  consolidation: "2025-10-01"
+  verbatim.de: "Art. 74e Abs. 1: Die Meldung muss innert 24 Stunden nach der Entdeckung des Cyberangriffs erfolgen. Abs. 4: Wer die Meldepflicht für eine Behörde oder Organisation zu erfüllen hat, muss im Rahmen der Meldung keine Angaben machen, die sie oder ihn strafrechtlich belasten."
+
+authority ch_dsg_24 [statute, CH]
+  de: "Art. 24 DSG (SR 235.1: Meldung von Verletzungen der Datensicherheit an den EDÖB)"
+  fr: "Art. 24 LPD (RS 235.1: annonce des violations de la sécurité des données au PFPDT)"
+  it: "Art. 24 LPD (RS 235.1: notifica di violazioni della sicurezza dei dati all'IFPDT)"
+  en: "Art. 24 Swiss FADP / DSG (SR 235.1: prompt notification to FDPIC on high risk)"
+  eli: "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_24"
+  url.de: "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_24"
+  url.fr: "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_24"
+  url.it: "https://www.fedlex.admin.ch/eli/cc/2022/491/it#art_24"
+  git.de: "ch/2/235.1/de.md#art-24"
+  consolidation: "2025-07-07"
+  verbatim.de: "1 Der Verantwortliche meldet dem EDÖB so rasch als möglich eine Verletzung der Datensicherheit, die voraussichtlich zu einem hohen Risiko für die Persönlichkeit oder die Grundrechte der betroffenen Person führt."
+
+authority ch_finma_cyber [admin_directive, CH]
+  de: "Art. 29 Abs. 2 FINMAG (SR 956.1); FINMA-Aufsichtsmitteilung 05/2020 & 03/2024"
+  fr: "Art. 29 al. 2 LFINMA (RS 956.1); Communication FINMA sur la surveillance 05/2020 & 03/2024"
+  it: "Art. 29 cpv. 2 LFINMA (RS 956.1); Comunicazione FINMA sulla vigilanza 05/2020 & 03/2024"
+  en: "Art. 29(2) FINMAG (SR 956.1); FINMA Guidance 05/2020 & 03/2024 (24h initial / 72h report)"
+  eli: "https://www.fedlex.admin.ch/eli/cc/2008/736/de#art_29"
+  url: "https://www.fedlex.admin.ch/eli/cc/2008/736/de#art_29"
+  consolidation: "2025-04-01"
+
+authority eu_gdpr_33 [eu_regulation, EU]
+  de: "Art. 33 DSGVO (VO (EU) 2016/679: 72-Stunden-Meldung an Datenschutzaufsicht)"
+  fr: "Art. 33 RGPD (Règl. (UE) 2016/679: notification dans les 72 heures)"
+  it: "Art. 33 RGPD (Reg. (UE) 2016/679: notifica entro 72 ore)"
+  en: "Art. 33 EU GDPR (Regulation (EU) 2016/679: 72-hour supervisory notification)"
+  eli: "http://data.europa.eu/eli/reg/2016/679/oj"
+  url: "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+
+authority eu_dora_nis2 [eu_regulation, EU]
+  de: "EU DORA (VO (EU) 2022/2554 Art. 19: 4h/24h) & NIS2 (RL (EU) 2022/2555 Art. 23: 24h Frühwarnung)"
+  fr: "UE DORA (art. 19: 4h/24h) & NIS2 (art. 23: alerte précoce 24h)"
+  it: "UE DORA (art. 19: 4h/24h) & NIS2 (art. 23: preallarme 24h)"
+  en: "EU DORA (Reg. (EU) 2022/2554 Art. 19: 4h initial) & NIS2 (Dir. (EU) 2022/2555 Art. 23: 24h early warning)"
+  eli: "http://data.europa.eu/eli/reg/2022/2554/oj"
+  url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+
+authority uk_gdpr_33 [statute, UK]
+  de: "Art. 33 UK GDPR (72-Stunden-Meldung an ICO)"
+  fr: "Art. 33 UK GDPR (notification à l'ICO dans les 72 heures)"
+  it: "Art. 33 UK GDPR (notifica all'ICO entro 72 ore)"
+  en: "Art. 33 UK GDPR (72-hour notification to UK ICO)"
+  url: "https://www.legislation.gov.uk/eur/2016/679/article/33"
+
+input sector: enum(financial_regulated, critical_infrastructure, cloud_datacenter, general_enterprise) required
+  de: "Unternehmenssektor / Regulierungsstatus"
+  fr: "Secteur de l'entreprise / statut réglementaire"
+  it: "Settore aziendale / stato regolatorio"
+  en: "Enterprise Sector / Regulated Status"
+  default: "general_enterprise"
+
+input cyberAttackTriggered: boolean
+  de: "Meldepflichtiger Cyberangriff (Funktionsgefährdung, Datenabfluss, unentdeckt oder Erpressung; Art. 74d ISG)"
+  fr: "Cyberattaque soumise à signalement (art. 74d LSI)"
+  it: "Ciberattacco soggetto a segnalazione (art. 74d LSIn)"
+  en: "Significant Cyberattack Trigger Met (functionality risk, exfiltration, persistent intrusion, or extortion; Art. 74d ISG)"
+  default: false
+
+input affectsOnlyNonCriticalCarveOut: boolean
+  de: "Auswirkung ausschliesslich auf nicht-kritische Nebentätigkeit (Ausnahme Art. 74b Abs. 2 ISG)"
+  fr: "Effet uniquement sur une activité non critique (exception art. 74b al. 2 LSI)"
+  it: "Ripercussione unicamente su attività non critica (eccezione art. 74b cpv. 2 LSIn)"
+  en: "Affects Exclusively Non-Critical Ancillary Activity (Art. 74b para. 2 ISG Carve-Out)"
+  default: false
+
+input personalDataBreached: boolean
+  de: "Verletzung der Datensicherheit bei Personendaten"
+  fr: "Violation de la sécurité des données personnelles"
+  it: "Violazione della sicurezza dei dati personali"
+  en: "Personal Data Security Breach Occurred"
+  default: false
+
+input dataRiskLevel: enum(unlikely, moderate, high)
+  de: "Risikoniveau für betroffene Personen (unwahrscheinlich / mittel / hoch)"
+  fr: "Niveau de risque pour les personnes concernées (improbable / modéré / élevé)"
+  it: "Livello di rischio per le persone interessate (improbabile / moderato / elevato)"
+  en: "Risk Level to Individuals (unlikely / moderate / high)"
+  default: "moderate"
+
+lens strict_regulatory default
+  de: "Strenge Aufsichts- & Compliance-Auslegung (inkl. FINMA AM 03/2024 & DORA 4h)"
+  fr: "Interprétation réglementaire stricte (incl. FINMA 03/2024 & DORA 4h)"
+  it: "Interpretazione regolatoria rigorosa (incl. FINMA 03/2024 & DORA 4h)"
+  en: "Strict Regulatory Compliance Lens (FINMA 03/2024 & DORA 4h clock)"
+  desc.de: "Wendet alle gesetzlichen und aufsichtsrechtlichen Meldepflichten ohne Aufschub an."
+  desc.en: "Applies all statutory and supervisory reporting clocks conservatively."
+  cite: ch_isg_74d_74e, ch_finma_cyber, eu_dora_nis2
+
+lens statutory_minimum
+  de: "Reines Gesetzesminimum (ohne verschärfte DORA/FINMA-Frühwarnung)"
+  fr: "Minimum légal strict"
+  it: "Minimo legale stretto"
+  en: "Statutory Baseline Only (GDPR/DSG/ISG without sectoral supervisory acceleration)"
+  desc.de: "Zeigt die Differenz zwischen allgemeinem Gesetzesminimum und sektorspezifischer Aufsichtspraxis (FINMA / DORA)."
+  desc.en: "Highlights the gap between general statutory baselines and sectoral financial supervisory clocks."
+  cite: ch_isg_74b, ch_dsg_24, eu_gdpr_33
+
+# --- SWITZERLAND: ISG 24h BACS/NCSC (effective 2025-04-01) ---
+rule ch_isg_no_report_base -> cyber_authority_report_required [base, CH, federal_statute, prio 10]
+  de: "Schweiz Grundsatz: Keine BACS-Cybermeldepflicht ausserhalb Art. 74b/74d ISG"
+  fr: "Suisse principe: pas d'obligation de signalement OFCS hors art. 74b/74d LSI"
+  it: "Svizzera principio: nessun obbligo UFCS fuori dall'art. 74b/74d LSIn"
+  en: "Switzerland Base: No BACS/NCSC cyber report required outside Art. 74b/74d ISG"
+  cite: ch_isg_74b
+  then: false
+
+rule ch_isg_mandatory_post2025 -> cyber_authority_report_required [exception, CH, federal_statute, prio 20]
+  de: "Schweiz ab 1.4.2025: 24h-Meldepflicht an das BACS (Art. 74b Abs. 1 & Art. 74d/74e ISG)"
+  fr: "Suisse dès 1.4.2025: signalement obligatoire dans les 24h à l'OFCS (art. 74b & 74d/74e LSI)"
+  it: "Svizzera dal 1.4.2025: segnalazione obbligatoria entro 24h all'UFCS (art. 74b & 74d/74e LSIn)"
+  en: "Switzerland (from 1 Apr 2025): Mandatory 24h report to BACS/NCSC (Art. 74b(1) & 74d/74e ISG)"
+  cite: ch_isg_74b, ch_isg_74d_74e
+  overrides: ch_isg_no_report_base
+  valid_from: 2025-04-01
+  when: cyberAttackTriggered == true and sector in ["financial_regulated", "critical_infrastructure", "cloud_datacenter"]
+  then: true
+
+rule ch_isg_74b_2_noncritical_carveout -> cyber_authority_report_required [counter_exception, CH, federal_statute, prio 30]
+  de: "Ausnahme Art. 74b Abs. 2 ISG: Keine BACS-Meldepflicht bei ausschliesslicher Betroffenheit nicht-kritischer Tätigkeiten"
+  fr: "Exception art. 74b al. 2 LSI: aucune obligation si seules des activités non critiques sont touchées"
+  it: "Eccezione art. 74b cpv. 2 LSIn: nessun obbligo per attività esclusivamente non critiche"
+  en: "Counter-Exception Art. 74b(2) ISG: Exempt when attack affects exclusively non-critical ancillary activities"
+  cite: ch_isg_74b
+  overrides: ch_isg_mandatory_post2025
+  valid_from: 2025-04-01
+  when: affectsOnlyNonCriticalCarveOut == true
+  then: false
+
+# --- EU / EEA & UK CYBER REPORTING ---
+rule eu_cyber_no_report_base -> cyber_authority_report_required [base, EU, EEA, supranational, prio 10]
+  de: "EU/EWR Grundsatz: Keine NIS2/DORA-Cybermeldepflicht für nicht regulierte Unternehmen"
+  fr: "UE/EEE principe: pas d'obligation NIS2/DORA hors entités régulées"
+  it: "UE/SEE principio: nessun obbligo NIS2/DORA fuori entità regolate"
+  en: "EU/EEA Base: No NIS2/DORA cyber report outside covered entities"
+  cite: eu_dora_nis2
+  then: false
+
+rule eu_dora_nis2_mandatory -> cyber_authority_report_required [exception, EU, EEA, supranational, prio 20]
+  de: "EU/EWR: Obligatorische Cybermeldung nach DORA (Finanzsektor) oder NIS2 (kritische/Cloud-Einrichtungen)"
+  fr: "UE/EEE: signalement obligatoire selon DORA (finance) ou NIS2"
+  it: "UE/SEE: segnalazione obbligatoria secondo DORA o NIS2"
+  en: "EU/EEA: Mandatory cyber incident report under DORA (financial) or NIS2 (essential/cloud entities)"
+  cite: eu_dora_nis2
+  overrides: eu_cyber_no_report_base
+  when: cyberAttackTriggered == true and sector in ["financial_regulated", "critical_infrastructure", "cloud_datacenter"]
+  then: true
+
+rule uk_cyber_base -> cyber_authority_report_required [base, UK, federal_statute, prio 10]
+  de: "UK Grundsatz: Cybermeldung für kritische Infrastrukturen / regulierte Institute"
+  fr: "UK principe: signalement cyber pour infrastructures critiques"
+  it: "UK principio: segnalazione cyber per infrastrutture critiche"
+  en: "UK Base: Cyber incident reporting for UK critical infrastructure / regulated firms"
+  cite: uk_gdpr_33
+  then: cyberAttackTriggered == true and sector in ["financial_regulated", "critical_infrastructure"]
+
+# --- DATA PROTECTION BREACH NOTIFICATION (KEY CH vs EU/UK DIVERGENCE!) ---
+rule ch_dsg_24_high_risk_only -> data_breach_report_required [base, CH, federal_statute, prio 10]
+  de: "Schweiz Art. 24 Abs. 1 DSG: EDÖB-Meldung NUR bei voraussichtlich hohem Risiko für Persönlichkeit/Grundrechte"
+  fr: "Suisse art. 24 al. 1 LPD: annonce au PFPDT uniquement en cas de risque élevé"
+  it: "Svizzera art. 24 cpv. 1 LPD: notifica all'IFPDT solo in caso di rischio elevato"
+  en: "Switzerland Art. 24(1) DSG: FDPIC notification ONLY if likely to result in HIGH risk"
+  cite: ch_dsg_24
+  then: personalDataBreached == true and dataRiskLevel == "high"
+
+rule eu_gdpr_33_moderate_or_high -> data_breach_report_required [base, EU, EEA, supranational, prio 10]
+  de: "EU/EWR Art. 33 DSGVO: Meldung an Aufsichtsbehörde innert 72h bei jedem nicht unwahrscheinlichen Risiko (mittel oder hoch)"
+  fr: "UE/EEE art. 33 RGPD: notification dans les 72h dès qu'un risque n'est pas improbable (modéré ou élevé)"
+  it: "UE/SEE art. 33 RGPD: notifica entro 72h per rischio moderato o elevato"
+  en: "EU/EEA Art. 33 GDPR: 72h notification required for moderate OR high risk (exempt only if unlikely)"
+  cite: eu_gdpr_33
+  then: personalDataBreached == true and dataRiskLevel in ["moderate", "high"]
+
+rule uk_gdpr_33_moderate_or_high -> data_breach_report_required [base, UK, federal_statute, prio 10]
+  de: "UK Art. 33 UK GDPR: ICO-Meldung innert 72h bei mittlerem oder hohem Risiko"
+  fr: "UK art. 33 UK GDPR: notification ICO dans les 72h (risque modéré ou élevé)"
+  it: "UK art. 33 UK GDPR: notifica ICO entro 72h (rischio moderato o elevato)"
+  en: "UK Art. 33 UK GDPR: 72h ICO notification required for moderate OR high risk"
+  cite: uk_gdpr_33
+  then: personalDataBreached == true and dataRiskLevel in ["moderate", "high"]
+
+# --- STRICTEST REPORTING CLOCK (HOURS) ---
+rule clock_none_base -> reporting_deadline_hours [base, CH, EU, EEA, UK, prio 1]
+  de: "Keine gesetzliche Stundenfrist ausgelöst (0h)"
+  fr: "Aucun délai horaire légal déclenché (0h)"
+  it: "Nessun termine orario legale attivato (0h)"
+  en: "No statutory hourly notification clock triggered (0h)"
+  cite: ch_isg_74b
+  then: 0
+
+rule clock_72h_gdpr_uk -> reporting_deadline_hours [overlay, EU, EEA, UK, prio 10]
+  de: "72-Stunden-Frist (Art. 33 EU/UK GDPR bzw. UK NIS)"
+  fr: "Délai de 72 heures (art. 33 RGPD UE/UK)"
+  it: "Termine di 72 ore (art. 33 RGPD UE/UK)"
+  en: "72-hour notification deadline (Art. 33 EU/UK GDPR / UK NIS)"
+  cite: eu_gdpr_33, uk_gdpr_33
+  overrides: clock_none_base
+  when: $data_breach_report_required == true or $cyber_authority_report_required == true
+  then: 72
+
+rule clock_24h_ch_isg_or_finma -> reporting_deadline_hours [overlay, CH, federal_statute, prio 20]
+  de: "24-Stunden-Frist Schweiz (Art. 74e Abs. 1 ISG BACS bzw. FINMA-Aufsichtsmitteilung 05/2020 & 03/2024)"
+  fr: "Délai de 24 heures Suisse (art. 74e al. 1 LSI OFCS / FINMA 05/2020 & 03/2024)"
+  it: "Termine di 24 ore Svizzera (art. 74e cpv. 1 LSIn UFCS / FINMA 05/2020 & 03/2024)"
+  en: "24-hour Swiss clock (Art. 74e(1) ISG BACS/NCSC & FINMA Guidance 05/2020 / 03/2024)"
+  cite: ch_isg_74d_74e, ch_finma_cyber
+  overrides: clock_none_base
+  when: $cyber_authority_report_required == true
+  then: 24
+
+rule clock_24h_ch_dsg_prompt -> reporting_deadline_hours [overlay, CH, federal_statute, prio 15]
+  de: "Schweiz Art. 24 Abs. 1 DSG: «So rasch als möglich» an EDÖB (Richtwert 72h sofern kein 24h-ISG/FINMA-Fall)"
+  fr: "Suisse art. 24 al. 1 LPD: dans les meilleurs délais au PFPDT (repère 72h)"
+  it: "Svizzera art. 24 cpv. 1 LPD: quanto prima all'IFPDT (riferimento 72h)"
+  en: "Switzerland Art. 24(1) DSG: Prompt FDPIC notice (72h operational benchmark where no 24h ISG/FINMA trigger)"
+  cite: ch_dsg_24
+  overrides: clock_none_base
+  when: $data_breach_report_required == true and $cyber_authority_report_required == false
+  then: 72
+
+rule clock_24h_eu_nis2 -> reporting_deadline_hours [overlay, EU, EEA, supranational, prio 20]
+  de: "24-Stunden-Frühwarnung EU/EWR (NIS2 Art. 23)"
+  fr: "Alerte précoce 24 heures UE/EEE (NIS2 art. 23)"
+  it: "Preallarme 24 ore UE/SEE (NIS2 art. 23)"
+  en: "24-hour EU/EEA early warning clock (NIS2 Art. 23)"
+  cite: eu_dora_nis2
+  overrides: clock_none_base, clock_72h_gdpr_uk
+  when: $cyber_authority_report_required == true
+  then: 24
+
+rule clock_4h_eu_dora_financial -> reporting_deadline_hours [overlay, EU, EEA, supranational, prio 30, lens strict_regulatory]
+  de: "4-Stunden-Erstmeldung EU DORA für regulierte Finanzinstitute ab Klassifizierung (VO (EU) 2022/2554 Art. 19)"
+  fr: "Notification initiale 4 heures UE DORA pour entités financières (art. 19)"
+  it: "Notifica iniziale 4 ore UE DORA per entità finanziarie (art. 19)"
+  en: "4-hour EU DORA initial notification clock for regulated financial entities (Art. 19)"
+  cite: eu_dora_nis2
+  overrides: clock_none_base, clock_72h_gdpr_uk, clock_24h_eu_nis2
+  when: $cyber_authority_report_required == true and sector == "financial_regulated"
+  then: 4
+
+output cyber_authority_report_required: boolean [obligation] primary
+  de: "Cyber-Behördenmeldung erforderlich (BACS / FINMA / NIS2 / DORA)"
+  fr: "Signalement cyber obligatoire (OFCS / FINMA / NIS2 / DORA)"
+  it: "Segnalazione cyber obbligatoria (UFCS / FINMA / NIS2 / DORA)"
+  en: "Cyber Regulator Notification Required (BACS / FINMA / NIS2 / DORA)"
+
+output data_breach_report_required: boolean [obligation] primary
+  de: "Datenschutz-Behördenmeldung erforderlich (EDÖB / EU-DPA / ICO)"
+  fr: "Annonce autorité de protection des données requise (PFPDT / DPA UE / ICO)"
+  it: "Notifica autorità protezione dati richiesta (IFPDT / DPA UE / ICO)"
+  en: "Data Protection Authority Notification Required (FDPIC / EU DPA / ICO)"
+
+output reporting_deadline_hours: integer [deadline] primary
+  de: "Strengste gesetzliche Meldefrist (Stunden)"
+  fr: "Délai de notification le plus strict (heures)"
+  it: "Termine di segnalazione più rigoroso (ore)"
+  en: "Strictest Statutory Reporting Clock (Hours)"
+
+test test_ch_isg_bank_24h "Swiss bank suffers cyberattack in 2026: 24h BACS/FINMA mandatory"
+  authority: ch_isg_74d_74e
+  context: {"jurisdiction":"CH-ZH","factDate":"2026-06-01","lens":"strict_regulatory","language":"de"}
+  inputs: {"sector":"financial_regulated","cyberAttackTriggered":true,"affectsOnlyNonCriticalCarveOut":false,"personalDataBreached":true,"dataRiskLevel":"moderate"}
+  expect: {"cyber_authority_report_required":true,"data_breach_report_required":false,"reporting_deadline_hours":24}
+
+test test_ch_isg_carveout_74b_2 "Art. 74b para. 2 ISG exempts attack hitting exclusively non-critical ancillary activity"
+  authority: ch_isg_74b
+  context: {"jurisdiction":"CH-ZH","factDate":"2026-06-01","lens":"strict_regulatory","language":"de"}
+  inputs: {"sector":"financial_regulated","cyberAttackTriggered":true,"affectsOnlyNonCriticalCarveOut":true,"personalDataBreached":false,"dataRiskLevel":"unlikely"}
+  expect: {"cyber_authority_report_required":false,"data_breach_report_required":false,"reporting_deadline_hours":0}
+
+test test_de_eu_bank_dora_4h_and_gdpr "German EU bank under identical moderate-risk breach: DORA 4h + GDPR Art. 33 triggered"
+  authority: eu_dora_nis2
+  context: {"jurisdiction":"DE","factDate":"2026-06-01","lens":"strict_regulatory","language":"en"}
+  inputs: {"sector":"financial_regulated","cyberAttackTriggered":true,"affectsOnlyNonCriticalCarveOut":false,"personalDataBreached":true,"dataRiskLevel":"moderate"}
+  expect: {"cyber_authority_report_required":true,"data_breach_report_required":true,"reporting_deadline_hours":4}
+
+test test_uk_moderate_breach_72h "UK entity under moderate personal data breach: 72h ICO report triggered"
+  authority: uk_gdpr_33
+  context: {"jurisdiction":"UK","factDate":"2026-06-01","lens":"strict_regulatory","language":"en"}
+  inputs: {"sector":"general_enterprise","cyberAttackTriggered":false,"personalDataBreached":true,"dataRiskLevel":"moderate"}
+  expect: {"cyber_authority_report_required":false,"data_breach_report_required":true,"reporting_deadline_hours":72}

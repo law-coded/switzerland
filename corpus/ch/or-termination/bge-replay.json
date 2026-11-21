@@ -1,0 +1,113 @@
+[
+  {
+    "decisionId": "bge_130 III 28",
+    "citation": "BGE 130 III 28, E. 4.1",
+    "opencaselawUrl": "https://mcp.opencaselaw.ch/entscheid/bge_130%20III%2028#e-4-1",
+    "decisionDate": "2003-10-21",
+    "court": "bge",
+    "summary": "Employee secretly redirected all of superior's emails to own mailbox; summary dismissal without prior warning justified under Art. 337 OR.",
+    "context": { "jurisdiction": "CH", "factDate": "2003-10-21", "lens": "bger_settled", "language": "de" },
+    "facts": {
+      "terminationType": "summary_employer",
+      "noticeReceivedDate": "2003-01-15",
+      "serviceYear": 3,
+      "inProbation": false,
+      "monthlyGrossSalary": { "amount": "8000.00", "currency": "CHF" },
+      "daysBetweenKnowledgeAndSummaryDismissal": 2,
+      "severeLoyaltyBreachOrCrime": true,
+      "reasonIsNoFaultIncapacity": false
+    },
+    "actualHolding": {
+      "termination_status": "valid_summary_immediate"
+    }
+  },
+  {
+    "decisionId": "bge_117 II 560",
+    "citation": "BGE 117 II 560",
+    "opencaselawUrl": "https://mcp.opencaselaw.ch/entscheid/bge_117%20II%20560",
+    "decisionDate": "1991-11-19",
+    "court": "bge",
+    "summary": "Employee announced intent to switch jobs early in fixed-term contract; summary dismissal unjustified because employer issued no prior written warning.",
+    "context": { "jurisdiction": "CH", "factDate": "1991-11-19", "lens": "bger_settled", "language": "de" },
+    "facts": {
+      "terminationType": "summary_employer",
+      "noticeReceivedDate": "1990-05-01",
+      "serviceYear": 1,
+      "inProbation": false,
+      "monthlyGrossSalary": { "amount": "6500.00", "currency": "CHF" },
+      "daysBetweenKnowledgeAndSummaryDismissal": 1,
+      "severeLoyaltyBreachOrCrime": false,
+      "minorFirstOffenseWithoutWarning": true,
+      "reasonIsNoFaultIncapacity": false
+    },
+    "actualHolding": {
+      "termination_status": "unjustified_summary_art337c"
+    }
+  },
+  {
+    "decisionId": "bge_128 III 212",
+    "citation": "BGE 128 III 212, E. 2c",
+    "opencaselawUrl": "https://mcp.opencaselaw.ch/entscheid/bge_128%20III%20212#e-2c",
+    "decisionDate": "2002-03-25",
+    "court": "bge",
+    "summary": "Employer terminated employee during general illness incapacity after probation; termination is null and void under Art. 336c para. 1 lit. b & para. 2 OR.",
+    "context": { "jurisdiction": "CH", "factDate": "1995-06-07", "lens": "bger_settled", "language": "fr" },
+    "facts": {
+      "terminationType": "ordinary_employer",
+      "noticeReceivedDate": "1995-06-07",
+      "serviceYear": 2,
+      "inProbation": false,
+      "monthlyGrossSalary": { "amount": "7500.00", "currency": "CHF" },
+      "incapacitatedAtNotice": true,
+      "workplaceSpecificIncapacityOnly": false,
+      "pregnantOrPostpartum16w": false
+    },
+    "actualHolding": {
+      "termination_status": "null_and_void_sperrfrist"
+    }
+  },
+  {
+    "decisionId": "bvger_A-5819_2016",
+    "citation": "BVGer A-5819/2016 vom 22. November 2017, E. 4.5.1",
+    "opencaselawUrl": "https://mcp.opencaselaw.ch/entscheid/bvger_A-5819_2016#e-4-5-1",
+    "decisionDate": "2017-11-22",
+    "court": "bvger",
+    "summary": "Purely workplace-specific incapacity does not trigger Art. 336c OR blocking protection; termination remains valid.",
+    "context": { "jurisdiction": "CH", "factDate": "2016-06-01", "lens": "bger_settled", "language": "de" },
+    "facts": {
+      "terminationType": "ordinary_employer",
+      "noticeReceivedDate": "2016-06-01",
+      "serviceYear": 4,
+      "inProbation": false,
+      "monthlyGrossSalary": { "amount": "8500.00", "currency": "CHF" },
+      "incapacitatedAtNotice": true,
+      "workplaceSpecificIncapacityOnly": true,
+      "pregnantOrPostpartum16w": false
+    },
+    "actualHolding": {
+      "termination_status": "valid_ordinary"
+    }
+  },
+  {
+    "decisionId": "bge_138 I 113",
+    "citation": "BGE 138 I 113, E. 6.3.1",
+    "opencaselawUrl": "https://mcp.opencaselaw.ch/entscheid/bge_138%20I%20113#e-6-3-1",
+    "decisionDate": "2011-12-29",
+    "court": "bge",
+    "summary": "Employer waited beyond the 2-3 business-day reaction period after learning of the grounds; summary dismissal forfeited (unjustified).",
+    "context": { "jurisdiction": "CH", "factDate": "2011-12-29", "lens": "bger_settled", "language": "de" },
+    "facts": {
+      "terminationType": "summary_employer",
+      "noticeReceivedDate": "2011-03-01",
+      "serviceYear": 5,
+      "inProbation": false,
+      "monthlyGrossSalary": { "amount": "9000.00", "currency": "CHF" },
+      "daysBetweenKnowledgeAndSummaryDismissal": 10,
+      "severeLoyaltyBreachOrCrime": true,
+      "reasonIsNoFaultIncapacity": false
+    },
+    "actualHolding": {
+      "termination_status": "unjustified_summary_art337c"
+    }
+  }
+]
